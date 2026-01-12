@@ -82,8 +82,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(240, 249, 255, 0.95) 0%, rgba(224, 242, 254, 0.95) 50%, rgba(219, 234, 254, 0.95) 100%), 
-                        url('users.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
             padding: 10rem 2rem 8rem;
             text-align: center;
             position: relative;
@@ -138,6 +137,25 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
+        }
+        
+        .hero-image-container {
+            max-width: 1000px;
+            margin: 3rem auto 3rem;
+            position: relative;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        
+        .hero-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 35px 90px rgba(0,0,0,0.2);
         }
         
         .cta-button {
@@ -733,7 +751,7 @@
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.png" alt="AI with Robert">
+                <img src="logo.PNG" alt="AI with Robert">
             </div>
             <ul>
                 <li><a href="#home">🏠 Home</a></li>
@@ -753,6 +771,11 @@
                 Patient, personalized training for seniors in Côte Saint-Luc.<br>
                 Learn ChatGPT, online safety, and essential digital skills with confidence.
             </p>
+            
+            <div class="hero-image-container">
+                <img src="users.jpg" alt="Happy seniors learning AI and technology together" class="hero-image">
+            </div>
+            
             <a href="#contact" class="cta-button">Start Your Free Discovery Call</a>
             
             <div class="stats">
