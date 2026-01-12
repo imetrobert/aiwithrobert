@@ -1088,6 +1088,9 @@
                 <form action="https://formsubmit.co/forms@aiwithrobert.com" method="POST">
                     <input type="text" name="_honey" style="display:none">
                     <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://aiwithrobert.com/#contact">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission - AI with Robert">
+                    <input type="hidden" name="_template" value="box">
                     
                     <div class="form-group">
                         <label for="name">Your Name *</label>
@@ -1135,6 +1138,24 @@
                     Let's chat about your goals with no pressure or obligation
                 </p>
             </div>
+            
+            <!-- Success Message (shown after form submission via URL parameter) -->
+            <div id="success-message" style="display: none; text-align: center; margin-top: 3rem; padding: 3rem; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 16px; border: 2px solid #22c55e;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+                <h3 style="color: #166534; font-size: 2rem; margin-bottom: 1rem;">Thank You!</h3>
+                <p style="color: #065f46; font-size: 1.2rem; line-height: 1.7;">
+                    Your request has been received and will be actioned as soon as possible.<br>
+                    I'll get back to you within 24 hours.
+                </p>
+            </div>
+            
+            <script>
+                // Show success message if redirected back after form submission
+                if (window.location.hash === '#contact' && document.referrer.includes('formsubmit.co')) {
+                    document.querySelector('.contact-form').style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                }
+            </script>
         </div>
     </section>
 
