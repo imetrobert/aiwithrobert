@@ -22,6 +22,7 @@
         
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 220px;
         }
         
         /* Navigation */
@@ -717,6 +718,10 @@
         }
         
         @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 150px;
+            }
+            
             nav {
                 padding: 0.8rem 0.8rem;
             }
@@ -764,9 +769,8 @@
                 line-height: 1.2;
             }
             
-            .hero {
-                padding: 6rem 1.5rem 4rem;
-                margin-top: 140px;
+            html {
+                scroll-padding-top: 150px;
             }
             
             .hero h1 {
@@ -848,9 +852,9 @@
                     <span class="stat-label">Years Experience</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-icon">💰</span>
-                    <span class="stat-number">20%</span>
-                    <span class="stat-label">Tax Credit Back</span>
+                    <span class="stat-icon">🤝</span>
+                    <span class="stat-number">Patient</span>
+                    <span class="stat-label">One-on-One Teaching</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-icon">✨</span>
@@ -973,14 +977,6 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="tax-credit">
-                <h3>💰 Quebec Tax Credit Eligible</h3>
-                <p>
-                    <strong>Get up to 20% back!</strong> All lessons qualify for Quebec's tutoring tax credit. 
-                    Claim back a portion of your investment when you file taxes. I'll provide all documentation.
-                </p>
-            </div>
         </div>
     </section>
 
@@ -1089,7 +1085,10 @@
             </div>
             
             <div class="contact-form">
-                <form action="mailto:form@aiwithrobert.com" method="POST" enctype="text/plain">
+                <form action="https://formsubmit.co/forms@aiwithrobert.com" method="POST">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_captcha" value="false">
+                    
                     <div class="form-group">
                         <label for="name">Your Name *</label>
                         <input type="text" id="name" name="name" required placeholder="John Smith">
