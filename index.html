@@ -27,7 +27,7 @@
         /* Navigation */
         nav {
             background: #ffffff;
-            padding: 1.2rem 3rem;
+            padding: 2rem 3rem;
             position: fixed;
             top: 0;
             left: 0;
@@ -51,12 +51,17 @@
             align-items: center;
             gap: 0.8rem;
             flex: 0 0 auto;
+            min-width: 250px;
         }
         
         .nav-logo img {
-            height: 120px;
+            height: 220px;
             width: auto;
-            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+            max-width: 250px;
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            object-fit: contain;
         }
         
         nav ul {
@@ -89,7 +94,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            margin-top: 90px;
+            margin-top: 160px;
         }
         
         .hero:before {
@@ -694,8 +699,14 @@
                 padding: 1rem 1.5rem;
             }
             
+            .nav-logo {
+                min-width: 120px;
+            }
+            
             .nav-logo img {
-                height: 80px;
+                height: 120px;
+                max-width: 120px;
+                padding: 0.8rem;
             }
             
             nav ul {
