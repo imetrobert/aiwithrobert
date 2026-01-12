@@ -1056,16 +1056,26 @@
                     staying connected, independent, and engaged with the world around you.
                 </p>
                 <p>
-                    I understand that learning new technology and AI tools like ChatGPT can feel overwhelming. 
-                    The buttons, the menus, the constant updates—it's a lot. That's exactly why I specialize 
-                    in patient, step-by-step technology training right here in Côte Saint-Luc. We go slowly. 
-                    We repeat as many times as needed. We celebrate every small victory.
+                    With over 25 years of experience in digital innovation and AI implementation at major 
+                    organizations like Bell, I now focus on helping seniors in our community master technology 
+                    at their own pace. I understand that learning new technology and AI tools like ChatGPT can 
+                    feel overwhelming. The buttons, the menus, the constant updates—it's a lot. That's exactly 
+                    why I specialize in patient, step-by-step technology training right here in Côte Saint-Luc.
                 </p>
                 <p>
                     Whether you want to use ChatGPT to help write emails, learn to spot online scams, master 
                     video calling with family, or simply feel more confident using the internet and your smartphone, 
                     I'm here for you every step of the way. I provide personalized technology help for seniors 
                     throughout Côte Saint-Luc and surrounding Montreal areas.
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    <a href="https://www.imetrobert.com" target="_blank" rel="noopener noreferrer" 
+                       style="color: #3b82f6; text-decoration: none; font-weight: 600; font-size: 1.1rem; 
+                              display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.5rem; 
+                              background: #f0f9ff; border-radius: 10px; border: 2px solid #3b82f6; 
+                              transition: all 0.3s;">
+                        🌐 Learn More About My Work in AI & Digital Innovation
+                    </a>
                 </p>
                 
                 <div class="experience-grid">
@@ -1154,17 +1164,20 @@
                     
                     <div class="form-group">
                         <label for="name">Your Name *</label>
-                        <input type="text" id="name" name="name" required placeholder="John Smith">
+                        <input type="text" id="name" name="name" required placeholder="John Smith" autocomplete="name">
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        <input type="email" id="email" name="email" required placeholder="john@example.com" autocomplete="email">
                     </div>
                     
                     <div class="form-group">
                         <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="(514) 555-1234">
+                        <input type="tel" id="phone" name="phone" required placeholder="514-555-1234" 
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
+                               autocomplete="tel"
+                               title="Please enter phone number in format: XXX-XXX-XXXX">
                     </div>
                     
                     <div class="form-group">
@@ -1210,6 +1223,19 @@
             </div>
             
             <script>
+                // Auto-format phone number as user types
+                document.getElementById('phone').addEventListener('input', function (e) {
+                    let value = e.target.value.replace(/\D/g, ''); // Remove all non-digits
+                    
+                    if (value.length <= 3) {
+                        e.target.value = value;
+                    } else if (value.length <= 6) {
+                        e.target.value = value.slice(0, 3) + '-' + value.slice(3);
+                    } else {
+                        e.target.value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 10);
+                    }
+                });
+                
                 // Show success message if redirected back after form submission
                 if (window.location.hash === '#contact' && document.referrer.includes('formsubmit.co')) {
                     document.querySelector('.contact-form').style.display = 'none';
