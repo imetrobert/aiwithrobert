@@ -93,11 +93,11 @@
         
         .nav-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
             max-width: 1400px;
             margin: 0 auto;
-            gap: 2rem;
+            gap: 0.5rem;
         }
         
         .nav-logo {
@@ -124,6 +124,8 @@
             gap: 1rem;
             align-items: center;
             flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
         }
         
         nav a {
@@ -874,6 +876,11 @@
             <div class="nav-logo">
                 <img src="logo.PNG" alt="AI with Robert">
             </div>
+            <div style="text-align: center; margin: 0.5rem 0;">
+                <a href="tel:514-250-8491" style="color: #3b82f6; text-decoration: none; font-size: 1.3rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem;">
+                    📞 514-250-8491
+                </a>
+            </div>
             <ul>
                 <li><a href="#home"><span class="nav-icon">🏠</span><span class="nav-text">Home</span></a></li>
                 <li><a href="#services"><span class="nav-icon">📚</span><span class="nav-text">What We Offer</span></a></li>
@@ -1180,7 +1187,7 @@
                 <form action="https://formsubmit.co/forms@aiwithrobert.com" method="POST">
                     <input type="text" name="_honey" style="display:none">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://aiwithrobert.com/#contact?success=true">
+                    <input type="hidden" name="_next" value="https://aiwithrobert.com?submitted=true#contact">
                     <input type="hidden" name="_subject" value="New Contact Form Submission - AI with Robert">
                     <input type="hidden" name="_template" value="box">
                     
@@ -1261,25 +1268,35 @@
                 // Show success message if URL has success parameter or coming from formsubmit
                 function checkFormSuccess() {
                     const urlParams = new URLSearchParams(window.location.search);
-                    const hasSuccessParam = urlParams.get('success') === 'true';
-                    const isFromFormSubmit = document.referrer && document.referrer.includes('formsubmit.co');
-                    const isContactSection = window.location.hash === '#contact';
+                    const hasSubmitted = urlParams.get('submitted') === 'true';
+                    const isFromFormSubmit = document.referrer && document.referrer.includes('formsubmit');
                     
-                    if ((hasSuccessParam || isFromFormSubmit) && isContactSection) {
-                        const form = document.querySelector('.contact-form');
-                        const successMsg = document.getElementById('success-message');
-                        if (form && successMsg) {
-                            form.style.display = 'none';
-                            successMsg.style.display = 'block';
-                        }
+                    console.log('Checking form success:', {hasSubmitted, isFromFormSubmit, referrer: document.referrer});
+                    
+                    if (hasSubmitted || isFromFormSubmit) {
+                        // Scroll to contact section
+                        setTimeout(() => {
+                            const contactSection = document.getElementById('contact');
+                            if (contactSection) {
+                                contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                            
+                            // Show success message
+                            const form = document.querySelector('.contact-form');
+                            const successMsg = document.getElementById('success-message');
+                            if (form && successMsg) {
+                                form.style.display = 'none';
+                                successMsg.style.display = 'block';
+                            }
+                        }, 500);
                     }
                 }
                 
                 // Check on page load
-                checkFormSuccess();
+                window.addEventListener('load', checkFormSuccess);
                 
-                // Check when hash changes
-                window.addEventListener('hashchange', checkFormSuccess);
+                // Also check immediately
+                checkFormSuccess();
                 
                 // Active navigation highlight on scroll
                 const sections = document.querySelectorAll('section, .hero');
