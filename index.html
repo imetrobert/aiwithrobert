@@ -92,9 +92,9 @@
         }
         
         .nav-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: 150px 1fr;
             align-items: center;
-            justify-content: space-between;
             max-width: 1600px;
             margin: 0 auto;
             gap: 2rem;
@@ -103,29 +103,27 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            flex: 0 0 auto;
+            justify-content: center;
         }
         
         .nav-logo img {
-            width: 100%;
-            height: 60px;
+            width: 140px;
+            height: 50px;
             background: #ffffff;
-            padding: 0.3rem;
+            padding: 0.2rem;
             border-radius: 8px;
             object-fit: contain;
         }
         
         .nav-center {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 0.8rem;
-            flex: 1;
+            justify-content: space-between;
+            gap: 2rem;
         }
         
         .nav-phone {
-            text-align: center;
+            flex-shrink: 0;
         }
         
         .nav-phone a {
@@ -136,6 +134,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.3rem;
+            white-space: nowrap;
         }
         
         nav ul {
@@ -144,7 +143,7 @@
             gap: 0.8rem;
             align-items: center;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-end;
             margin: 0;
             padding: 0;
         }
@@ -831,6 +830,27 @@
             }
         }
         
+        @media (max-width: 1200px) {
+            .nav-container {
+                grid-template-columns: 120px 1fr;
+                gap: 1rem;
+            }
+            
+            .nav-logo img {
+                width: 110px;
+                height: 45px;
+            }
+            
+            nav a {
+                font-size: 0.85rem;
+                padding: 0.5rem 0.8rem;
+            }
+            
+            .nav-phone a {
+                font-size: 1rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             html {
                 scroll-padding-top: 140px;
@@ -845,9 +865,13 @@
                 gap: 0.8rem;
             }
             
+            nav ul {
+                justify-content: center;
+            }
+            
             .nav-logo {
-                min-width: 120px;
-                max-width: 120px;
+                min-width: auto;
+                max-width: none;
             }
             
             .nav-logo img {
@@ -881,6 +905,11 @@
                 font-size: 0.75rem;
                 white-space: normal;
                 line-height: 1.2;
+            }
+            
+            .hero {
+                padding: 6rem 1.5rem 4rem;
+                margin-top: 140px;
             }
             
             html {
