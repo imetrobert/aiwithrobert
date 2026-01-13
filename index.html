@@ -75,7 +75,7 @@
         
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 220px;
+            scroll-padding-top: 200px;
         }
         
         /* Navigation */
@@ -267,6 +267,17 @@
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+        
+        .cta-button:disabled {
+            background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+            cursor: not-allowed;
+            opacity: 0.6;
+            box-shadow: none;
+        }
+        
+        .cta-button:disabled:hover {
+            transform: none;
         }
         
         .cta-button-secondary {
@@ -732,6 +743,27 @@
             background: white;
         }
         
+        input:invalid, select:invalid, textarea:invalid {
+            border-color: #e2e8f0;
+        }
+        
+        input.error, select.error, textarea.error {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+            font-weight: 600;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
         textarea {
             resize: vertical;
             min-height: 140px;
@@ -780,7 +812,7 @@
         
         @media (max-width: 768px) {
             html {
-                scroll-padding-top: 150px;
+                scroll-padding-top: 140px;
             }
             
             nav {
@@ -1194,11 +1226,13 @@
                     <div class="form-group">
                         <label for="name">Your Name *</label>
                         <input type="text" id="name" name="name" required placeholder="John Smith" autocomplete="name">
+                        <div class="error-message" id="name-error">Please enter your name</div>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email Address *</label>
                         <input type="email" id="email" name="email" required placeholder="john@example.com" autocomplete="email">
+                        <div class="error-message" id="email-error">Please enter a valid email address</div>
                     </div>
                     
                     <div class="form-group">
@@ -1207,6 +1241,7 @@
                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
                                autocomplete="tel"
                                title="Please enter phone number in format: XXX-XXX-XXXX">
+                        <div class="error-message" id="phone-error">Please enter a valid phone number (XXX-XXX-XXXX)</div>
                     </div>
                     
                     <div class="form-group">
@@ -1219,6 +1254,7 @@
                             <option value="free-call">Free Discovery Call</option>
                             <option value="undecided">Not sure - let's discuss!</option>
                         </select>
+                        <div class="error-message" id="session-error">Please select an option</div>
                     </div>
                     
                     <div class="form-group">
@@ -1227,7 +1263,8 @@
                     </div>
                     
                     <div style="text-align: center; margin-top: 2rem;">
-                        <button type="submit" class="cta-button">Send Message</button>
+                        <button type="submit" class="cta-button" id="submit-btn" disabled>Send Message</button>
+                        <p id="form-hint" style="color: #ef4444; margin-top: 1rem; font-weight: 600; display: none;"></p>
                     </div>
                 </form>
             </div>
@@ -1252,6 +1289,94 @@
             </div>
             
             <script>
+                // Form validation and button state management
+                const submitBtn = document.getElementById('submit-btn');
+                const formHint = document.getElementById('form-hint');
+                const requiredFields = {
+                    'name': document.getElementById('name'),
+                    'email': document.getElementById('email'),
+                    'phone': document.getElementById('phone'),
+                    'session-type': document.getElementById('session-type')
+                };
+                
+                // Check if all required fields are filled
+                function checkFormValidity() {
+                    let allFilled = true;
+                    let missingFields = [];
+                    
+                    for (let fieldName in requiredFields) {
+                        const field = requiredFields[fieldName];
+                        if (!field.value || field.value.trim() === '') {
+                            allFilled = false;
+                            const label = field.previousElementSibling.textContent.replace(' *', '');
+                            missingFields.push(label);
+                        } else if (field.type === 'tel' && !field.value.match(/[0-9]{3}-[0-9]{3}-[0-9]{4}/)) {
+                            allFilled = false;
+                            missingFields.push('Valid Phone Number');
+                        } else if (field.type === 'email' && !field.validity.valid) {
+                            allFilled = false;
+                            missingFields.push('Valid Email');
+                        }
+                    }
+                    
+                    submitBtn.disabled = !allFilled;
+                    
+                    // Show hint if button is disabled and user tries to interact
+                    if (!allFilled && missingFields.length > 0) {
+                        formHint.textContent = `Please complete: ${missingFields.join(', ')}`;
+                    }
+                    
+                    return allFilled;
+                }
+                
+                // Add event listeners to all required fields
+                for (let fieldName in requiredFields) {
+                    const field = requiredFields[fieldName];
+                    field.addEventListener('input', () => {
+                        checkFormValidity();
+                        formHint.style.display = 'none';
+                        field.classList.remove('error');
+                        const errorMsg = document.getElementById(`${fieldName}-error`);
+                        if (errorMsg) errorMsg.classList.remove('show');
+                    });
+                    
+                    field.addEventListener('change', checkFormValidity);
+                }
+                
+                // Show hint when hovering over disabled button
+                submitBtn.addEventListener('mouseenter', () => {
+                    if (submitBtn.disabled) {
+                        checkFormValidity();
+                        formHint.style.display = 'block';
+                    }
+                });
+                
+                submitBtn.addEventListener('mouseleave', () => {
+                    formHint.style.display = 'none';
+                });
+                
+                // Show hint when clicking disabled button
+                submitBtn.addEventListener('click', (e) => {
+                    if (submitBtn.disabled) {
+                        e.preventDefault();
+                        checkFormValidity();
+                        formHint.style.display = 'block';
+                        
+                        // Highlight empty fields
+                        for (let fieldName in requiredFields) {
+                            const field = requiredFields[fieldName];
+                            if (!field.value || field.value.trim() === '') {
+                                field.classList.add('error');
+                                const errorMsg = document.getElementById(`${fieldName}-error`);
+                                if (errorMsg) errorMsg.classList.add('show');
+                            }
+                        }
+                    }
+                });
+                
+                // Initial check
+                checkFormValidity();
+                
                 // Auto-format phone number as user types
                 document.getElementById('phone').addEventListener('input', function (e) {
                     let value = e.target.value.replace(/\D/g, ''); // Remove all non-digits
