@@ -163,6 +163,12 @@
             transform: translateY(0);
         }
         
+        nav a.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+        
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
@@ -1151,14 +1157,30 @@
             
             <div class="contact-info">
                 <h3>AI & Technology Training in Côte Saint-Luc & Surrounding Areas</h3>
-                <p><a href="mailto:info@aiwithrobert.com">info@aiwithrobert.com</a></p>
+                <p style="margin: 1.5rem 0;">
+                    <a href="tel:514-250-8491" style="display: inline-flex; align-items: center; gap: 0.8rem; 
+                       font-size: 2rem; font-weight: 700; color: #3b82f6; text-decoration: none; 
+                       padding: 1.2rem 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); 
+                       border-radius: 15px; border: 3px solid #3b82f6; transition: all 0.3s; 
+                       box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2);">
+                        📞 514-250-8491
+                    </a>
+                </p>
+                <p style="font-size: 1.15rem; color: #475569; margin-top: 1rem;">
+                    Call anytime for questions or to schedule your free discovery call
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    <a href="mailto:info@aiwithrobert.com" style="color: #3b82f6; font-weight: 600; font-size: 1.1rem;">
+                        ✉️ info@aiwithrobert.com
+                    </a>
+                </p>
             </div>
             
             <div class="contact-form">
                 <form action="https://formsubmit.co/forms@aiwithrobert.com" method="POST">
                     <input type="text" name="_honey" style="display:none">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://aiwithrobert.com/#contact">
+                    <input type="hidden" name="_next" value="https://aiwithrobert.com/#contact?success=true">
                     <input type="hidden" name="_subject" value="New Contact Form Submission - AI with Robert">
                     <input type="hidden" name="_template" value="box">
                     
@@ -1236,11 +1258,61 @@
                     }
                 });
                 
-                // Show success message if redirected back after form submission
-                if (window.location.hash === '#contact' && document.referrer.includes('formsubmit.co')) {
-                    document.querySelector('.contact-form').style.display = 'none';
-                    document.getElementById('success-message').style.display = 'block';
+                // Show success message if URL has success parameter or coming from formsubmit
+                function checkFormSuccess() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const hasSuccessParam = urlParams.get('success') === 'true';
+                    const isFromFormSubmit = document.referrer && document.referrer.includes('formsubmit.co');
+                    const isContactSection = window.location.hash === '#contact';
+                    
+                    if ((hasSuccessParam || isFromFormSubmit) && isContactSection) {
+                        const form = document.querySelector('.contact-form');
+                        const successMsg = document.getElementById('success-message');
+                        if (form && successMsg) {
+                            form.style.display = 'none';
+                            successMsg.style.display = 'block';
+                        }
+                    }
                 }
+                
+                // Check on page load
+                checkFormSuccess();
+                
+                // Check when hash changes
+                window.addEventListener('hashchange', checkFormSuccess);
+                
+                // Active navigation highlight on scroll
+                const sections = document.querySelectorAll('section, .hero');
+                const navLinks = document.querySelectorAll('nav a');
+                
+                function highlightNavigation() {
+                    let current = '';
+                    const scrollPos = window.scrollY + 250; // Offset for fixed nav
+                    
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.clientHeight;
+                        const sectionId = section.getAttribute('id');
+                        
+                        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                            current = sectionId;
+                        }
+                    });
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        const href = link.getAttribute('href');
+                        if (href === '#' + current) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+                
+                // Highlight on scroll
+                window.addEventListener('scroll', highlightNavigation);
+                
+                // Highlight on page load
+                highlightNavigation();
             </script>
         </div>
     </section>
