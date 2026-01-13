@@ -1274,21 +1274,24 @@
                     console.log('Checking form success:', {hasSubmitted, isFromFormSubmit, referrer: document.referrer});
                     
                     if (hasSubmitted || isFromFormSubmit) {
-                        // Scroll to contact section
+                        // Show success message first
+                        const form = document.querySelector('.contact-form');
+                        const successMsg = document.getElementById('success-message');
+                        if (form && successMsg) {
+                            form.style.display = 'none';
+                            successMsg.style.display = 'block';
+                        }
+                        
+                        // Then scroll to success message after a short delay
                         setTimeout(() => {
-                            const contactSection = document.getElementById('contact');
-                            if (contactSection) {
-                                contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            if (successMsg) {
+                                // Scroll directly to the success message element
+                                successMsg.scrollIntoView({ 
+                                    behavior: 'smooth', 
+                                    block: 'center' // Center the success message in viewport
+                                });
                             }
-                            
-                            // Show success message
-                            const form = document.querySelector('.contact-form');
-                            const successMsg = document.getElementById('success-message');
-                            if (form && successMsg) {
-                                form.style.display = 'none';
-                                successMsg.style.display = 'block';
-                            }
-                        }, 500);
+                        }, 300);
                     }
                 }
                 
