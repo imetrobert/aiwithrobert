@@ -9,6 +9,10 @@
     <meta name="author" content="Robert Simon - AI with Robert">
     <meta name="robots" content="index, follow">
     
+    <!-- Language -->
+    <link rel="alternate" hreflang="en" href="https://aiwithrobert.com/">
+    <link rel="alternate" hreflang="fr" href="https://aiwithrobert.com/?lang=fr">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aiwithrobert.com/">
@@ -112,6 +116,39 @@
             height: 45px;
             width: auto;
             object-fit: contain;
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 0.4rem;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .language-selector button {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .language-selector button:hover {
+            background: #e2e8f0;
+        }
+        
+        .language-selector button.active {
+            background: #3b82f6;
+            color: white;
         }
         
         .nav-phone a {
@@ -540,29 +577,6 @@
             font-size: 0.95rem;
         }
         
-        /* Tax Credit Box */
-        .tax-credit {
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-            border-left: 4px solid #22c55e;
-            padding: 2.5rem;
-            border-radius: 16px;
-            margin: 4rem auto;
-            max-width: 1000px;
-        }
-        
-        .tax-credit h3 {
-            color: #166534;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .tax-credit p {
-            color: #065f46;
-            font-size: 1.15rem;
-            line-height: 1.7;
-        }
-        
         /* About Section */
         .about-container {
             max-width: 1200px;
@@ -946,17 +960,21 @@
                 <div class="nav-logo">
                     <img src="logo.PNG" alt="AI with Robert">
                 </div>
+                <div class="language-selector">
+                    <button onclick="setLanguage('en')" id="lang-en" class="active">English</button>
+                    <button onclick="setLanguage('fr')" id="lang-fr">Français</button>
+                </div>
                 <div class="nav-phone">
                     <a href="tel:514-250-8491">📞 514-250-8491</a>
                 </div>
             </div>
             
             <ul>
-                <li><a href="#home"><span class="nav-text">Home</span></a></li>
-                <li><a href="#services"><span class="nav-text">What We Offer</span></a></li>
-                <li><a href="#pricing"><span class="nav-text">Pricing</span></a></li>
-                <li><a href="#about"><span class="nav-text">About Robert</span></a></li>
-                <li><a href="#contact"><span class="nav-text">Contact</span></a></li>
+                <li><a href="#home"><span class="nav-text" data-i18n="nav-home">Home</span></a></li>
+                <li><a href="#services"><span class="nav-text" data-i18n="nav-services">What We Offer</span></a></li>
+                <li><a href="#pricing"><span class="nav-text" data-i18n="nav-pricing">Pricing</span></a></li>
+                <li><a href="#about"><span class="nav-text" data-i18n="nav-about">About Robert</span></a></li>
+                <li><a href="#contact"><span class="nav-text" data-i18n="nav-contact">Contact</span></a></li>
             </ul>
         </div>
     </nav>
@@ -964,8 +982,8 @@
     <!-- Hero Section -->
     <div class="hero" id="home">
         <div class="hero-content">
-            <h1>AI & Technology Training for Seniors in Côte Saint-Luc</h1>
-            <p class="tagline">
+            <h1 data-i18n="hero-title">AI & Technology Training for Seniors in Côte Saint-Luc</h1>
+            <p class="tagline" data-i18n="hero-tagline">
                 Patient, personalized AI and internet training for seniors in Côte Saint-Luc, Quebec.<br>
                 Learn ChatGPT, online safety, and essential digital skills with confidence.
             </p>
@@ -974,28 +992,28 @@
                 <img src="users.jpg" alt="Happy seniors learning AI and technology together" class="hero-image">
             </div>
             
-            <a href="#contact" class="cta-button">Start Your Free Discovery Call</a>
+            <a href="#contact" class="cta-button" data-i18n="hero-cta">Start Your Free Discovery Call</a>
             
             <div class="stats">
                 <div class="stat-item">
                     <span class="stat-icon">🏡</span>
-                    <span class="stat-number">Local</span>
-                    <span class="stat-label">Côte Saint-Luc</span>
+                    <span class="stat-number" data-i18n="stat-local">Local</span>
+                    <span class="stat-label" data-i18n="stat-local-label">Côte Saint-Luc</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-icon">🎓</span>
-                    <span class="stat-number">Expert</span>
-                    <span class="stat-label">Years Experience</span>
+                    <span class="stat-number" data-i18n="stat-expert">Expert</span>
+                    <span class="stat-label" data-i18n="stat-expert-label">Years Experience</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-icon">🤝</span>
-                    <span class="stat-number">Patient</span>
-                    <span class="stat-label">One-on-One Teaching</span>
+                    <span class="stat-number" data-i18n="stat-patient">Patient</span>
+                    <span class="stat-label" data-i18n="stat-patient-label">One-on-One Teaching</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-icon">✨</span>
-                    <span class="stat-number">Free</span>
-                    <span class="stat-label">Discovery Call</span>
+                    <span class="stat-number" data-i18n="stat-free">Free</span>
+                    <span class="stat-label" data-i18n="stat-free-label">Discovery Call</span>
                 </div>
             </div>
         </div>
@@ -1005,8 +1023,8 @@
     <section id="services">
         <div class="services-container">
             <div class="section-header">
-                <h2>What We Offer</h2>
-                <p class="section-subtitle">
+                <h2 data-i18n="services-title">What We Offer</h2>
+                <p class="section-subtitle" data-i18n="services-subtitle">
                     Personalized AI and technology training for seniors in Côte Saint-Luc. 
                     No pressure, no jargon—just practical internet skills and AI training 
                     that help you stay connected and confident online.
@@ -1016,43 +1034,43 @@
             <div class="services-grid">
                 <div class="service-card">
                     <span class="service-icon">🤝</span>
-                    <h3>One-on-One AI & Internet Training</h3>
-                    <p>Personalized technology instruction for seniors in Côte Saint-Luc:</p>
+                    <h3 data-i18n="service1-title">One-on-One AI & Internet Training</h3>
+                    <p data-i18n="service1-desc">Personalized technology instruction for seniors in Côte Saint-Luc:</p>
                     <ul>
-                        <li>Master ChatGPT & AI writing tools</li>
-                        <li>Create AI-generated images</li>
-                        <li>Email safety & scam protection</li>
-                        <li>Learn to use smartphones & tablets</li>
-                        <li>Video calls with family</li>
-                        <li>Online banking safely</li>
+                        <li data-i18n="service1-item1">Master ChatGPT & AI writing tools</li>
+                        <li data-i18n="service1-item2">Create AI-generated images</li>
+                        <li data-i18n="service1-item3">Email safety & scam protection</li>
+                        <li data-i18n="service1-item4">Learn to use smartphones & tablets</li>
+                        <li data-i18n="service1-item5">Video calls with family</li>
+                        <li data-i18n="service1-item6">Online banking safely</li>
                     </ul>
                 </div>
                 
                 <div class="service-card">
                     <span class="service-icon">👥</span>
-                    <h3>Senior Group Workshops in CSL</h3>
-                    <p>Learn AI and internet skills with other seniors in Côte Saint-Luc:</p>
+                    <h3 data-i18n="service2-title">Senior Group Workshops in CSL</h3>
+                    <p data-i18n="service2-desc">Learn AI and internet skills with other seniors in Côte Saint-Luc:</p>
                     <ul>
-                        <li>Small groups (2-4 people)</li>
-                        <li>90-minute technology sessions</li>
-                        <li>Share experiences together</li>
-                        <li>More affordable option</li>
-                        <li>Build new friendships</li>
-                        <li>Progress as a group</li>
+                        <li data-i18n="service2-item1">Small groups (2-4 people)</li>
+                        <li data-i18n="service2-item2">90-minute technology sessions</li>
+                        <li data-i18n="service2-item3">Share experiences together</li>
+                        <li data-i18n="service2-item4">More affordable option</li>
+                        <li data-i18n="service2-item5">Build new friendships</li>
+                        <li data-i18n="service2-item6">Progress as a group</li>
                     </ul>
                 </div>
                 
                 <div class="service-card">
                     <span class="service-icon">🌟</span>
-                    <h3>Flexible Learning Options</h3>
-                    <p>AI and technology help that fits your schedule and comfort level:</p>
+                    <h3 data-i18n="service3-title">Flexible Learning Options</h3>
+                    <p data-i18n="service3-desc">AI and technology help that fits your schedule and comfort level:</p>
                     <ul>
-                        <li>In-home visits in Côte Saint-Luc</li>
-                        <li>Online sessions via video call</li>
-                        <li>Learn at your own pace</li>
-                        <li>No question too simple</li>
-                        <li>Real-world internet skills</li>
-                        <li>Follow-up support included</li>
+                        <li data-i18n="service3-item1">In-home visits in Côte Saint-Luc</li>
+                        <li data-i18n="service3-item2">Online sessions via video call</li>
+                        <li data-i18n="service3-item3">Learn at your own pace</li>
+                        <li data-i18n="service3-item4">No question too simple</li>
+                        <li data-i18n="service3-item5">Real-world internet skills</li>
+                        <li data-i18n="service3-item6">Follow-up support included</li>
                     </ul>
                 </div>
             </div>
@@ -1063,8 +1081,8 @@
     <section id="pricing">
         <div class="pricing-container">
             <div class="section-header">
-                <h2>Pricing</h2>
-                <p class="section-subtitle">
+                <h2 data-i18n="pricing-title">Pricing</h2>
+                <p class="section-subtitle" data-i18n="pricing-subtitle">
                     Affordable AI and technology training for seniors in Côte Saint-Luc. 
                     All prices in CAD. No hidden fees.
                 </p>
@@ -1072,46 +1090,46 @@
             
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3>Single Session</h3>
+                    <h3 data-i18n="pricing-single">Single Session</h3>
                     <div class="price">$60<span style="font-size:1.5rem">-65</span></div>
-                    <div class="price-details">per hour</div>
+                    <div class="price-details" data-i18n="pricing-single-details">per hour</div>
                     <div class="pricing-features">
-                        <p><strong>$60</strong> — Online</p>
-                        <p><strong>$65</strong> — In-home</p>
-                        <p style="margin-top: 1rem; color: #64748b;">Perfect for trying out lessons</p>
+                        <p><strong>$60</strong> — <span data-i18n="pricing-single-online">Online</span></p>
+                        <p><strong>$65</strong> — <span data-i18n="pricing-single-home">In-home</span></p>
+                        <p style="margin-top: 1rem; color: #64748b;" data-i18n="pricing-single-note">Perfect for trying out lessons</p>
                     </div>
                 </div>
                 
                 <div class="pricing-card featured">
-                    <span class="badge">Best Value</span>
-                    <h3>Starter Package</h3>
+                    <span class="badge" data-i18n="badge-best">Best Value</span>
+                    <h3 data-i18n="pricing-starter">Starter Package</h3>
                     <div class="price">$275</div>
-                    <div class="price-details">5 hours • Save $25</div>
+                    <div class="price-details" data-i18n="pricing-starter-details">5 hours • Save $25</div>
                     <div class="pricing-features">
-                        <p><strong>Just $55/hour</strong></p>
-                        <p style="margin-top: 1rem; opacity: 0.9;">Great for building confidence over multiple sessions</p>
+                        <p><strong data-i18n="pricing-starter-rate">Just $55/hour</strong></p>
+                        <p style="margin-top: 1rem; opacity: 0.9;" data-i18n="pricing-starter-note">Great for building confidence over multiple sessions</p>
                     </div>
                 </div>
                 
                 <div class="pricing-card featured">
-                    <span class="badge">Most Popular</span>
-                    <h3>Complete Package</h3>
+                    <span class="badge" data-i18n="badge-popular">Most Popular</span>
+                    <h3 data-i18n="pricing-complete">Complete Package</h3>
                     <div class="price">$500</div>
-                    <div class="price-details">10 hours • Save $100</div>
+                    <div class="price-details" data-i18n="pricing-complete-details">10 hours • Save $100</div>
                     <div class="pricing-features">
-                        <p><strong>Only $50/hour</strong></p>
-                        <p style="margin-top: 1rem; opacity: 0.9;">Comprehensive learning for mastering new skills</p>
+                        <p><strong data-i18n="pricing-complete-rate">Only $50/hour</strong></p>
+                        <p style="margin-top: 1rem; opacity: 0.9;" data-i18n="pricing-complete-note">Comprehensive learning for mastering new skills</p>
                     </div>
                 </div>
                 
                 <div class="pricing-card">
-                    <h3>Group Workshop</h3>
+                    <h3 data-i18n="pricing-group">Group Workshop</h3>
                     <div class="price">$35</div>
-                    <div class="price-details">per person</div>
+                    <div class="price-details" data-i18n="pricing-group-details">per person</div>
                     <div class="pricing-features">
-                        <p><strong>90 minutes</strong></p>
-                        <p>2-4 people (max 6)</p>
-                        <p style="margin-top: 1rem; color: #64748b;">Learn together, save money</p>
+                        <p><strong data-i18n="pricing-group-duration">90 minutes</strong></p>
+                        <p data-i18n="pricing-group-size">2-4 people (max 6)</p>
+                        <p style="margin-top: 1rem; color: #64748b;" data-i18n="pricing-group-note">Learn together, save money</p>
                     </div>
                 </div>
             </div>
@@ -1121,8 +1139,8 @@
     <!-- About Section -->
     <section id="about">
         <div style="text-align: center; margin-bottom: 4rem;">
-            <h2>About Robert</h2>
-            <p class="section-subtitle" style="max-width: 800px; margin: 1rem auto 0;">
+            <h2 data-i18n="about-title">About Robert</h2>
+            <p class="section-subtitle" style="max-width: 800px; margin: 1rem auto 0;" data-i18n="about-subtitle">
                 Your local AI and technology instructor serving seniors in Côte Saint-Luc, Quebec.
             </p>
         </div>
@@ -1132,20 +1150,20 @@
             </div>
             
             <div class="about-text">
-                <h3>Meet Robert Simon</h3>
-                <p>
+                <h3 data-i18n="about-heading">Meet Robert Simon</h3>
+                <p data-i18n="about-p1">
                     I'm a dedicated AI and technology instructor helping seniors in Côte Saint-Luc discover 
                     that technology and artificial intelligence aren't things to fear—they're tools for 
                     staying connected, independent, and engaged with the world around you.
                 </p>
-                <p>
+                <p data-i18n="about-p2">
                     With over 25 years of experience in digital innovation and AI implementation at major 
                     organizations like Bell, I now focus on helping seniors in our community master technology 
                     at their own pace. I understand that learning new technology and AI tools like ChatGPT can 
                     feel overwhelming. The buttons, the menus, the constant updates—it's a lot. That's exactly 
                     why I specialize in patient, step-by-step technology training right here in Côte Saint-Luc.
                 </p>
-                <p>
+                <p data-i18n="about-p3">
                     Whether you want to use ChatGPT to help write emails, learn to spot online scams, master 
                     video calling with family, or simply feel more confident using the internet and your smartphone, 
                     I'm here for you every step of the way. I provide personalized technology help for seniors 
@@ -1156,7 +1174,7 @@
                        style="color: #3b82f6; text-decoration: none; font-weight: 600; font-size: 1.1rem; 
                               display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.5rem; 
                               background: #f0f9ff; border-radius: 10px; border: 2px solid #3b82f6; 
-                              transition: all 0.3s;">
+                              transition: all 0.3s;" data-i18n="about-link">
                         🌐 Learn More About My Work in AI & Digital Innovation
                     </a>
                 </p>
@@ -1164,19 +1182,19 @@
                 <div class="experience-grid">
                     <div class="experience-item">
                         <span class="experience-item-icon">🏆</span>
-                        <div class="experience-item-text">Years of Teaching</div>
+                        <div class="experience-item-text" data-i18n="exp-teaching">Years of Teaching</div>
                     </div>
                     <div class="experience-item">
                         <span class="experience-item-icon">❤️</span>
-                        <div class="experience-item-text">Passionate About Seniors</div>
+                        <div class="experience-item-text" data-i18n="exp-passion">Passionate About Seniors</div>
                     </div>
                     <div class="experience-item">
                         <span class="experience-item-icon">📍</span>
-                        <div class="experience-item-text">Local Resident</div>
+                        <div class="experience-item-text" data-i18n="exp-local">Local Resident</div>
                     </div>
                     <div class="experience-item">
                         <span class="experience-item-icon">🤖</span>
-                        <div class="experience-item-text">AI Specialist</div>
+                        <div class="experience-item-text" data-i18n="exp-ai">AI Specialist</div>
                     </div>
                 </div>
             </div>
@@ -1187,35 +1205,35 @@
     <section id="testimonials">
         <div class="testimonials-container">
             <div class="section-header">
-                <h2>Success Stories</h2>
-                <p class="section-subtitle">
+                <h2 data-i18n="testimonials-title">Success Stories</h2>
+                <p class="section-subtitle" data-i18n="testimonials-subtitle">
                     Be among the first to experience patient, personalized technology training
                 </p>
             </div>
             
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <p class="testimonial-text">
+                    <p class="testimonial-text" data-i18n="test1-text">
                         I'm building something special in our community—a place where seniors can learn 
                         technology without pressure, at exactly the right pace.
                     </p>
-                    <div class="testimonial-author">— Be my first student</div>
+                    <div class="testimonial-author" data-i18n="test1-author">— Be my first student</div>
                 </div>
                 
                 <div class="testimonial-card">
-                    <p class="testimonial-text">
+                    <p class="testimonial-text" data-i18n="test2-text">
                         Every student gets my complete attention and dedication. Your questions matter. 
                         Your pace matters. You matter.
                     </p>
-                    <div class="testimonial-author">— Share your story</div>
+                    <div class="testimonial-author" data-i18n="test2-author">— Share your story</div>
                 </div>
                 
                 <div class="testimonial-card">
-                    <p class="testimonial-text">
+                    <p class="testimonial-text" data-i18n="test3-text">
                         Ready to discover technology isn't scary? Let's start with a free call 
                         to discuss your goals and create your learning plan.
                     </p>
-                    <div class="testimonial-author">— Start today</div>
+                    <div class="testimonial-author" data-i18n="test3-author">— Start today</div>
                 </div>
             </div>
         </div>
@@ -1225,15 +1243,15 @@
     <section id="contact">
         <div class="contact-container">
             <div class="section-header">
-                <h2>Contact</h2>
-                <p class="section-subtitle">
+                <h2 data-i18n="contact-title">Contact</h2>
+                <p class="section-subtitle" data-i18n="contact-subtitle">
                     Get AI and technology help in Côte Saint-Luc today. Fill out the form below 
                     or email me directly for personalized senior training.
                 </p>
             </div>
             
             <div class="contact-info">
-                <h3>AI & Technology Training in Côte Saint-Luc & Surrounding Areas</h3>
+                <h3 data-i18n="contact-heading">AI & Technology Training in Côte Saint-Luc & Surrounding Areas</h3>
                 <p style="margin: 1.5rem 0;">
                     <a href="tel:514-250-8491" style="display: inline-flex; align-items: center; gap: 0.8rem; 
                        font-size: 2rem; font-weight: 700; color: #3b82f6; text-decoration: none; 
@@ -1243,7 +1261,7 @@
                         📞 514-250-8491
                     </a>
                 </p>
-                <p style="font-size: 1.15rem; color: #475569; margin-top: 1rem;">
+                <p style="font-size: 1.15rem; color: #475569; margin-top: 1rem;" data-i18n="contact-call-note">
                     Call anytime for questions or to schedule your free discovery call
                 </p>
                 <p style="margin-top: 1.5rem;">
@@ -1262,19 +1280,19 @@
                     <input type="hidden" name="_template" value="box">
                     
                     <div class="form-group">
-                        <label for="name">Your Name *</label>
+                        <label for="name"><span data-i18n="form-name">Your Name</span> *</label>
                         <input type="text" id="name" name="name" required placeholder="John Smith" autocomplete="name">
                         <div class="error-message" id="name-error">Please enter your name</div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
+                        <label for="email"><span data-i18n="form-email">Email Address</span> *</label>
                         <input type="email" id="email" name="email" required placeholder="john@example.com" autocomplete="email">
                         <div class="error-message" id="email-error">Please enter a valid email address</div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="phone">Phone Number *</label>
+                        <label for="phone"><span data-i18n="form-phone">Phone Number</span> *</label>
                         <input type="tel" id="phone" name="phone" required placeholder="514-555-1234" 
                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
                                autocomplete="tel"
@@ -1283,35 +1301,35 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="session-type">I'm Interested In *</label>
+                        <label for="session-type"><span data-i18n="form-interest">I'm Interested In</span> *</label>
                         <select id="session-type" name="session-type" required>
-                            <option value="">Choose an option...</option>
-                            <option value="one-on-one-online">One-on-One (Online)</option>
-                            <option value="one-on-one-home">One-on-One (In-Home)</option>
-                            <option value="group">Group Workshop</option>
-                            <option value="free-call">Free Discovery Call</option>
-                            <option value="undecided">Not sure - let's discuss!</option>
+                            <option value="" data-i18n="form-option-choose">Choose an option...</option>
+                            <option value="one-on-one-online" data-i18n="form-option-online">One-on-One (Online)</option>
+                            <option value="one-on-one-home" data-i18n="form-option-home">One-on-One (In-Home)</option>
+                            <option value="group" data-i18n="form-option-group">Group Workshop</option>
+                            <option value="free-call" data-i18n="form-option-call">Free Discovery Call</option>
+                            <option value="undecided" data-i18n="form-option-undecided">Not sure - let's discuss!</option>
                         </select>
                         <div class="error-message" id="session-error">Please select an option</div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Your Goals (Optional)</label>
-                        <textarea id="message" name="message" placeholder="Tell me what you'd like to learn..."></textarea>
+                        <label for="message"><span data-i18n="form-goals">Your Goals (Optional)</span></label>
+                        <textarea id="message" name="message" data-i18n-placeholder="form-goals-placeholder" placeholder="Tell me what you'd like to learn..."></textarea>
                     </div>
                     
                     <div style="text-align: center; margin-top: 2rem;">
-                        <button type="submit" class="cta-button" id="submit-btn" disabled>Send Message</button>
+                        <button type="submit" class="cta-button" id="submit-btn" disabled data-i18n="form-submit">Send Message</button>
                         <p id="form-hint" style="color: #ef4444; margin-top: 1rem; font-weight: 600; display: none;"></p>
                     </div>
                 </form>
             </div>
             
             <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 16px; border: 1px solid #e2e8f0;">
-                <p style="font-size: 1.2rem; font-weight: 600; color: #0f172a; margin-bottom: 0.5rem;">
+                <p style="font-size: 1.2rem; font-weight: 600; color: #0f172a; margin-bottom: 0.5rem;" data-i18n="free-call-title">
                     🎁 Free 30-Minute Discovery Call
                 </p>
-                <p style="color: #64748b;">
+                <p style="color: #64748b;" data-i18n="free-call-text">
                     Let's chat about your goals with no pressure or obligation
                 </p>
             </div>
@@ -1319,193 +1337,483 @@
             <!-- Success Message (shown after form submission via URL parameter) -->
             <div id="success-message" style="display: none; text-align: center; margin-top: 3rem; padding: 3rem; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 16px; border: 2px solid #22c55e;">
                 <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
-                <h3 style="color: #166534; font-size: 2rem; margin-bottom: 1rem;">Thank You!</h3>
-                <p style="color: #065f46; font-size: 1.2rem; line-height: 1.7;">
+                <h3 style="color: #166534; font-size: 2rem; margin-bottom: 1rem;" data-i18n="success-title">Thank You!</h3>
+                <p style="color: #065f46; font-size: 1.2rem; line-height: 1.7;" data-i18n="success-text">
                     Your request has been received and will be actioned as soon as possible.<br>
                     I'll get back to you within 24 hours.
                 </p>
             </div>
-            
-            <script>
-                // Form validation and button state management
-                const submitBtn = document.getElementById('submit-btn');
-                const formHint = document.getElementById('form-hint');
-                const requiredFields = {
-                    'name': document.getElementById('name'),
-                    'email': document.getElementById('email'),
-                    'phone': document.getElementById('phone'),
-                    'session-type': document.getElementById('session-type')
-                };
-                
-                // Check if all required fields are filled
-                function checkFormValidity() {
-                    let allFilled = true;
-                    let missingFields = [];
-                    
-                    for (let fieldName in requiredFields) {
-                        const field = requiredFields[fieldName];
-                        if (!field.value || field.value.trim() === '') {
-                            allFilled = false;
-                            const label = field.previousElementSibling.textContent.replace(' *', '');
-                            missingFields.push(label);
-                        } else if (field.type === 'tel' && !field.value.match(/[0-9]{3}-[0-9]{3}-[0-9]{4}/)) {
-                            allFilled = false;
-                            missingFields.push('Valid Phone Number');
-                        } else if (field.type === 'email' && !field.validity.valid) {
-                            allFilled = false;
-                            missingFields.push('Valid Email');
-                        }
-                    }
-                    
-                    submitBtn.disabled = !allFilled;
-                    
-                    // Show hint if button is disabled and user tries to interact
-                    if (!allFilled && missingFields.length > 0) {
-                        formHint.textContent = `Please complete: ${missingFields.join(', ')}`;
-                    }
-                    
-                    return allFilled;
-                }
-                
-                // Add event listeners to all required fields
-                for (let fieldName in requiredFields) {
-                    const field = requiredFields[fieldName];
-                    field.addEventListener('input', () => {
-                        checkFormValidity();
-                        formHint.style.display = 'none';
-                        field.classList.remove('error');
-                        const errorMsg = document.getElementById(`${fieldName}-error`);
-                        if (errorMsg) errorMsg.classList.remove('show');
-                    });
-                    
-                    field.addEventListener('change', checkFormValidity);
-                }
-                
-                // Show hint when hovering over disabled button
-                submitBtn.addEventListener('mouseenter', () => {
-                    if (submitBtn.disabled) {
-                        checkFormValidity();
-                        formHint.style.display = 'block';
-                    }
-                });
-                
-                submitBtn.addEventListener('mouseleave', () => {
-                    formHint.style.display = 'none';
-                });
-                
-                // Show hint when clicking disabled button
-                submitBtn.addEventListener('click', (e) => {
-                    if (submitBtn.disabled) {
-                        e.preventDefault();
-                        checkFormValidity();
-                        formHint.style.display = 'block';
-                        
-                        // Highlight empty fields
-                        for (let fieldName in requiredFields) {
-                            const field = requiredFields[fieldName];
-                            if (!field.value || field.value.trim() === '') {
-                                field.classList.add('error');
-                                const errorMsg = document.getElementById(`${fieldName}-error`);
-                                if (errorMsg) errorMsg.classList.add('show');
-                            }
-                        }
-                    }
-                });
-                
-                // Initial check
-                checkFormValidity();
-                
-                // Auto-format phone number as user types
-                document.getElementById('phone').addEventListener('input', function (e) {
-                    let value = e.target.value.replace(/\D/g, ''); // Remove all non-digits
-                    
-                    if (value.length <= 3) {
-                        e.target.value = value;
-                    } else if (value.length <= 6) {
-                        e.target.value = value.slice(0, 3) + '-' + value.slice(3);
-                    } else {
-                        e.target.value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 10);
-                    }
-                });
-                
-                // Show success message if URL has success parameter or coming from formsubmit
-                function checkFormSuccess() {
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const hasSubmitted = urlParams.get('submitted') === 'true';
-                    const isFromFormSubmit = document.referrer && document.referrer.includes('formsubmit');
-                    
-                    console.log('Checking form success:', {hasSubmitted, isFromFormSubmit, referrer: document.referrer});
-                    
-                    if (hasSubmitted || isFromFormSubmit) {
-                        // Show success message first
-                        const form = document.querySelector('.contact-form');
-                        const successMsg = document.getElementById('success-message');
-                        if (form && successMsg) {
-                            form.style.display = 'none';
-                            successMsg.style.display = 'block';
-                        }
-                        
-                        // Then scroll to success message after a short delay
-                        setTimeout(() => {
-                            if (successMsg) {
-                                // Scroll directly to the success message element
-                                successMsg.scrollIntoView({ 
-                                    behavior: 'smooth', 
-                                    block: 'center' // Center the success message in viewport
-                                });
-                            }
-                        }, 300);
-                    }
-                }
-                
-                // Check on page load
-                window.addEventListener('load', checkFormSuccess);
-                
-                // Also check immediately
-                checkFormSuccess();
-                
-                // Active navigation highlight on scroll
-                const sections = document.querySelectorAll('section, .hero');
-                const navLinks = document.querySelectorAll('nav a');
-                
-                function highlightNavigation() {
-                    let current = '';
-                    const scrollPos = window.scrollY + 250; // Offset for fixed nav
-                    
-                    sections.forEach(section => {
-                        const sectionTop = section.offsetTop;
-                        const sectionHeight = section.clientHeight;
-                        const sectionId = section.getAttribute('id');
-                        
-                        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                            current = sectionId;
-                        }
-                    });
-                    
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        const href = link.getAttribute('href');
-                        if (href === '#' + current) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-                
-                // Highlight on scroll
-                window.addEventListener('scroll', highlightNavigation);
-                
-                // Highlight on page load
-                highlightNavigation();
-            </script>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">AI with Robert</p>
-        <p>AI & Technology Training for Seniors in Côte Saint-Luc, Quebec</p>
-        <p style="margin-top: 0.5rem;">ChatGPT lessons • Internet safety • Online skills • Email security</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">&copy; 2026 AI with Robert. All rights reserved.</p>
+        <p data-i18n="footer-tagline">AI & Technology Training for Seniors in Côte Saint-Luc, Quebec</p>
+        <p style="margin-top: 0.5rem;" data-i18n="footer-services">ChatGPT lessons • Internet safety • Online skills • Email security</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">&copy; 2026 AI with Robert. <span data-i18n="footer-rights">All rights reserved.</span></p>
     </footer>
+    
+    <!-- Language Translation System -->
+    <script>
+        const translations = {
+            en: {
+                'nav-home': 'Home',
+                'nav-services': 'What We Offer',
+                'nav-pricing': 'Pricing',
+                'nav-about': 'About Robert',
+                'nav-contact': 'Contact',
+                'hero-title': 'AI & Technology Training for Seniors in Côte Saint-Luc',
+                'hero-tagline': 'Patient, personalized AI and internet training for seniors in Côte Saint-Luc, Quebec.<br>Learn ChatGPT, online safety, and essential digital skills with confidence.',
+                'hero-cta': 'Start Your Free Discovery Call',
+                'stat-local': 'Local',
+                'stat-local-label': 'Côte Saint-Luc',
+                'stat-expert': 'Expert',
+                'stat-expert-label': 'Years Experience',
+                'stat-patient': 'Patient',
+                'stat-patient-label': 'One-on-One Teaching',
+                'stat-free': 'Free',
+                'stat-free-label': 'Discovery Call',
+                'services-title': 'What We Offer',
+                'services-subtitle': 'Personalized AI and technology training for seniors in Côte Saint-Luc. No pressure, no jargon—just practical internet skills and AI training that help you stay connected and confident online.',
+                'service1-title': 'One-on-One AI & Internet Training',
+                'service1-desc': 'Personalized technology instruction for seniors in Côte Saint-Luc:',
+                'service1-item1': 'Master ChatGPT & AI writing tools',
+                'service1-item2': 'Create AI-generated images',
+                'service1-item3': 'Email safety & scam protection',
+                'service1-item4': 'Learn to use smartphones & tablets',
+                'service1-item5': 'Video calls with family',
+                'service1-item6': 'Online banking safely',
+                'service2-title': 'Senior Group Workshops in CSL',
+                'service2-desc': 'Learn AI and internet skills with other seniors in Côte Saint-Luc:',
+                'service2-item1': 'Small groups (2-4 people)',
+                'service2-item2': '90-minute technology sessions',
+                'service2-item3': 'Share experiences together',
+                'service2-item4': 'More affordable option',
+                'service2-item5': 'Build new friendships',
+                'service2-item6': 'Progress as a group',
+                'service3-title': 'Flexible Learning Options',
+                'service3-desc': 'AI and technology help that fits your schedule and comfort level:',
+                'service3-item1': 'In-home visits in Côte Saint-Luc',
+                'service3-item2': 'Online sessions via video call',
+                'service3-item3': 'Learn at your own pace',
+                'service3-item4': 'No question too simple',
+                'service3-item5': 'Real-world internet skills',
+                'service3-item6': 'Follow-up support included',
+                'pricing-title': 'Pricing',
+                'pricing-subtitle': 'Affordable AI and technology training for seniors in Côte Saint-Luc. All prices in CAD. No hidden fees.',
+                'pricing-single': 'Single Session',
+                'pricing-single-details': 'per hour',
+                'pricing-single-online': 'Online',
+                'pricing-single-home': 'In-home',
+                'pricing-single-note': 'Perfect for trying out lessons',
+                'pricing-starter': 'Starter Package',
+                'pricing-starter-details': '5 hours • Save $25',
+                'pricing-starter-rate': 'Just $55/hour',
+                'pricing-starter-note': 'Great for building confidence over multiple sessions',
+                'pricing-complete': 'Complete Package',
+                'pricing-complete-details': '10 hours • Save $100',
+                'pricing-complete-rate': 'Only $50/hour',
+                'pricing-complete-note': 'Comprehensive learning for mastering new skills',
+                'pricing-group': 'Group Workshop',
+                'pricing-group-details': 'per person',
+                'pricing-group-duration': '90 minutes',
+                'pricing-group-size': '2-4 people (max 6)',
+                'pricing-group-note': 'Learn together, save money',
+                'badge-best': 'Best Value',
+                'badge-popular': 'Most Popular',
+                'about-title': 'About Robert',
+                'about-subtitle': 'Your local AI and technology instructor serving seniors in Côte Saint-Luc, Quebec.',
+                'about-heading': 'Meet Robert Simon',
+                'about-p1': "I'm a dedicated AI and technology instructor helping seniors in Côte Saint-Luc discover that technology and artificial intelligence aren't things to fear—they're tools for staying connected, independent, and engaged with the world around you.",
+                'about-p2': "With over 25 years of experience in digital innovation and AI implementation at major organizations like Bell, I now focus on helping seniors in our community master technology at their own pace. I understand that learning new technology and AI tools like ChatGPT can feel overwhelming. The buttons, the menus, the constant updates—it's a lot. That's exactly why I specialize in patient, step-by-step technology training right here in Côte Saint-Luc.",
+                'about-p3': "Whether you want to use ChatGPT to help write emails, learn to spot online scams, master video calling with family, or simply feel more confident using the internet and your smartphone, I'm here for you every step of the way. I provide personalized technology help for seniors throughout Côte Saint-Luc and surrounding Montreal areas.",
+                'about-link': '🌐 Learn More About My Work in AI & Digital Innovation',
+                'exp-teaching': 'Years of Teaching',
+                'exp-passion': 'Passionate About Seniors',
+                'exp-local': 'Local Resident',
+                'exp-ai': 'AI Specialist',
+                'testimonials-title': 'Success Stories',
+                'testimonials-subtitle': 'Be among the first to experience patient, personalized technology training',
+                'test1-text': "I'm building something special in our community—a place where seniors can learn technology without pressure, at exactly the right pace.",
+                'test1-author': '— Be my first student',
+                'test2-text': 'Every student gets my complete attention and dedication. Your questions matter. Your pace matters. You matter.',
+                'test2-author': '— Share your story',
+                'test3-text': "Ready to discover technology isn't scary? Let's start with a free call to discuss your goals and create your learning plan.",
+                'test3-author': '— Start today',
+                'contact-title': 'Contact',
+                'contact-subtitle': 'Get AI and technology help in Côte Saint-Luc today. Fill out the form below or email me directly for personalized senior training.',
+                'contact-heading': 'AI & Technology Training in Côte Saint-Luc & Surrounding Areas',
+                'contact-call-note': 'Call anytime for questions or to schedule your free discovery call',
+                'form-name': 'Your Name',
+                'form-email': 'Email Address',
+                'form-phone': 'Phone Number',
+                'form-interest': "I'm Interested In",
+                'form-goals': 'Your Goals (Optional)',
+                'form-goals-placeholder': "Tell me what you'd like to learn...",
+                'form-submit': 'Send Message',
+                'form-option-choose': 'Choose an option...',
+                'form-option-online': 'One-on-One (Online)',
+                'form-option-home': 'One-on-One (In-Home)',
+                'form-option-group': 'Group Workshop',
+                'form-option-call': 'Free Discovery Call',
+                'form-option-undecided': "Not sure - let's discuss!",
+                'free-call-title': '🎁 Free 30-Minute Discovery Call',
+                'free-call-text': "Let's chat about your goals with no pressure or obligation",
+                'success-title': 'Thank You!',
+                'success-text': "Your request has been received and will be actioned as soon as possible.<br>I'll get back to you within 24 hours.",
+                'footer-tagline': 'AI & Technology Training for Seniors in Côte Saint-Luc, Quebec',
+                'footer-services': 'ChatGPT lessons • Internet safety • Online skills • Email security',
+                'footer-rights': 'All rights reserved.'
+            },
+            fr: {
+                'nav-home': 'Accueil',
+                'nav-services': 'Nos Services',
+                'nav-pricing': 'Tarifs',
+                'nav-about': 'À Propos de Robert',
+                'nav-contact': 'Contact',
+                'hero-title': 'Formation en IA et Technologie pour Aînés à Côte Saint-Luc',
+                'hero-tagline': 'Formation personnalisée et patiente en IA et internet pour les aînés à Côte Saint-Luc, Québec.<br>Apprenez ChatGPT, la sécurité en ligne et les compétences numériques essentielles en toute confiance.',
+                'hero-cta': 'Commencez Votre Appel Découverte Gratuit',
+                'stat-local': 'Local',
+                'stat-local-label': 'Côte Saint-Luc',
+                'stat-expert': 'Expert',
+                'stat-expert-label': "Années d'Expérience",
+                'stat-patient': 'Patient',
+                'stat-patient-label': 'Enseignement Individuel',
+                'stat-free': 'Gratuit',
+                'stat-free-label': 'Appel Découverte',
+                'services-title': 'Nos Services',
+                'services-subtitle': "Formation personnalisée en IA et technologie pour les aînés à Côte Saint-Luc. Sans pression, sans jargon—juste des compétences internet pratiques et une formation en IA qui vous aident à rester connecté et confiant en ligne.",
+                'service1-title': "Formation Individuelle en IA et Internet",
+                'service1-desc': 'Instruction technologique personnalisée pour les aînés à Côte Saint-Luc :',
+                'service1-item1': "Maîtriser ChatGPT et les outils d'écriture IA",
+                'service1-item2': 'Créer des images générées par IA',
+                'service1-item3': 'Sécurité des courriels et protection contre les arnaques',
+                'service1-item4': 'Apprendre à utiliser smartphones et tablettes',
+                'service1-item5': 'Appels vidéo avec la famille',
+                'service1-item6': 'Services bancaires en ligne en toute sécurité',
+                'service2-title': 'Ateliers de Groupe pour Aînés à CSL',
+                'service2-desc': "Apprenez les compétences en IA et internet avec d'autres aînés à Côte Saint-Luc :",
+                'service2-item1': 'Petits groupes (2-4 personnes)',
+                'service2-item2': 'Sessions de technologie de 90 minutes',
+                'service2-item3': 'Partagez des expériences ensemble',
+                'service2-item4': 'Option plus abordable',
+                'service2-item5': 'Créez de nouvelles amitiés',
+                'service2-item6': 'Progressez en groupe',
+                'service3-title': "Options d'Apprentissage Flexibles",
+                'service3-desc': "Aide en IA et technologie qui s'adapte à votre horaire et niveau de confort :",
+                'service3-item1': 'Visites à domicile à Côte Saint-Luc',
+                'service3-item2': 'Sessions en ligne par appel vidéo',
+                'service3-item3': 'Apprenez à votre propre rythme',
+                'service3-item4': 'Aucune question trop simple',
+                'service3-item5': 'Compétences internet du monde réel',
+                'service3-item6': 'Soutien de suivi inclus',
+                'pricing-title': 'Tarifs',
+                'pricing-subtitle': 'Formation abordable en IA et technologie pour les aînés à Côte Saint-Luc. Tous les prix en CAD. Aucun frais caché.',
+                'pricing-single': 'Session Simple',
+                'pricing-single-details': 'par heure',
+                'pricing-single-online': 'En ligne',
+                'pricing-single-home': 'À domicile',
+                'pricing-single-note': 'Parfait pour essayer les leçons',
+                'pricing-starter': 'Forfait Débutant',
+                'pricing-starter-details': '5 heures • Économisez 25,
+                'pricing-starter-rate': 'Seulement 55$/heure',
+                'pricing-starter-note': 'Idéal pour développer la confiance sur plusieurs sessions',
+                'pricing-complete': 'Forfait Complet',
+                'pricing-complete-details': '10 heures • Économisez 100,
+                'pricing-complete-rate': 'Seulement 50$/heure',
+                'pricing-complete-note': 'Apprentissage complet pour maîtriser de nouvelles compétences',
+                'pricing-group': 'Atelier de Groupe',
+                'pricing-group-details': 'par personne',
+                'pricing-group-duration': '90 minutes',
+                'pricing-group-size': '2-4 personnes (max 6)',
+                'pricing-group-note': 'Apprenez ensemble, économisez',
+                'badge-best': 'Meilleur Rapport',
+                'badge-popular': 'Plus Populaire',
+                'about-title': 'À Propos de Robert',
+                'about-subtitle': "Votre instructeur local en IA et technologie au service des aînés à Côte Saint-Luc, Québec.",
+                'about-heading': 'Rencontrez Robert Simon',
+                'about-p1': "Je suis un instructeur dévoué en IA et technologie aidant les aînés de Côte Saint-Luc à découvrir que la technologie et l'intelligence artificielle ne sont pas des choses à craindre—ce sont des outils pour rester connecté, indépendant et engagé avec le monde qui vous entoure.",
+                'about-p2': "Avec plus de 25 ans d'expérience en innovation numérique et mise en œuvre de l'IA dans de grandes organisations comme Bell, je me concentre maintenant sur l'aide aux aînés de notre communauté pour maîtriser la technologie à leur propre rythme. Je comprends que l'apprentissage de nouvelles technologies et d'outils d'IA comme ChatGPT peut sembler accablant. Les boutons, les menus, les mises à jour constantes—c'est beaucoup. C'est exactement pourquoi je me spécialise dans la formation technologique patiente, étape par étape, ici même à Côte Saint-Luc.",
+                'about-p3': "Que vous souhaitiez utiliser ChatGPT pour aider à rédiger des courriels, apprendre à repérer les arnaques en ligne, maîtriser les appels vidéo avec la famille, ou simplement vous sentir plus confiant en utilisant internet et votre smartphone, je suis là pour vous à chaque étape. Je fournis une aide technologique personnalisée pour les aînés dans tout Côte Saint-Luc et les régions avoisinantes de Montréal.",
+                'about-link': "🌐 En Savoir Plus Sur Mon Travail en IA et Innovation Numérique",
+                'exp-teaching': "Années d'Enseignement",
+                'exp-passion': 'Passionné par les Aînés',
+                'exp-local': 'Résident Local',
+                'exp-ai': "Spécialiste de l'IA",
+                'testimonials-title': 'Histoires de Succès',
+                'testimonials-subtitle': 'Soyez parmi les premiers à découvrir une formation technologique patiente et personnalisée',
+                'test1-text': "Je construis quelque chose de spécial dans notre communauté—un endroit où les aînés peuvent apprendre la technologie sans pression, exactement au bon rythme.",
+                'test1-author': '— Soyez mon premier étudiant',
+                'test2-text': "Chaque étudiant reçoit mon attention et mon dévouement complets. Vos questions comptent. Votre rythme compte. Vous comptez.",
+                'test2-author': '— Partagez votre histoire',
+                'test3-text': "Prêt à découvrir que la technologie n'est pas effrayante ? Commençons par un appel gratuit pour discuter de vos objectifs et créer votre plan d'apprentissage.",
+                'test3-author': "— Commencez aujourd'hui",
+                'contact-title': 'Contact',
+                'contact-subtitle': "Obtenez de l'aide en IA et technologie à Côte Saint-Luc aujourd'hui. Remplissez le formulaire ci-dessous ou envoyez-moi un courriel directement pour une formation personnalisée pour aînés.",
+                'contact-heading': 'Formation en IA et Technologie à Côte Saint-Luc et Environs',
+                'contact-call-note': "Appelez à tout moment pour des questions ou pour planifier votre appel découverte gratuit",
+                'form-name': 'Votre Nom',
+                'form-email': 'Adresse Courriel',
+                'form-phone': 'Numéro de Téléphone',
+                'form-interest': "Je Suis Intéressé Par",
+                'form-goals': 'Vos Objectifs (Optionnel)',
+                'form-goals-placeholder': "Dites-moi ce que vous aimeriez apprendre...",
+                'form-submit': 'Envoyer le Message',
+                'form-option-choose': 'Choisissez une option...',
+                'form-option-online': 'Individuel (En ligne)',
+                'form-option-home': 'Individuel (À domicile)',
+                'form-option-group': 'Atelier de Groupe',
+                'form-option-call': 'Appel Découverte Gratuit',
+                'form-option-undecided': 'Pas sûr - discutons-en !',
+                'free-call-title': '🎁 Appel Découverte Gratuit de 30 Minutes',
+                'free-call-text': 'Discutons de vos objectifs sans pression ni obligation',
+                'success-title': 'Merci !',
+                'success-text': "Votre demande a été reçue et sera traitée dès que possible.<br>Je vous répondrai dans les 24 heures.",
+                'footer-tagline': 'Formation en IA et Technologie pour Aînés à Côte Saint-Luc, Québec',
+                'footer-services': 'Leçons ChatGPT • Sécurité internet • Compétences en ligne • Sécurité des courriels',
+                'footer-rights': 'Tous droits réservés.'
+            }
+        };
+        
+        // Get current language from localStorage or URL parameter or default to English
+        function getCurrentLanguage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            if (urlLang && (urlLang === 'en' || urlLang === 'fr')) {
+                return urlLang;
+            }
+            return localStorage.getItem('language') || 'en';
+        }
+        
+        // Set language and update page
+        function setLanguage(lang) {
+            localStorage.setItem('language', lang);
+            
+            // Update URL without reload
+            const url = new URL(window.location);
+            url.searchParams.set('lang', lang);
+            window.history.pushState({}, '', url);
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // Update placeholder for textarea
+            const textarea = document.querySelector('[data-i18n-placeholder]');
+            if (textarea) {
+                const key = textarea.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    textarea.placeholder = translations[lang][key];
+                }
+            }
+            
+            // Update select options
+            document.querySelectorAll('select option[data-i18n]').forEach(option => {
+                const key = option.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    option.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update language selector buttons
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
+            
+            // Update document title and meta
+            if (lang === 'fr') {
+                document.title = 'Formation en IA et Technologie pour Aînés à Côte Saint-Luc | AI with Robert';
+                document.querySelector('meta[name="description"]').setAttribute('content', 
+                    'Formation patiente en IA et technologie pour aînés à Côte Saint-Luc. Apprenez ChatGPT, la sécurité en ligne, la sécurité des courriels et les bases internet. Leçons individuelles personnalisées à votre rythme. Appel découverte gratuit.');
+                document.documentElement.lang = 'fr';
+            } else {
+                document.title = 'AI & Technology Training for Seniors in Côte Saint-Luc | AI with Robert';
+                document.querySelector('meta[name="description"]').setAttribute('content', 
+                    'Patient AI and technology training for seniors in Côte Saint-Luc. Learn ChatGPT, online safety, email security, and internet basics. Personalized one-on-one lessons at your own pace. Free discovery call.');
+                document.documentElement.lang = 'en';
+            }
+        }
+        
+        // Initialize language on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentLang = getCurrentLanguage();
+            if (currentLang === 'fr') {
+                setLanguage('fr');
+            }
+        });
+        
+        // Form validation and button state management
+        const submitBtn = document.getElementById('submit-btn');
+        const formHint = document.getElementById('form-hint');
+        const requiredFields = {
+            'name': document.getElementById('name'),
+            'email': document.getElementById('email'),
+            'phone': document.getElementById('phone'),
+            'session-type': document.getElementById('session-type')
+        };
+        
+        // Check if all required fields are filled
+        function checkFormValidity() {
+            let allFilled = true;
+            let missingFields = [];
+            
+            for (let fieldName in requiredFields) {
+                const field = requiredFields[fieldName];
+                if (!field.value || field.value.trim() === '') {
+                    allFilled = false;
+                    const label = field.previousElementSibling.textContent.replace(' *', '');
+                    missingFields.push(label);
+                } else if (field.type === 'tel' && !field.value.match(/[0-9]{3}-[0-9]{3}-[0-9]{4}/)) {
+                    allFilled = false;
+                    missingFields.push('Valid Phone Number');
+                } else if (field.type === 'email' && !field.validity.valid) {
+                    allFilled = false;
+                    missingFields.push('Valid Email');
+                }
+            }
+            
+            submitBtn.disabled = !allFilled;
+            
+            // Show hint if button is disabled and user tries to interact
+            if (!allFilled && missingFields.length > 0) {
+                formHint.textContent = `Please complete: ${missingFields.join(', ')}`;
+            }
+            
+            return allFilled;
+        }
+        
+        // Add event listeners to all required fields
+        for (let fieldName in requiredFields) {
+            const field = requiredFields[fieldName];
+            field.addEventListener('input', () => {
+                checkFormValidity();
+                formHint.style.display = 'none';
+                field.classList.remove('error');
+                const errorMsg = document.getElementById(`${fieldName}-error`);
+                if (errorMsg) errorMsg.classList.remove('show');
+            });
+            
+            field.addEventListener('change', checkFormValidity);
+        }
+        
+        // Show hint when hovering over disabled button
+        submitBtn.addEventListener('mouseenter', () => {
+            if (submitBtn.disabled) {
+                checkFormValidity();
+                formHint.style.display = 'block';
+            }
+        });
+        
+        submitBtn.addEventListener('mouseleave', () => {
+            formHint.style.display = 'none';
+        });
+        
+        // Show hint when clicking disabled button
+        submitBtn.addEventListener('click', (e) => {
+            if (submitBtn.disabled) {
+                e.preventDefault();
+                checkFormValidity();
+                formHint.style.display = 'block';
+                
+                // Highlight empty fields
+                for (let fieldName in requiredFields) {
+                    const field = requiredFields[fieldName];
+                    if (!field.value || field.value.trim() === '') {
+                        field.classList.add('error');
+                        const errorMsg = document.getElementById(`${fieldName}-error`);
+                        if (errorMsg) errorMsg.classList.add('show');
+                    }
+                }
+            }
+        });
+        
+        // Initial check
+        checkFormValidity();
+        
+        // Auto-format phone number as user types
+        document.getElementById('phone').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove all non-digits
+            
+            if (value.length <= 3) {
+                e.target.value = value;
+            } else if (value.length <= 6) {
+                e.target.value = value.slice(0, 3) + '-' + value.slice(3);
+            } else {
+                e.target.value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 10);
+            }
+        });
+        
+        // Show success message if URL has success parameter or coming from formsubmit
+        function checkFormSuccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasSubmitted = urlParams.get('submitted') === 'true';
+            const isFromFormSubmit = document.referrer && document.referrer.includes('formsubmit');
+            
+            if (hasSubmitted || isFromFormSubmit) {
+                // Show success message first
+                const form = document.querySelector('.contact-form');
+                const successMsg = document.getElementById('success-message');
+                if (form && successMsg) {
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                }
+                
+                // Then scroll to success message after a short delay
+                setTimeout(() => {
+                    if (successMsg) {
+                        // Scroll directly to the success message element
+                        successMsg.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center' // Center the success message in viewport
+                        });
+                    }
+                }, 300);
+            }
+        }
+        
+        // Check on page load
+        window.addEventListener('load', checkFormSuccess);
+        
+        // Also check immediately
+        checkFormSuccess();
+        
+        // Active navigation highlight on scroll
+        const sections = document.querySelectorAll('section, .hero');
+        const navLinks = document.querySelectorAll('nav a');
+        
+        function highlightNavigation() {
+            let current = '';
+            const scrollPos = window.scrollY + 250; // Offset for fixed nav
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    current = sectionId;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // Highlight on scroll
+        window.addEventListener('scroll', highlightNavigation);
+        
+        // Highlight on page load
+        highlightNavigation();
+    </script>
 </body>
 </html>
