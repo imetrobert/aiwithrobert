@@ -107,8 +107,9 @@
         .nav-top {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 2rem;
+            justify-content: space-between;
+            width: 100%;
+            gap: 1rem;
             flex-wrap: wrap;
         }
         
@@ -119,36 +120,46 @@
         }
         
         /* Language Selector */
+        /* Language Selector */
         .language-selector {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            background: #f8f9fa;
-            padding: 0.4rem;
-            border-radius: 8px;
-            border: 2px solid #e2e8f0;
+            position: relative;
         }
         
-        .language-selector button {
-            background: transparent;
-            border: none;
-            padding: 0.5rem 1rem;
+        .language-selector select {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 0.6rem 2.5rem 0.6rem 1rem;
+            border-radius: 8px;
             font-size: 0.9rem;
             font-weight: 600;
             color: #1a1a1a;
             cursor: pointer;
-            border-radius: 6px;
+            appearance: none;
             transition: all 0.3s;
             font-family: inherit;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         
-        .language-selector button:hover {
-            background: #e2e8f0;
+        .language-selector select:hover {
+            border-color: #3b82f6;
+            background: #f8f9fa;
         }
         
-        .language-selector button.active {
-            background: #3b82f6;
-            color: white;
+        .language-selector select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .language-selector::after {
+            content: '▼';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #64748b;
+            font-size: 0.7rem;
         }
         
         .nav-phone a {
@@ -960,12 +971,14 @@
                 <div class="nav-logo">
                     <img src="logo.PNG" alt="AI with Robert">
                 </div>
-                <div class="language-selector">
-                    <button onclick="setLanguage('en')" id="lang-en" class="active">English</button>
-                    <button onclick="setLanguage('fr')" id="lang-fr">Français</button>
-                </div>
                 <div class="nav-phone">
                     <a href="tel:514-250-8491">📞 514-250-8491</a>
+                </div>
+                <div class="language-selector">
+                    <select id="language-select" onchange="setLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                    </select>
                 </div>
             </div>
             
@@ -1517,11 +1530,11 @@
                 'pricing-single-home': 'À domicile',
                 'pricing-single-note': 'Parfait pour essayer les leçons',
                 'pricing-starter': 'Forfait Débutant',
-                'pricing-starter-details': '5 heures • Économisez 25,
+                'pricing-starter-details': '5 heures • Économisez 25$',
                 'pricing-starter-rate': 'Seulement 55$/heure',
                 'pricing-starter-note': 'Idéal pour développer la confiance sur plusieurs sessions',
                 'pricing-complete': 'Forfait Complet',
-                'pricing-complete-details': '10 heures • Économisez 100,
+                'pricing-complete-details': '10 heures • Économisez 100$',
                 'pricing-complete-rate': 'Seulement 50$/heure',
                 'pricing-complete-note': 'Apprentissage complet pour maîtriser de nouvelles compétences',
                 'pricing-group': 'Atelier de Groupe',
@@ -1621,9 +1634,8 @@
                 }
             });
             
-            // Update language selector buttons
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-            document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
+            // Update language selector dropdown
+            document.getElementById('language-select').value = lang;
             
             // Update document title and meta
             if (lang === 'fr') {
