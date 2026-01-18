@@ -124,13 +124,26 @@
         }
         
         .nav-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.nav-logo {
+    grid-column: 1;
+}
+
+.nav-phone {
+    grid-column: 2;
+    justify-self: center;
+}
+
+.language-selector {
+    grid-column: 3;
+    justify-self: end;
+}
         
         .nav-logo img {
             height: 45px;
