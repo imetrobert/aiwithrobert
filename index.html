@@ -883,64 +883,66 @@
         }
         
         @media (max-width: 768px) {
-            html {
-                scroll-padding-top: 200px;
-            }
-            
-            nav {
-                padding: 0.8rem 0.8rem;
-            }
-            
-            .nav-container {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            
-            nav ul {
-                justify-content: center;
-            }
-            
-            .nav-logo {
-                min-width: auto;
-                max-width: none;
-            }
-            
-            .nav-logo img {
-                width: 100%;
-                height: 100px;
-                padding: 0.5rem;
-            }
-            
-            nav ul {
-                flex-direction: row;
-                gap: 0.3rem;
-                width: 100%;
-                justify-content: center;
-                flex-wrap: nowrap; /* Keep single line on mobile if possible, or allow scrolling */
-                overflow-x: auto; /* Enable touch scroll if menu exceeds screen width */
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 5px;
-            }
-            
-            nav a {
-                font-size: 0.65rem;
-                padding: 0.4rem 0.45rem;
-                flex-direction: column;
-                gap: 0.15rem;
-                min-width: 42px;
-                text-align: center;
-            }
-            
-            nav a .nav-icon {
-                display: none;
-            }
-            
-            nav a .nav-text {
-                font-size: 0.65rem;
-                white-space: nowrap;
-                line-height: 1.1;
-                letter-spacing: -0.02em;
-            }
+    html {
+        scroll-padding-top: 180px;
+    }
+    
+    nav {
+        padding: 0.8rem 0.8rem;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .nav-top {
+        justify-content: space-between;
+    }
+    
+    .nav-logo img {
+        height: 40px;
+    }
+    
+    .nav-phone a {
+        font-size: 0.95rem;
+    }
+    
+    .language-selector select {
+        padding: 0.5rem 2rem 0.5rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    nav ul {
+        flex-direction: row;
+        gap: 0.3rem;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 5px;
+    }
+    
+    nav a {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.45rem;
+        flex-direction: column;
+        gap: 0.15rem;
+        min-width: 42px;
+        text-align: center;
+    }
+    
+    nav a .nav-icon {
+        display: none;
+    }
+    
+    nav a .nav-text {
+        font-size: 0.65rem;
+        white-space: nowrap;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+    }
             
             .hero {
                 padding: 6rem 1.5rem 4rem;
