@@ -1692,6 +1692,9 @@
             }
         }
      
+        // Make setLanguage globally available for inline onchange
+        window.setLanguage = setLanguage;
+        
         window.addEventListener('DOMContentLoaded', () => {
             const currentLang = getCurrentLanguage();
             setLanguage(currentLang);
@@ -1786,7 +1789,10 @@
                 if (link.getAttribute('href') === '#' + current) link.classList.add('active');
             });
         }
+        
+        // Call on scroll AND on initial page load
         window.addEventListener('scroll', highlightNavigation);
+        window.addEventListener('DOMContentLoaded', highlightNavigation);
     </script>
 </body>
 </html>
