@@ -9,25 +9,21 @@
     <meta name="author" content="Robert Simon - AI with Robert">
     <meta name="robots" content="index, follow">
     
-    <!-- Language -->
     <link rel="alternate" hreflang="en" href="https://aiwithrobert.com/">
     <link rel="alternate" hreflang="fr" href="https://aiwithrobert.com/?lang=fr">
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aiwithrobert.com/">
     <meta property="og:title" content="AI & Technology Training for Seniors in Côte Saint-Luc">
     <meta property="og:description" content="Patient, personalized AI and technology training for seniors in Côte Saint-Luc. Learn ChatGPT, online safety, and internet skills at your own pace.">
     <meta property="og:image" content="https://aiwithrobert.com/users.jpg">
     
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://aiwithrobert.com/">
     <meta property="twitter:title" content="AI & Technology Training for Seniors in Côte Saint-Luc">
     <meta property="twitter:description" content="Patient AI and technology training for seniors in Côte Saint-Luc. Learn ChatGPT, online safety, and essential digital skills.">
     <meta property="twitter:image" content="https://aiwithrobert.com/users.jpg">
     
-    <!-- Local Business Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,6 +57,29 @@
       }
     }
     </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Do I need prior technology experience to start AI training?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not at all. My lessons are designed for absolute beginners. We start with the basics of your device before moving into AI tools like ChatGPT."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is it safe for seniors to use ChatGPT and AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, when used correctly. A major part of my training focuses on privacy, scam prevention, and how to use these tools without sharing sensitive personal information."
+        }
+      }]
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -119,7 +138,6 @@
             object-fit: contain;
         }
         
-        /* Language Selector */
         /* Language Selector */
         .language-selector {
             position: relative;
@@ -919,15 +937,10 @@
                 line-height: 1.1;
                 letter-spacing: -0.02em;
             }
-            }
             
             .hero {
                 padding: 6rem 1.5rem 4rem;
                 margin-top: 140px;
-            }
-            
-            html {
-                scroll-padding-top: 200px;
             }
             
             .hero h1 {
@@ -966,7 +979,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="nav-top">
@@ -988,13 +1000,13 @@
                 <li><a href="#home"><span class="nav-text" data-i18n="nav-home">Home</span></a></li>
                 <li><a href="#services"><span class="nav-text" data-i18n="nav-services">What We Offer</span></a></li>
                 <li><a href="#pricing"><span class="nav-text" data-i18n="nav-pricing">Pricing</span></a></li>
+                <li><a href="#faq"><span class="nav-text" data-i18n="nav-faq">FAQ</span></a></li>
                 <li><a href="#about"><span class="nav-text" data-i18n="nav-about">About Robert</span></a></li>
                 <li><a href="#contact"><span class="nav-text" data-i18n="nav-contact">Contact</span></a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <div class="hero" id="home">
         <div class="hero-content">
             <h1 data-i18n="hero-title">AI & Technology Training for Seniors in Côte Saint-Luc</h1>
@@ -1034,7 +1046,6 @@
         </div>
     </div>
 
-    <!-- Services Section -->
     <section id="services">
         <div class="services-container">
             <div class="section-header">
@@ -1092,7 +1103,6 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section id="pricing">
         <div class="pricing-container">
             <div class="section-header">
@@ -1151,7 +1161,29 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <section id="faq">
+        <div class="services-container">
+            <div class="section-header">
+                <h2 data-i18n="faq-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle" data-i18n="faq-subtitle">Everything you need to know about starting your AI journey.</p>
+            </div>
+            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="service-card">
+                    <h3 data-i18n="faq-q1">Do I need any prior technology experience?</h3>
+                    <p data-i18n="faq-a1">Not at all! My lessons are designed for absolute beginners. We start from wherever you are comfortable.</p>
+                </div>
+                <div class="service-card">
+                    <h3 data-i18n="faq-q2">Is it safe to use ChatGPT and AI?</h3>
+                    <p data-i18n="faq-a2">Yes, safety is my top priority. We cover scam protection and privacy settings in every lesson to keep you safe.</p>
+                </div>
+                <div class="service-card">
+                    <h3 data-i18n="faq-q3">Do you come to my house?</h3>
+                    <p data-i18n="faq-a3">Yes, I provide in-home visits throughout Côte Saint-Luc and surrounding areas for a comfortable learning experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="about">
         <div style="text-align: center; margin-bottom: 4rem;">
             <h2 data-i18n="about-title">About Robert</h2>
@@ -1216,7 +1248,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section id="testimonials">
         <div class="testimonials-container">
             <div class="section-header">
@@ -1254,7 +1285,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <div class="contact-container">
             <div class="section-header">
@@ -1349,7 +1379,6 @@
                 </p>
             </div>
             
-            <!-- Success Message (shown after form submission via URL parameter) -->
             <div id="success-message" style="display: none; text-align: center; margin-top: 3rem; padding: 3rem; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 16px; border: 2px solid #22c55e;">
                 <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
                 <h3 style="color: #166534; font-size: 2rem; margin-bottom: 1rem;" data-i18n="success-title">Thank You!</h3>
@@ -1361,7 +1390,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">AI with Robert</p>
         <p data-i18n="footer-tagline">AI & Technology Training for Seniors in Côte Saint-Luc, Quebec</p>
@@ -1369,13 +1397,13 @@
         <p style="margin-top: 1rem; font-size: 0.9rem;">&copy; 2026 AI with Robert. <span data-i18n="footer-rights">All rights reserved.</span></p>
     </footer>
     
-    <!-- Language Translation System -->
     <script>
         const translations = {
             en: {
                 'nav-home': 'Home',
                 'nav-services': 'What We Offer',
                 'nav-pricing': 'Pricing',
+                'nav-faq': 'FAQ',
                 'nav-about': 'About Robert',
                 'nav-contact': 'Contact',
                 'hero-title': 'AI & Technology Training for Seniors in Côte Saint-Luc',
@@ -1437,6 +1465,14 @@
                 'pricing-group-note': 'Learn together, save money',
                 'badge-best': 'Best Value',
                 'badge-popular': 'Most Popular',
+                'faq-title': 'Frequently Asked Questions',
+                'faq-subtitle': 'Everything you need to know about starting your AI journey.',
+                'faq-q1': 'Do I need any prior technology experience?',
+                'faq-a1': 'Not at all! My lessons are designed for absolute beginners. We start from wherever you are comfortable.',
+                'faq-q2': 'Is it safe to use ChatGPT and AI?',
+                'faq-a2': 'Yes, safety is my top priority. We cover scam protection and privacy settings in every lesson to keep you safe.',
+                'faq-q3': 'Do you come to my house?',
+                'faq-a3': 'Yes, I provide in-home visits throughout Côte Saint-Luc and surrounding areas for a comfortable learning experience.',
                 'about-title': 'About Robert',
                 'about-subtitle': 'Your local AI and technology instructor serving seniors in Côte Saint-Luc, Quebec.',
                 'about-heading': 'Meet Robert Simon',
@@ -1485,6 +1521,7 @@
                 'nav-home': 'Accueil',
                 'nav-services': 'Services',
                 'nav-pricing': 'Tarifs',
+                'nav-faq': 'FAQ',
                 'nav-about': 'À Propos',
                 'nav-contact': 'Contact',
                 'hero-title': 'Formation en IA et Technologie pour Aînés à Côte Saint-Luc',
@@ -1546,6 +1583,14 @@
                 'pricing-group-note': 'Apprenez ensemble, économisez',
                 'badge-best': 'Meilleur Rapport',
                 'badge-popular': 'Plus Populaire',
+                'faq-title': 'Foire Aux Questions',
+                'faq-subtitle': 'Tout ce que vous devez savoir pour commencer votre voyage avec l’IA.',
+                'faq-q1': 'Ai-je besoin d’une expérience préalable ?',
+                'faq-a1': 'Pas du tout ! Mes leçons sont conçues pour les débutants complets. Nous commençons là où vous êtes à l’aise.',
+                'faq-q2': 'Est-il sécuritaire d’utiliser ChatGPT et l’IA ?',
+                'faq-a2': 'Oui, la sécurité est ma priorité absolue. Nous couvrons la protection contre les arnaques et la confidentialité dans chaque leçon.',
+                'faq-q3': 'Venez-vous à domicile ?',
+                'faq-a3': 'Oui, je propose des visites à domicile à Côte Saint-Luc et dans les environs pour un apprentissage confortable.',
                 'about-title': 'À Propos de Robert',
                 'about-subtitle': "Votre instructeur local en IA et technologie au service des aînés à Côte Saint-Luc, Québec.",
                 'about-heading': 'Rencontrez Robert Simon',
@@ -1592,7 +1637,6 @@
             }
         };
         
-        // Get current language from localStorage or URL parameter or default to English
         function getCurrentLanguage() {
             const urlParams = new URLSearchParams(window.location.search);
             const urlLang = urlParams.get('lang');
@@ -1602,16 +1646,12 @@
             return localStorage.getItem('language') || 'en';
         }
         
-        // Set language and update page
         function setLanguage(lang) {
             localStorage.setItem('language', lang);
-            
-            // Update URL without reload
             const url = new URL(window.location);
             url.searchParams.set('lang', lang);
             window.history.pushState({}, '', url);
             
-            // Update all translatable elements
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
@@ -1619,7 +1659,6 @@
                 }
             });
             
-            // Update placeholder for textarea
             const textarea = document.querySelector('[data-i18n-placeholder]');
             if (textarea) {
                 const key = textarea.getAttribute('data-i18n-placeholder');
@@ -1628,7 +1667,6 @@
                 }
             }
             
-            // Update select options
             document.querySelectorAll('select option[data-i18n]').forEach(option => {
                 const key = option.getAttribute('data-i18n');
                 if (translations[lang][key]) {
@@ -1636,10 +1674,8 @@
                 }
             });
             
-            // Update language selector dropdown
             document.getElementById('language-select').value = lang;
             
-            // Update document title and meta
             if (lang === 'fr') {
                 document.title = 'Formation en IA et Technologie pour Aînés à Côte Saint-Luc | AI with Robert';
                 document.querySelector('meta[name="description"]').setAttribute('content', 
@@ -1653,15 +1689,12 @@
             }
         }
         
-        // Initialize language on page load
         window.addEventListener('DOMContentLoaded', () => {
             const currentLang = getCurrentLanguage();
-            if (currentLang === 'fr') {
-                setLanguage('fr');
-            }
+            setLanguage(currentLang);
         });
         
-        // Form validation and button state management
+        // Form logic
         const submitBtn = document.getElementById('submit-btn');
         const formHint = document.getElementById('form-hint');
         const requiredFields = {
@@ -1671,7 +1704,6 @@
             'session-type': document.getElementById('session-type')
         };
         
-        // Check if all required fields are filled
         function checkFormValidity() {
             let allFilled = true;
             let missingFields = [];
@@ -1692,16 +1724,12 @@
             }
             
             submitBtn.disabled = !allFilled;
-            
-            // Show hint if button is disabled and user tries to interact
             if (!allFilled && missingFields.length > 0) {
                 formHint.textContent = `Please complete: ${missingFields.join(', ')}`;
             }
-            
             return allFilled;
         }
         
-        // Add event listeners to all required fields
         for (let fieldName in requiredFields) {
             const field = requiredFields[fieldName];
             field.addEventListener('input', () => {
@@ -1711,123 +1739,51 @@
                 const errorMsg = document.getElementById(`${fieldName}-error`);
                 if (errorMsg) errorMsg.classList.remove('show');
             });
-            
-            field.addEventListener('change', checkFormValidity);
         }
         
-        // Show hint when hovering over disabled button
-        submitBtn.addEventListener('mouseenter', () => {
-            if (submitBtn.disabled) {
-                checkFormValidity();
-                formHint.style.display = 'block';
-            }
-        });
+        submitBtn.addEventListener('mouseenter', () => { if (submitBtn.disabled) { checkFormValidity(); formHint.style.display = 'block'; } });
+        submitBtn.addEventListener('mouseleave', () => { formHint.style.display = 'none'; });
         
-        submitBtn.addEventListener('mouseleave', () => {
-            formHint.style.display = 'none';
-        });
-        
-        // Show hint when clicking disabled button
-        submitBtn.addEventListener('click', (e) => {
-            if (submitBtn.disabled) {
-                e.preventDefault();
-                checkFormValidity();
-                formHint.style.display = 'block';
-                
-                // Highlight empty fields
-                for (let fieldName in requiredFields) {
-                    const field = requiredFields[fieldName];
-                    if (!field.value || field.value.trim() === '') {
-                        field.classList.add('error');
-                        const errorMsg = document.getElementById(`${fieldName}-error`);
-                        if (errorMsg) errorMsg.classList.add('show');
-                    }
-                }
-            }
-        });
-        
-        // Initial check
-        checkFormValidity();
-        
-        // Auto-format phone number as user types
         document.getElementById('phone').addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, ''); // Remove all non-digits
-            
-            if (value.length <= 3) {
-                e.target.value = value;
-            } else if (value.length <= 6) {
-                e.target.value = value.slice(0, 3) + '-' + value.slice(3);
-            } else {
-                e.target.value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 10);
-            }
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 3) e.target.value = value;
+            else if (value.length <= 6) e.target.value = value.slice(0, 3) + '-' + value.slice(3);
+            else e.target.value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 10);
         });
-        
-        // Show success message if URL has success parameter or coming from formsubmit
+
         function checkFormSuccess() {
             const urlParams = new URLSearchParams(window.location.search);
-            const hasSubmitted = urlParams.get('submitted') === 'true';
-            const isFromFormSubmit = document.referrer && document.referrer.includes('formsubmit');
-            
-            if (hasSubmitted || isFromFormSubmit) {
-                // Show success message first
+            if (urlParams.get('submitted') === 'true') {
                 const form = document.querySelector('.contact-form');
                 const successMsg = document.getElementById('success-message');
                 if (form && successMsg) {
                     form.style.display = 'none';
                     successMsg.style.display = 'block';
+                    setTimeout(() => { successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300);
                 }
-                
-                // Then scroll to success message after a short delay
-                setTimeout(() => {
-                    if (successMsg) {
-                        // Scroll directly to the success message element
-                        successMsg.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'center' // Center the success message in viewport
-                        });
-                    }
-                }, 300);
             }
         }
-        
-        // Check on page load
         window.addEventListener('load', checkFormSuccess);
         
-        // Also check immediately
-        checkFormSuccess();
-        
-        // Active navigation highlight on scroll
+        // Navigation Highlight
         const sections = document.querySelectorAll('section, .hero');
         const navLinks = document.querySelectorAll('nav a');
-        
         function highlightNavigation() {
             let current = '';
-            const scrollPos = window.scrollY + 250; // Offset for fixed nav
-            
+            const scrollPos = window.scrollY + 250;
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                const sectionId = section.getAttribute('id');
-                
                 if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                    current = sectionId;
+                    current = section.getAttribute('id');
                 }
             });
-            
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                const href = link.getAttribute('href');
-                if (href === '#' + current) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
             });
         }
-        
-        // Highlight on scroll
         window.addEventListener('scroll', highlightNavigation);
-        
-        // Highlight on page load
-        highlightNavigation();
     </script>
 </body>
 </html>
