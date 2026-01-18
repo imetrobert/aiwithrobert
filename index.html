@@ -1691,10 +1691,17 @@
                 document.documentElement.lang = 'en';
             }
         }
-        
+     
         window.addEventListener('DOMContentLoaded', () => {
-            const currentLang = getCurrentLanguage();
-            setLanguage(currentLang);
+    const currentLang = getCurrentLanguage();
+    // Only set language if it's different from default (en) or if lang is in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (currentLang === 'fr' || urlParams.has('lang')) {
+        setLanguage(currentLang);
+    }
+    // Make sure the dropdown shows the correct language
+    document.getElementById('language-select').value = currentLang;
+});
         });
         
         // Form logic
