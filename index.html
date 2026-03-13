@@ -81,919 +81,150 @@
     </script>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            font-size: 18px;
-            background: #ffffff;
-            overflow-x: hidden;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 180px;
-        }
-        
-        /* Navigation */
-        nav {
-            background: #ffffff;
-            padding: 0.8rem 1rem;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-        }
-        
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .nav-top {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    width: 100%;
-    gap: 1rem;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.6; color: #1a1a1a; font-size: 18px; background: #ffffff; overflow-x: hidden; }
+        html { scroll-behavior: smooth; scroll-padding-top: 180px; }
+        nav { background: #ffffff; padding: 0.8rem 1rem; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 15px rgba(0,0,0,0.08); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
+        .nav-top { display: grid; grid-template-columns: auto 1fr auto; align-items: center; width: 100%; gap: 1rem; }
+        .nav-logo { grid-column: 1; }
+        .nav-phone { grid-column: 2; justify-self: center; }
+        .language-selector { grid-column: 3; justify-self: end; }
+        .nav-logo img { height: 90px; width: auto; object-fit: contain; }
+        .language-selector { position: relative; }
+        .language-selector select { background: white; border: 2px solid #e2e8f0; padding: 0.6rem 2.5rem 0.6rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; color: #1a1a1a; cursor: pointer; appearance: none; transition: all 0.3s; font-family: inherit; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .language-selector select:hover { border-color: #3b82f6; background: #f8f9fa; }
+        .language-selector select:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+        .language-selector::after { content: '▼'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); pointer-events: none; color: #64748b; font-size: 0.7rem; }
+        .nav-phone a { color: #3b82f6; text-decoration: none; font-size: 1.1rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
+        nav ul { list-style: none; display: flex; gap: 0.4rem; align-items: center; flex-wrap: nowrap; justify-content: center; margin: 0; padding: 0; width: 100%; }
+        nav a { color: #1a1a1a; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: all 0.3s; padding: 0.5rem 0.7rem; border-radius: 8px; background: #f8f9fa; border: 2px solid #e2e8f0; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.05); white-space: nowrap; }
+        nav a .nav-icon { font-size: 1rem; display: none; }
+        nav a .nav-text { white-space: nowrap; }
+        nav a:hover { color: #3b82f6; background: #e0f2fe; border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59,130,246,0.2); }
+        nav a:active { transform: translateY(0); }
+        nav a.active { background: #3b82f6 !important; color: white !important; border-color: #3b82f6 !important; }
+        .hero { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%); padding: 7rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; margin-top: 100px; }
+        .hero:before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%); top: -200px; right: -100px; border-radius: 50%; }
+        .hero:after { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%); bottom: -150px; left: -100px; border-radius: 50%; }
+        .hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero h1 { font-size: 4.5rem; margin-bottom: 1.5rem; color: #0f172a; font-weight: 800; letter-spacing: -2px; line-height: 1.1; }
+        .hero .tagline { font-size: 1.5rem; margin-bottom: 3rem; color: #475569; font-weight: 400; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+        .hero-image-container { max-width: 1000px; margin: 3rem auto 3rem; position: relative; }
+        .hero-image { width: 100%; height: auto; border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.15); transition: transform 0.3s; }
+        .hero-image:hover { transform: translateY(-5px); box-shadow: 0 35px 90px rgba(0,0,0,0.2); }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 1.2rem 3rem; font-size: 1.15rem; font-weight: 600; text-decoration: none; border-radius: 12px; transition: all 0.3s; border: none; cursor: pointer; box-shadow: 0 10px 30px rgba(59,130,246,0.3); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(59,130,246,0.4); }
+        .cta-button:disabled { background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%); cursor: not-allowed; opacity: 0.6; box-shadow: none; }
+        .cta-button:disabled:hover { transform: none; }
+        .cta-button-secondary { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); box-shadow: 0 10px 30px rgba(34,197,94,0.3); }
+        .cta-button-secondary:hover { box-shadow: 0 15px 40px rgba(34,197,94,0.4); }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; max-width: 1200px; margin: 4rem auto 0; padding: 0 2rem; }
+        .stat-item { text-align: center; }
+        .stat-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .stat-number { font-size: 2rem; font-weight: 700; color: #0f172a; display: block; margin-bottom: 0.3rem; }
+        .stat-label { color: #64748b; font-size: 0.95rem; font-weight: 500; }
+        section { padding: 8rem 2rem; position: relative; }
+        .section-header { text-align: center; max-width: 800px; margin: 0 auto 5rem; }
+        h2 { font-size: 3.5rem; color: #0f172a; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
+        .section-subtitle { font-size: 1.25rem; color: #64748b; line-height: 1.7; }
+        .services-container { max-width: 1400px; margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .service-card { background: white; padding: 3rem; border-radius: 20px; border: 1px solid #e2e8f0; transition: all 0.3s; position: relative; overflow: hidden; }
+        .service-card:before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #3b82f6, #22c55e); transform: scaleX(0); transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); border-color: #3b82f6; }
+        .service-card:hover:before { transform: scaleX(1); }
+        .service-icon { font-size: 3rem; margin-bottom: 1.5rem; display: block; }
+        .service-card h3 { font-size: 1.5rem; color: #0f172a; margin-bottom: 1rem; font-weight: 700; }
+        .service-card p { color: #64748b; margin-bottom: 1.5rem; line-height: 1.7; }
+        .service-card ul { list-style: none; padding: 0; }
+        .service-card li { padding: 0.6rem 0; padding-left: 2rem; position: relative; color: #475569; font-size: 0.95rem; }
+        .service-card li:before { content: "✓"; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+        #pricing { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
+        .pricing-container { max-width: 1400px; margin: 0 auto; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        .pricing-card { background: white; padding: 2.5rem; border-radius: 20px; border: 2px solid #e2e8f0; transition: all 0.3s; position: relative; }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); border-color: #3b82f6; }
+        .pricing-card.featured { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border: none; color: white; transform: scale(1.05); }
+        .pricing-card.featured h3, .pricing-card.featured .price, .pricing-card.featured p { color: white; }
+        .pricing-card.featured:hover { transform: scale(1.05) translateY(-8px); }
+        .badge { background: #22c55e; color: white; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 1rem; }
+        .pricing-card.featured .badge { background: white; color: #3b82f6; }
+        .pricing-card h3 { font-size: 1.3rem; color: #0f172a; margin-bottom: 1rem; font-weight: 700; }
+        .price { font-size: 3rem; font-weight: 800; color: #0f172a; margin: 1rem 0; line-height: 1; }
+        .price-details { color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .pricing-card.featured .price-details { color: rgba(255,255,255,0.9); }
+        .pricing-features { margin: 2rem 0; }
+        .pricing-features p { margin: 0.8rem 0; font-size: 0.95rem; }
+        .about-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 400px 1fr; gap: 5rem; align-items: center; }
+        .about-photo { position: relative; }
+        .about-photo img { width: 100%; border-radius: 24px; box-shadow: 0 25px 80px rgba(0,0,0,0.12); position: relative; z-index: 1; }
+        .about-photo:before { content: ''; position: absolute; width: 100%; height: 100%; background: linear-gradient(135deg, #3b82f6, #22c55e); border-radius: 24px; top: 20px; left: 20px; z-index: 0; opacity: 0.15; }
+        .about-text h3 { font-size: 2.5rem; color: #0f172a; margin-bottom: 1.5rem; font-weight: 800; }
+        .about-text p { color: #475569; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
+        .experience-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+        .experience-item { background: #f8fafc; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .experience-item-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+        .experience-item-text { font-weight: 600; color: #0f172a; font-size: 0.95rem; }
+        .testimonials-container { max-width: 1400px; margin: 0 auto; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .testimonial-card { background: white; padding: 2.5rem; border-radius: 20px; border: 1px solid #e2e8f0; position: relative; }
+        .testimonial-card:before { content: '"'; position: absolute; top: 1.5rem; left: 2rem; font-size: 4rem; color: #3b82f6; opacity: 0.1; font-family: Georgia, serif; line-height: 1; }
+        .testimonial-text { color: #475569; font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+        .testimonial-author { font-weight: 600; color: #3b82f6; font-style: normal; }
+        #contact { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
+        .contact-container { max-width: 800px; margin: 0 auto; }
+        .contact-info { text-align: center; margin-bottom: 3rem; }
+        .contact-info h3 { font-size: 1.5rem; color: #0f172a; margin-bottom: 1rem; font-weight: 700; }
+        .contact-info a { color: #3b82f6; text-decoration: none; font-weight: 600; font-size: 1.15rem; }
+        .contact-form { background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+        .form-group { margin-bottom: 1.8rem; }
+        label { display: block; font-weight: 600; margin-bottom: 0.6rem; color: #0f172a; font-size: 0.95rem; }
+        input, select, textarea { width: 100%; padding: 1rem; font-size: 1rem; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; transition: all 0.2s; background: #f8fafc; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #3b82f6; background: white; }
+        input:invalid, select:invalid, textarea:invalid { border-color: #e2e8f0; }
+        input.error, select.error, textarea.error { border-color: #ef4444; background: #fef2f2; }
+        .error-message { color: #ef4444; font-size: 0.9rem; margin-top: 0.5rem; display: none; font-weight: 600; }
+        .error-message.show { display: block; }
+        textarea { resize: vertical; min-height: 140px; }
+        footer { background: #0f172a; color: white; padding: 3rem 2rem; text-align: center; }
+        footer p { margin: 0.5rem 0; opacity: 0.8; }
 
-.nav-logo {
-    grid-column: 1;
-}
-
-.nav-phone {
-    grid-column: 2;
-    justify-self: center;
-}
-
-.language-selector {
-    grid-column: 3;
-    justify-self: end;
-}
-        
-.nav-logo img {
-    height: 90px;
-    width: auto;
-    object-fit: contain;
-}
-        
-        /* Language Selector */
-        .language-selector {
-            position: relative;
-        }
-        
-        .language-selector select {
-            background: white;
-            border: 2px solid #e2e8f0;
-            padding: 0.6rem 2.5rem 0.6rem 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            cursor: pointer;
-            appearance: none;
-            transition: all 0.3s;
-            font-family: inherit;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .language-selector select:hover {
-            border-color: #3b82f6;
-            background: #f8f9fa;
-        }
-        
-        .language-selector select:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        
-        .language-selector::after {
-            content: '▼';
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-            color: #64748b;
-            font-size: 0.7rem;
-        }
-        
-        .nav-phone a {
-            color: #3b82f6;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            white-space: nowrap;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 0.4rem; /* Tightened gap for English one-line fit */
-            align-items: center;
-            flex-wrap: nowrap; /* CRITICAL FIX: Forces items to stay on one line */
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-        
-        nav a {
-            color: #1a1a1a;
-            text-decoration: none;
-            font-size: 0.85rem; /* Slightly smaller for English fit */
-            font-weight: 600;
-            transition: all 0.3s;
-            padding: 0.5rem 0.7rem; /* Reduced padding for English fit */
-            border-radius: 8px;
-            background: #f8f9fa;
-            border: 2px solid #e2e8f0;
-            display: inline-block;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            white-space: nowrap;
-        }
-        
-        nav a .nav-icon {
-            font-size: 1rem;
-            display: none;
-        }
-        
-        nav a .nav-text {
-            white-space: nowrap;
-        }
-        
-        nav a:hover {
-            color: #3b82f6;
-            background: #e0f2fe;
-            border-color: #3b82f6;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-        }
-        
-        nav a:active {
-            transform: translateY(0);
-        }
-        
-        nav a.active {
-            background: #3b82f6 !important;
-            color: white !important;
-            border-color: #3b82f6 !important;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
-            padding: 7rem 2rem 5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-top: 100px;
-        }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-            top: -200px;
-            right: -100px;
-            border-radius: 50%;
-        }
-        
-        .hero:after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(34, 197, 94, 0.12) 0%, transparent 70%);
-            bottom: -150px;
-            left: -100px;
-            border-radius: 50%;
-        }
-        
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
-            color: #0f172a;
-            font-weight: 800;
-            letter-spacing: -2px;
-            line-height: 1.1;
-        }
-        
-        .hero .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            color: #475569;
-            font-weight: 400;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-        
-        .hero-image-container {
-            max-width: 1000px;
-            margin: 3rem auto 3rem;
-            position: relative;
-        }
-        
-        .hero-image {
-            width: 100%;
-            height: auto;
-            border-radius: 24px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
-        }
-        
-        .hero-image:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 35px 90px rgba(0,0,0,0.2);
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-            padding: 1.2rem 3rem;
-            font-size: 1.15rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
-        }
-        
-        .cta-button:disabled {
-            background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
-            cursor: not-allowed;
-            opacity: 0.6;
-            box-shadow: none;
-        }
-        
-        .cta-button:disabled:hover {
-            transform: none;
-        }
-        
-        .cta-button-secondary {
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
-        }
-        
-        .cta-button-secondary:hover {
-            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.4);
-        }
-        
-        /* Stats Section */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 4rem auto 0;
-            padding: 0 2rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0f172a;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-        
-        .stat-label {
-            color: #64748b;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-        
-        /* Sections */
-        section {
-            padding: 8rem 2rem;
-            position: relative;
-        }
-        
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 5rem;
-        }
-        
-        h2 {
-            font-size: 3.5rem;
-            color: #0f172a;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 1.1;
-        }
-        
-        .section-subtitle {
-            font-size: 1.25rem;
-            color: #64748b;
-            line-height: 1.7;
-        }
-        
-        /* Services Grid */
-        .services-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #22c55e);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            border-color: #3b82f6;
-        }
-        
-        .service-card:hover:before {
-            transform: scaleX(1);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: #0f172a;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .service-card p {
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        
-        .service-card ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .service-card li {
-            padding: 0.6rem 0;
-            padding-left: 2rem;
-            position: relative;
-            color: #475569;
-            font-size: 0.95rem;
-        }
-        
-        .service-card li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #22c55e;
-            font-weight: 700;
-        }
-        
-        /* Pricing Section */
-        #pricing {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-        
-        .pricing-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-        
-        .pricing-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 2px solid #e2e8f0;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            border-color: #3b82f6;
-        }
-        
-        .pricing-card.featured {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border: none;
-            color: white;
-            transform: scale(1.05);
-        }
-        
-        .pricing-card.featured h3,
-        .pricing-card.featured .price,
-        .pricing-card.featured p {
-            color: white;
-        }
-        
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-8px);
-        }
-        
-        .badge {
-            background: #22c55e;
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-        
-        .pricing-card.featured .badge {
-            background: white;
-            color: #3b82f6;
-        }
-        
-        .pricing-card h3 {
-            font-size: 1.3rem;
-            color: #0f172a;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .price {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin: 1rem 0;
-            line-height: 1;
-        }
-        
-        .price-details {
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .pricing-card.featured .price-details {
-            color: rgba(255,255,255,0.9);
-        }
-        
-        .pricing-features {
-            margin: 2rem 0;
-        }
-        
-        .pricing-features p {
-            margin: 0.8rem 0;
-            font-size: 0.95rem;
-        }
-        
-        /* About Section */
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 400px 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-        
-        .about-photo {
-            position: relative;
-        }
-        
-        .about-photo img {
-            width: 100%;
-            border-radius: 24px;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.12);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .about-photo:before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #3b82f6, #22c55e);
-            border-radius: 24px;
-            top: 20px;
-            left: 20px;
-            z-index: 0;
-            opacity: 0.15;
-        }
-        
-        .about-text h3 {
-            font-size: 2.5rem;
-            color: #0f172a;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-        }
-        
-        .about-text p {
-            color: #475569;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-        
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        
-        .experience-item {
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .experience-item-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .experience-item-text {
-            font-weight: 600;
-            color: #0f172a;
-            font-size: 0.95rem;
-        }
-        
-        /* Testimonials */
-        .testimonials-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid #e2e8f0;
-            position: relative;
-        }
-        
-        .testimonial-card:before {
-            content: '"';
-            position: absolute;
-            top: 1.5rem;
-            left: 2rem;
-            font-size: 4rem;
-            color: #3b82f6;
-            opacity: 0.1;
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-        
-        .testimonial-text {
-            color: #475569;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: #3b82f6;
-            font-style: normal;
-        }
-        
-        /* Contact Section */
-        #contact {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-        
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .contact-info {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.5rem;
-            color: #0f172a;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .contact-info a {
-            color: #3b82f6;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.15rem;
-        }
-        
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-        }
-        
-        .form-group {
-            margin-bottom: 1.8rem;
-        }
-        
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.6rem;
-            color: #0f172a;
-            font-size: 0.95rem;
-        }
-        
-        input, select, textarea {
-            width: 100%;
-            padding: 1rem;
-            font-size: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-family: inherit;
-            transition: all 0.2s;
-            background: #f8fafc;
-        }
-        
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            background: white;
-        }
-        
-        input:invalid, select:invalid, textarea:invalid {
-            border-color: #e2e8f0;
-        }
-        
-        input.error, select.error, textarea.error {
-            border-color: #ef4444;
-            background: #fef2f2;
-        }
-        
-        .error-message {
-            color: #ef4444;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            display: none;
-            font-weight: 600;
-        }
-        
-        .error-message.show {
-            display: block;
-        }
-        
-        textarea {
-            resize: vertical;
-            min-height: 140px;
-        }
-        
-        /* Footer */
-        footer {
-            background: #0f172a;
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-        
-        footer p {
-            margin: 0.5rem 0;
-            opacity: 0.8;
-        }
-        
-        /* Responsive */
         @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .about-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .about-photo:before {
-                display: none;
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .services-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-container { grid-template-columns: 1fr; text-align: center; }
+            .about-photo:before { display: none; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
         }
-        
         @media (max-width: 1200px) {
-            .nav-container {
-                grid-template-columns: 120px 1fr;
-                gap: 1rem;
-            }
-            
-            .nav-logo img {
-    height: 60px;
-    width: auto;
-}
-            
-            nav a {
-                font-size: 0.82rem;
-                padding: 0.4rem 0.6rem;
-            }
-            
-            .nav-phone a {
-                font-size: 1rem;
-            }
+            .nav-container { grid-template-columns: 120px 1fr; gap: 1rem; }
+            .nav-logo img { height: 60px; width: auto; }
+            nav a { font-size: 0.82rem; padding: 0.4rem 0.6rem; }
+            .nav-phone a { font-size: 1rem; }
         }
-        
         @media (max-width: 768px) {
-    html {
-        scroll-padding-top: 180px;
-    }
-    
-    nav {
-        padding: 0.8rem 0.8rem;
-    }
-    
-    .nav-container {
-        flex-direction: column;
-        gap: 0.8rem;
-    }
-    
-    .nav-top {
-        justify-content: space-between;
-    }
-    
-    .nav-logo img {
-        height: 50px;
-    }
-    
-    .nav-phone a {
-        font-size: 0.95rem;
-    }
-    
-    .language-selector select {
-        padding: 0.5rem 2rem 0.5rem 0.8rem;
-        font-size: 0.85rem;
-    }
-    
-    nav ul {
-        flex-direction: row;
-        gap: 0.3rem;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 5px;
-    }
-    
-    nav a {
-        font-size: 0.65rem;
-        padding: 0.4rem 0.45rem;
-        flex-direction: column;
-        gap: 0.15rem;
-        min-width: 42px;
-        text-align: center;
-    }
-    
-    nav a .nav-icon {
-        display: none;
-    }
-    
-    nav a .nav-text {
-        font-size: 0.65rem;
-        white-space: nowrap;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-    }
-            
-            .hero {
-                padding: 6rem 1.5rem 4rem;
-                margin-top: 140px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero .tagline {
-                font-size: 1.2rem;
-            }
-            
-            h2 {
-                font-size: 2.2rem;
-            }
-            
-            section {
-                padding: 5rem 1.5rem;
-            }
-            
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
+            html { scroll-padding-top: 180px; }
+            nav { padding: 0.8rem 0.8rem; }
+            .nav-container { flex-direction: column; gap: 0.8rem; }
+            .nav-top { justify-content: space-between; }
+            .nav-logo img { height: 50px; }
+            .nav-phone a { font-size: 0.95rem; }
+            .language-selector select { padding: 0.5rem 2rem 0.5rem 0.8rem; font-size: 0.85rem; }
+            nav ul { flex-direction: row; gap: 0.3rem; width: 100%; justify-content: center; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 5px; }
+            nav a { font-size: 0.65rem; padding: 0.4rem 0.45rem; flex-direction: column; gap: 0.15rem; min-width: 42px; text-align: center; }
+            nav a .nav-icon { display: none; }
+            nav a .nav-text { font-size: 0.65rem; white-space: nowrap; line-height: 1.1; letter-spacing: -0.02em; }
+            .hero { padding: 6rem 1.5rem 4rem; margin-top: 140px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .tagline { font-size: 1.2rem; }
+            h2 { font-size: 2.2rem; }
+            section { padding: 5rem 1.5rem; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { transform: scale(1); }
+            .stats { grid-template-columns: 1fr; gap: 2rem; }
+            .experience-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1001,12 +232,8 @@
     <nav>
         <div class="nav-container">
             <div class="nav-top">
-                <div class="nav-logo">
-                    <img src="logo.PNG" alt="AI with Robert">
-                </div>
-                <div class="nav-phone">
-                    <a href="tel:514-250-8491">📞 514-250-8491</a>
-                </div>
+                <div class="nav-logo"><img src="logo.PNG" alt="AI with Robert"></div>
+                <div class="nav-phone"><a href="tel:514-250-8491">📞 514-250-8491</a></div>
                 <div class="language-selector">
                     <select id="language-select" onchange="setLanguage(this.value)">
                         <option value="en">EN</option>
@@ -1014,7 +241,6 @@
                     </select>
                 </div>
             </div>
-            
             <ul>
                 <li><a href="#home"><span class="nav-text" data-i18n="nav-home">Home</span></a></li>
                 <li><a href="#services"><span class="nav-text" data-i18n="nav-services">Services</span></a></li>
@@ -1028,18 +254,12 @@
 
     <div class="hero" id="home">
         <div class="hero-content">
-            <h1 data-i18n="hero-title">AI & Technology Training for Seniors in Côte Saint-Luc</h1>
-            <p class="tagline" data-i18n="hero-tagline">
-                Patient, personalized AI and internet training for seniors in Côte Saint-Luc, Quebec.<br>
-                Learn ChatGPT, online safety, and essential digital skills with confidence.
-            </p>
-            
+            <h1 data-i18n="hero-title">AI &amp; Technology Training for Seniors in Côte Saint-Luc</h1>
+            <p class="tagline" data-i18n="hero-tagline">Patient, personalized AI and internet training for seniors in Côte Saint-Luc, Quebec.<br>Learn ChatGPT, online safety, and essential digital skills with confidence.</p>
             <div class="hero-image-container">
                 <img src="users.jpg" alt="Happy seniors learning AI and technology together" class="hero-image">
             </div>
-            
             <a href="#contact" class="cta-button" data-i18n="hero-cta">Start Your Free Discovery Call</a>
-            
             <div class="stats">
                 <div class="stat-item">
                     <span class="stat-icon">🏡</span>
@@ -1069,28 +289,22 @@
         <div class="services-container">
             <div class="section-header">
                 <h2 data-i18n="services-title">Services</h2>
-                <p class="section-subtitle" data-i18n="services-subtitle">
-                    Personalized AI and technology training for seniors in Côte Saint-Luc. 
-                    No pressure, no jargon—just practical internet skills and AI training 
-                    that help you stay connected and confident online.
-                </p>
+                <p class="section-subtitle" data-i18n="services-subtitle">Personalized AI and technology training for seniors in Côte Saint-Luc. No pressure, no jargon—just practical internet skills and AI training that help you stay connected and confident online.</p>
             </div>
-            
             <div class="services-grid">
                 <div class="service-card">
                     <span class="service-icon">🤝</span>
-                    <h3 data-i18n="service1-title">One-on-One AI & Internet Training</h3>
+                    <h3 data-i18n="service1-title">One-on-One AI &amp; Internet Training</h3>
                     <p data-i18n="service1-desc">Personalized technology instruction for seniors in Côte Saint-Luc:</p>
                     <ul>
-                        <li data-i18n="service1-item1">Master ChatGPT & AI writing tools</li>
+                        <li data-i18n="service1-item1">Master ChatGPT &amp; AI writing tools</li>
                         <li data-i18n="service1-item2">Create AI-generated images</li>
-                        <li data-i18n="service1-item3">Email safety & scam protection</li>
-                        <li data-i18n="service1-item4">Learn to use smartphones & tablets</li>
+                        <li data-i18n="service1-item3">Email safety &amp; scam protection</li>
+                        <li data-i18n="service1-item4">Learn to use smartphones &amp; tablets</li>
                         <li data-i18n="service1-item5">Video calls with family</li>
                         <li data-i18n="service1-item6">Online banking safely</li>
                     </ul>
                 </div>
-                
                 <div class="service-card">
                     <span class="service-icon">👥</span>
                     <h3 data-i18n="service2-title">Senior Group Workshops in CSL</h3>
@@ -1104,7 +318,6 @@
                         <li data-i18n="service2-item6">Progress as a group</li>
                     </ul>
                 </div>
-                
                 <div class="service-card">
                     <span class="service-icon">🌟</span>
                     <h3 data-i18n="service3-title">Flexible Learning Options</h3>
@@ -1126,12 +339,8 @@
         <div class="pricing-container">
             <div class="section-header">
                 <h2 data-i18n="pricing-title">Pricing</h2>
-                <p class="section-subtitle" data-i18n="pricing-subtitle">
-                    Affordable AI and technology training for seniors in Côte Saint-Luc. 
-                    All prices in CAD. No hidden fees.
-                </p>
+                <p class="section-subtitle" data-i18n="pricing-subtitle">Affordable AI and technology training for seniors in Côte Saint-Luc. All prices in CAD. No hidden fees.</p>
             </div>
-            
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3 data-i18n="pricing-single">Single Session</h3>
@@ -1140,10 +349,9 @@
                     <div class="pricing-features">
                         <p><strong>$60</strong> — <span data-i18n="pricing-single-online">Online</span></p>
                         <p><strong>$65</strong> — <span data-i18n="pricing-single-home">In-home</span></p>
-                        <p style="margin-top: 1rem; color: #64748b;" data-i18n="pricing-single-note">Perfect for trying out lessons</p>
+                        <p style="margin-top:1rem;color:#64748b;" data-i18n="pricing-single-note">Perfect for trying out lessons</p>
                     </div>
                 </div>
-                
                 <div class="pricing-card featured">
                     <span class="badge" data-i18n="badge-best">Best Value</span>
                     <h3 data-i18n="pricing-starter">Starter Package</h3>
@@ -1151,10 +359,9 @@
                     <div class="price-details" data-i18n="pricing-starter-details">5 hours • Save $25</div>
                     <div class="pricing-features">
                         <p><strong data-i18n="pricing-starter-rate">Just $55/hour</strong></p>
-                        <p style="margin-top: 1rem; opacity: 0.9;" data-i18n="pricing-starter-note">Great for building confidence over multiple sessions</p>
+                        <p style="margin-top:1rem;opacity:0.9;" data-i18n="pricing-starter-note">Great for building confidence over multiple sessions</p>
                     </div>
                 </div>
-                
                 <div class="pricing-card featured">
                     <span class="badge" data-i18n="badge-popular">Most Popular</span>
                     <h3 data-i18n="pricing-complete">Complete Package</h3>
@@ -1162,10 +369,9 @@
                     <div class="price-details" data-i18n="pricing-complete-details">10 hours • Save $100</div>
                     <div class="pricing-features">
                         <p><strong data-i18n="pricing-complete-rate">Only $50/hour</strong></p>
-                        <p style="margin-top: 1rem; opacity: 0.9;" data-i18n="pricing-complete-note">Comprehensive learning for mastering new skills</p>
+                        <p style="margin-top:1rem;opacity:0.9;" data-i18n="pricing-complete-note">Comprehensive learning for mastering new skills</p>
                     </div>
                 </div>
-                
                 <div class="pricing-card">
                     <h3 data-i18n="pricing-group">Group Workshop</h3>
                     <div class="price">$35</div>
@@ -1173,7 +379,7 @@
                     <div class="pricing-features">
                         <p><strong data-i18n="pricing-group-duration">90 minutes</strong></p>
                         <p data-i18n="pricing-group-size">2-4 people (max 6)</p>
-                        <p style="margin-top: 1rem; color: #64748b;" data-i18n="pricing-group-note">Learn together, save money</p>
+                        <p style="margin-top:1rem;color:#64748b;" data-i18n="pricing-group-note">Learn together, save money</p>
                     </div>
                 </div>
             </div>
@@ -1181,64 +387,28 @@
     </section>
 
     <section id="about">
-        <div style="text-align: center; margin-bottom: 4rem;">
+        <div style="text-align:center;margin-bottom:4rem;">
             <h2 data-i18n="about-title">About Robert</h2>
-            <p class="section-subtitle" style="max-width: 800px; margin: 1rem auto 0;" data-i18n="about-subtitle">
-                Your local AI and technology instructor serving seniors in Côte Saint-Luc, Quebec.
-            </p>
+            <p class="section-subtitle" style="max-width:800px;margin:1rem auto 0;" data-i18n="about-subtitle">Your local AI and technology instructor serving seniors in Côte Saint-Luc, Quebec.</p>
         </div>
         <div class="about-container">
-            <div class="about-photo">
-                <img src="profile.jpg" alt="Robert Simon">
-            </div>
-            
+            <div class="about-photo"><img src="profile.jpg" alt="Robert Simon"></div>
             <div class="about-text">
                 <h3 data-i18n="about-heading">Meet Robert Simon</h3>
-                <p data-i18n="about-p1">
-                    I'm a dedicated AI and technology instructor helping seniors in Côte Saint-Luc discover 
-                    that technology and artificial intelligence aren't things to fear—they're tools for 
-                    staying connected, independent, and engaged with the world around you.
-                </p>
-                <p data-i18n="about-p2">
-                    With over 25 years of experience in digital innovation and AI implementation at major 
-                    organizations like Bell, I now focus on helping seniors in our community master technology 
-                    at their own pace. I understand that learning new technology and AI tools like ChatGPT can 
-                    feel overwhelming. The buttons, the menus, the constant updates—it's a lot. That's exactly 
-                    why I specialize in patient, step-by-step technology training right here in Côte Saint-Luc.
-                </p>
-                <p data-i18n="about-p3">
-                    Whether you want to use ChatGPT to help write emails, learn to spot online scams, master 
-                    video calling with family, or simply feel more confident using the internet and your smartphone, 
-                    I'm here for you every step of the way. I provide personalized technology help for seniors 
-                    throughout Côte Saint-Luc and surrounding Montreal areas.
-                </p>
-                <p style="margin-top: 1.5rem;">
-                    <a href="https://www.imetrobert.com" target="_blank" rel="noopener noreferrer" 
-                       style="color: #3b82f6; text-decoration: none; font-weight: 600; font-size: 1.1rem; 
-                              display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.5rem; 
-                              background: #f0f9ff; border-radius: 10px; border: 2px solid #3b82f6; 
-                              transition: all 0.3s;" data-i18n="about-link">
-                        🌐 Learn More About My Work in AI & Digital Innovation
+                <p data-i18n="about-p1">I'm a dedicated AI and technology instructor helping seniors in Côte Saint-Luc discover that technology and artificial intelligence aren't things to fear—they're tools for staying connected, independent, and engaged with the world around you.</p>
+                <p data-i18n="about-p2">With over 25 years of experience in digital innovation and AI implementation at major organizations like Bell, I now focus on helping seniors in our community master technology at their own pace. I understand that learning new technology and AI tools like ChatGPT can feel overwhelming. The buttons, the menus, the constant updates—it's a lot. That's exactly why I specialize in patient, step-by-step technology training right here in Côte Saint-Luc.</p>
+                <p data-i18n="about-p3">Whether you want to use ChatGPT to help write emails, learn to spot online scams, master video calling with family, or simply feel more confident using the internet and your smartphone, I'm here for you every step of the way. I provide personalized technology help for seniors throughout Côte Saint-Luc and surrounding Montreal areas.</p>
+                <p style="margin-top:1.5rem;">
+                    <a href="https://www.imetrobert.com" target="_blank" rel="noopener noreferrer"
+                       style="color:#3b82f6;text-decoration:none;font-weight:600;font-size:1.1rem;display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;background:#f0f9ff;border-radius:10px;border:2px solid #3b82f6;transition:all 0.3s;" data-i18n="about-link">
+                        🌐 Learn More About My Work in AI &amp; Digital Innovation
                     </a>
                 </p>
-                
                 <div class="experience-grid">
-                    <div class="experience-item">
-                        <span class="experience-item-icon">🏆</span>
-                        <div class="experience-item-text" data-i18n="exp-teaching">Years of Teaching</div>
-                    </div>
-                    <div class="experience-item">
-                        <span class="experience-item-icon">❤️</span>
-                        <div class="experience-item-text" data-i18n="exp-passion">Passionate About Seniors</div>
-                    </div>
-                    <div class="experience-item">
-                        <span class="experience-item-icon">📍</span>
-                        <div class="experience-item-text" data-i18n="exp-local">Local Resident</div>
-                    </div>
-                    <div class="experience-item">
-                        <span class="experience-item-icon">🤖</span>
-                        <div class="experience-item-text" data-i18n="exp-ai">AI Specialist</div>
-                    </div>
+                    <div class="experience-item"><span class="experience-item-icon">🏆</span><div class="experience-item-text" data-i18n="exp-teaching">Years of Teaching</div></div>
+                    <div class="experience-item"><span class="experience-item-icon">❤️</span><div class="experience-item-text" data-i18n="exp-passion">Passionate About Seniors</div></div>
+                    <div class="experience-item"><span class="experience-item-icon">📍</span><div class="experience-item-text" data-i18n="exp-local">Local Resident</div></div>
+                    <div class="experience-item"><span class="experience-item-icon">🤖</span><div class="experience-item-text" data-i18n="exp-ai">AI Specialist</div></div>
                 </div>
             </div>
         </div>
@@ -1248,33 +418,19 @@
         <div class="contact-container">
             <div class="section-header">
                 <h2 data-i18n="contact-title">Contact</h2>
-                <p class="section-subtitle" data-i18n="contact-subtitle">
-                    Get AI and technology help in Côte Saint-Luc today. Fill out the form below 
-                    or email me directly for personalized senior training.
-                </p>
+                <p class="section-subtitle" data-i18n="contact-subtitle">Get AI and technology help in Côte Saint-Luc today. Fill out the form below or email me directly for personalized senior training.</p>
             </div>
-            
             <div class="contact-info">
-                <h3 data-i18n="contact-heading">AI & Technology Training in Côte Saint-Luc & Surrounding Areas</h3>
-                <p style="margin: 1.5rem 0;">
-                    <a href="tel:514-250-8491" style="display: inline-flex; align-items: center; gap: 0.8rem; 
-                       font-size: 2rem; font-weight: 700; color: #3b82f6; text-decoration: none; 
-                       padding: 1.2rem 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); 
-                       border-radius: 15px; border: 3px solid #3b82f6; transition: all 0.3s; 
-                       box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2);">
+                <h3 data-i18n="contact-heading">AI &amp; Technology Training in Côte Saint-Luc &amp; Surrounding Areas</h3>
+                <p style="margin:1.5rem 0;">
+                    <a href="tel:514-250-8491" style="display:inline-flex;align-items:center;gap:0.8rem;font-size:2rem;font-weight:700;color:#3b82f6;text-decoration:none;padding:1.2rem 2rem;background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border-radius:15px;border:3px solid #3b82f6;transition:all 0.3s;box-shadow:0 5px 20px rgba(59,130,246,0.2);">
                         📞 514-250-8491
                     </a>
                 </p>
-                <p style="font-size: 1.15rem; color: #475569; margin-top: 1rem;" data-i18n="contact-call-note">
-                    Call anytime for questions or to schedule your free discovery call
-                </p>
-                <p style="margin-top: 1.5rem;">
-                    <a href="mailto:info@aiwithrobert.com" style="color: #3b82f6; font-weight: 600; font-size: 1.1rem;">
-                        ✉️ info@aiwithrobert.com
-                    </a>
-                </p>
+                <p style="font-size:1.15rem;color:#475569;margin-top:1rem;" data-i18n="contact-call-note">Call anytime for questions or to schedule your free discovery call</p>
+                <p style="margin-top:1.5rem;"><a href="mailto:info@aiwithrobert.com" style="color:#3b82f6;font-weight:600;font-size:1.1rem;">✉️ info@aiwithrobert.com</a></p>
             </div>
-            
+
             <div class="contact-form">
                 <form action="https://formsubmit.co/forms@aiwithrobert.com" method="POST">
                     <input type="text" name="_honey" style="display:none">
@@ -1282,28 +438,27 @@
                     <input type="hidden" name="_next" value="https://aiwithrobert.com?submitted=true#contact">
                     <input type="hidden" name="_subject" value="New Contact Form Submission - AI with Robert">
                     <input type="hidden" name="_template" value="box">
-                    
+
                     <div class="form-group">
                         <label for="name"><span data-i18n="form-name">Your Name</span> *</label>
                         <input type="text" id="name" name="name" required placeholder="John Smith" autocomplete="name">
                         <div class="error-message" id="name-error">Please enter your name</div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email"><span data-i18n="form-email">Email Address</span> *</label>
                         <input type="email" id="email" name="email" required placeholder="john@example.com" autocomplete="email">
                         <div class="error-message" id="email-error">Please enter a valid email address</div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="phone"><span data-i18n="form-phone">Phone Number</span> *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="514-555-1234" 
-                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
-                               autocomplete="tel"
+                        <input type="tel" id="phone" name="phone" required placeholder="514-555-1234"
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" autocomplete="tel"
                                title="Please enter phone number in format: XXX-XXX-XXXX">
                         <div class="error-message" id="phone-error">Please enter a valid phone number (XXX-XXX-XXXX)</div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="session-type"><span data-i18n="form-interest">I'm Interested In</span> *</label>
                         <select id="session-type" name="session-type" required>
@@ -1316,45 +471,60 @@
                         </select>
                         <div class="error-message" id="session-error">Please select an option</div>
                     </div>
-                    
+
+                    <!-- HOW DID YOU HEAR ABOUT ME (optional) -->
+                    <div class="form-group">
+                        <label for="referral">
+                            <span data-i18n="form-referral">How Did You Hear About Me?</span>
+                            <span style="font-weight:400;color:#64748b;"> (<span data-i18n="form-optional">Optional</span>)</span>
+                        </label>
+                        <select id="referral" name="referral">
+                            <option value="" data-i18n="form-referral-choose">Choose an option...</option>
+                            <option value="google" data-i18n="form-referral-google">Google Search</option>
+                            <option value="friend-family" data-i18n="form-referral-friend">Friend or Family</option>
+                            <option value="neighbour" data-i18n="form-referral-neighbour">Neighbour</option>
+                            <option value="csl-community" data-i18n="form-referral-csl">CSL Community Board / Bulletin</option>
+                            <option value="facebook" data-i18n="form-referral-facebook">Facebook</option>
+                            <option value="linkedin" data-i18n="form-referral-linkedin">LinkedIn</option>
+                            <option value="synagogue-church" data-i18n="form-referral-place-of-worship">Synagogue / Church / Place of Worship</option>
+                            <option value="csl-rec-centre" data-i18n="form-referral-rec">CSL Recreation Centre</option>
+                            <option value="doctor-pharmacy" data-i18n="form-referral-health">Doctor's Office / Pharmacy</option>
+                            <option value="other" data-i18n="form-referral-other">Other</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="message"><span data-i18n="form-goals">Your Goals (Optional)</span></label>
                         <textarea id="message" name="message" data-i18n-placeholder="form-goals-placeholder" placeholder="Tell me what you'd like to learn..."></textarea>
                     </div>
-                    
-                    <div style="text-align: center; margin-top: 2rem;">
+
+                    <div style="text-align:center;margin-top:2rem;">
                         <button type="submit" class="cta-button" id="submit-btn" disabled data-i18n="form-submit">Send Message</button>
-                        <p id="form-hint" style="color: #ef4444; margin-top: 1rem; font-weight: 600; display: none;"></p>
+                        <p id="form-hint" style="color:#ef4444;margin-top:1rem;font-weight:600;display:none;"></p>
                     </div>
                 </form>
             </div>
-            
-            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 16px; border: 1px solid #e2e8f0;">
-                <p style="font-size: 1.2rem; font-weight: 600; color: #0f172a; margin-bottom: 0.5rem;" data-i18n="free-call-title">
-                    🎁 Free 30-Minute Discovery Call
-                </p>
-                <p style="color: #64748b;" data-i18n="free-call-text">
-                    Let's chat about your goals with no pressure or obligation
-                </p>
+
+            <div style="text-align:center;margin-top:3rem;padding:2rem;background:white;border-radius:16px;border:1px solid #e2e8f0;">
+                <p style="font-size:1.2rem;font-weight:600;color:#0f172a;margin-bottom:0.5rem;" data-i18n="free-call-title">🎁 Free 30-Minute Discovery Call</p>
+                <p style="color:#64748b;" data-i18n="free-call-text">Let's chat about your goals with no pressure or obligation</p>
             </div>
-            
-            <div id="success-message" style="display: none; text-align: center; margin-top: 3rem; padding: 3rem; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 16px; border: 2px solid #22c55e;">
-                <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
-                <h3 style="color: #166534; font-size: 2rem; margin-bottom: 1rem;" data-i18n="success-title">Thank You!</h3>
-                <p style="color: #065f46; font-size: 1.2rem; line-height: 1.7;" data-i18n="success-text">
-                    Your request has been received and will be actioned as soon as possible.<br>
-                    I'll get back to you within 24 hours.
-                </p>
+
+            <div id="success-message" style="display:none;text-align:center;margin-top:3rem;padding:3rem;background:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 100%);border-radius:16px;border:2px solid #22c55e;">
+                <div style="font-size:4rem;margin-bottom:1rem;">✅</div>
+                <h3 style="color:#166534;font-size:2rem;margin-bottom:1rem;" data-i18n="success-title">Thank You!</h3>
+                <p style="color:#065f46;font-size:1.2rem;line-height:1.7;" data-i18n="success-text">Your request has been received and will be actioned as soon as possible.<br>I'll get back to you within 24 hours.</p>
             </div>
         </div>
     </section>
-<section id="faq">
+
+    <section id="faq">
         <div class="services-container">
             <div class="section-header">
                 <h2 data-i18n="faq-title">Frequently Asked Questions</h2>
                 <p class="section-subtitle" data-i18n="faq-subtitle">Everything you need to know about starting your AI journey.</p>
             </div>
-            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <div class="services-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
                 <div class="service-card">
                     <h3 data-i18n="faq-q1">Do I need any prior technology experience?</h3>
                     <p data-i18n="faq-a1">Not at all! My lessons are designed for absolute beginners. We start from wherever you are comfortable.</p>
@@ -1372,80 +542,54 @@
     </section>
 
     <footer>
-        <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">AI with Robert</p>
-        <p data-i18n="footer-tagline">AI & Technology Training for Seniors in Côte Saint-Luc, Quebec</p>
-        <p style="margin-top: 0.5rem;" data-i18n="footer-services">ChatGPT lessons • Internet safety • Online skills • Email security</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">&copy; 2026 AI with Robert. <span data-i18n="footer-rights">All rights reserved.</span></p>
+        <p style="font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;">AI with Robert</p>
+        <p data-i18n="footer-tagline">AI &amp; Technology Training for Seniors in Côte Saint-Luc, Quebec</p>
+        <p style="margin-top:0.5rem;" data-i18n="footer-services">ChatGPT lessons • Internet safety • Online skills • Email security</p>
+        <p style="margin-top:1rem;font-size:0.9rem;">&copy; 2026 AI with Robert. <span data-i18n="footer-rights">All rights reserved.</span></p>
     </footer>
-    
+
     <script>
         const translations = {
             en: {
-                'nav-home': 'Home',
-                'nav-services': 'Services',
-                'nav-pricing': 'Pricing',
-                'nav-faq': 'FAQ',
-                'nav-about': 'About Robert',
-                'nav-contact': 'Contact',
+                'nav-home': 'Home', 'nav-services': 'Services', 'nav-pricing': 'Pricing',
+                'nav-faq': 'FAQ', 'nav-about': 'About Robert', 'nav-contact': 'Contact',
                 'hero-title': 'AI & Technology Training for Seniors in Côte Saint-Luc',
                 'hero-tagline': 'Patient, personalized AI and internet training for seniors in Côte Saint-Luc, Quebec.<br>Learn ChatGPT, online safety, and essential digital skills with confidence.',
                 'hero-cta': 'Start Your Free Discovery Call',
-                'stat-local': 'Local',
-                'stat-local-label': 'Côte Saint-Luc',
-                'stat-expert': 'Expert',
-                'stat-expert-label': 'Years Experience',
-                'stat-patient': 'Patient',
-                'stat-patient-label': 'One-on-One Teaching',
-                'stat-free': 'Free',
-                'stat-free-label': 'Discovery Call',
+                'stat-local': 'Local', 'stat-local-label': 'Côte Saint-Luc',
+                'stat-expert': 'Expert', 'stat-expert-label': 'Years Experience',
+                'stat-patient': 'Patient', 'stat-patient-label': 'One-on-One Teaching',
+                'stat-free': 'Free', 'stat-free-label': 'Discovery Call',
                 'services-title': 'Services',
                 'services-subtitle': 'Personalized AI and technology training for seniors in Côte Saint-Luc. No pressure, no jargon—just practical internet skills and AI training that help you stay connected and confident online.',
                 'service1-title': 'One-on-One AI & Internet Training',
                 'service1-desc': 'Personalized technology instruction for seniors in Côte Saint-Luc:',
-                'service1-item1': 'Master ChatGPT & AI writing tools',
-                'service1-item2': 'Create AI-generated images',
-                'service1-item3': 'Email safety & scam protection',
-                'service1-item4': 'Learn to use smartphones & tablets',
-                'service1-item5': 'Video calls with family',
-                'service1-item6': 'Online banking safely',
+                'service1-item1': 'Master ChatGPT & AI writing tools', 'service1-item2': 'Create AI-generated images',
+                'service1-item3': 'Email safety & scam protection', 'service1-item4': 'Learn to use smartphones & tablets',
+                'service1-item5': 'Video calls with family', 'service1-item6': 'Online banking safely',
                 'service2-title': 'Senior Group Workshops in CSL',
                 'service2-desc': 'Learn AI and internet skills with other seniors in Côte Saint-Luc:',
-                'service2-item1': 'Small groups (2-4 people)',
-                'service2-item2': '90-minute technology sessions',
-                'service2-item3': 'Share experiences together',
-                'service2-item4': 'More affordable option',
-                'service2-item5': 'Build new friendships',
-                'service2-item6': 'Progress as a group',
+                'service2-item1': 'Small groups (2-4 people)', 'service2-item2': '90-minute technology sessions',
+                'service2-item3': 'Share experiences together', 'service2-item4': 'More affordable option',
+                'service2-item5': 'Build new friendships', 'service2-item6': 'Progress as a group',
                 'service3-title': 'Flexible Learning Options',
                 'service3-desc': 'AI and technology help that fits your schedule and comfort level:',
-                'service3-item1': 'In-home visits in Côte Saint-Luc',
-                'service3-item2': 'Online sessions via video call',
-                'service3-item3': 'Learn at your own pace',
-                'service3-item4': 'No question too simple',
-                'service3-item5': 'Real-world internet skills',
-                'service3-item6': 'Follow-up support included',
+                'service3-item1': 'In-home visits in Côte Saint-Luc', 'service3-item2': 'Online sessions via video call',
+                'service3-item3': 'Learn at your own pace', 'service3-item4': 'No question too simple',
+                'service3-item5': 'Real-world internet skills', 'service3-item6': 'Follow-up support included',
                 'pricing-title': 'Pricing',
                 'pricing-subtitle': 'Affordable AI and technology training for seniors in Côte Saint-Luc. All prices in CAD. No hidden fees.',
-                'pricing-single': 'Single Session',
-                'pricing-single-details': 'per hour',
-                'pricing-single-online': 'Online',
-                'pricing-single-home': 'In-home',
+                'pricing-single': 'Single Session', 'pricing-single-details': 'per hour',
+                'pricing-single-online': 'Online', 'pricing-single-home': 'In-home',
                 'pricing-single-note': 'Perfect for trying out lessons',
-                'pricing-starter': 'Starter Package',
-                'pricing-starter-details': '5 hours • Save $25',
-                'pricing-starter-rate': 'Just $55/hour',
-                'pricing-starter-note': 'Great for building confidence over multiple sessions',
-                'pricing-complete': 'Complete Package',
-                'pricing-complete-details': '10 hours • Save $100',
-                'pricing-complete-rate': 'Only $50/hour',
-                'pricing-complete-note': 'Comprehensive learning for mastering new skills',
-                'pricing-group': 'Group Workshop',
-                'pricing-group-details': 'per person',
-                'pricing-group-duration': '90 minutes',
-                'pricing-group-size': '2-4 people (max 6)',
+                'pricing-starter': 'Starter Package', 'pricing-starter-details': '5 hours • Save $25',
+                'pricing-starter-rate': 'Just $55/hour', 'pricing-starter-note': 'Great for building confidence over multiple sessions',
+                'pricing-complete': 'Complete Package', 'pricing-complete-details': '10 hours • Save $100',
+                'pricing-complete-rate': 'Only $50/hour', 'pricing-complete-note': 'Comprehensive learning for mastering new skills',
+                'pricing-group': 'Group Workshop', 'pricing-group-details': 'per person',
+                'pricing-group-duration': '90 minutes', 'pricing-group-size': '2-4 people (max 6)',
                 'pricing-group-note': 'Learn together, save money',
-                'badge-best': 'Best Value',
-                'badge-popular': 'Most Popular',
+                'badge-best': 'Best Value', 'badge-popular': 'Most Popular',
                 'faq-title': 'Frequently Asked Questions',
                 'faq-subtitle': 'Everything you need to know about starting your AI journey.',
                 'faq-q1': 'Do I need any prior technology experience?',
@@ -1454,41 +598,37 @@
                 'faq-a2': 'Yes, safety is my top priority. We cover scam protection and privacy settings in every lesson to keep you safe.',
                 'faq-q3': 'Do you come to my house?',
                 'faq-a3': 'Yes, I provide in-home visits throughout Côte Saint-Luc and surrounding areas for a comfortable learning experience.',
-                'about-title': 'About Robert',
-                'about-subtitle': 'Your local AI and technology instructor serving seniors in Côte Saint-Luc, Quebec.',
+                'about-title': 'About Robert', 'about-subtitle': 'Your local AI and technology instructor serving seniors in Côte Saint-Luc, Quebec.',
                 'about-heading': 'Meet Robert Simon',
                 'about-p1': "I'm a dedicated AI and technology instructor helping seniors in Côte Saint-Luc discover that technology and artificial intelligence aren't things to fear—they're tools for staying connected, independent, and engaged with the world around you.",
                 'about-p2': "With over 25 years of experience in digital innovation and AI implementation at major organizations like Bell, I now focus on helping seniors in our community master technology at their own pace. I understand that learning new technology and AI tools like ChatGPT can feel overwhelming. The buttons, the menus, the constant updates—it's a lot. That's exactly why I specialize in patient, step-by-step technology training right here in Côte Saint-Luc.",
                 'about-p3': "Whether you want to use ChatGPT to help write emails, learn to spot online scams, master video calling with family, or simply feel more confident using the internet and your smartphone, I'm here for you every step of the way. I provide personalized technology help for seniors throughout Côte Saint-Luc and surrounding Montreal areas.",
                 'about-link': '🌐 Learn More About My Work in AI & Digital Innovation',
-                'exp-teaching': 'Years of Teaching',
-                'exp-passion': 'Passionate About Seniors',
-                'exp-local': 'Local Resident',
-                'exp-ai': 'AI Specialist',
-                'testimonials-title': 'Success Stories',
-                'testimonials-subtitle': 'Be among the first to experience patient, personalized technology training',
-                'test1-text': "I'm building something special in our community—a place where seniors can learn technology without pressure, at exactly the right pace.",
-                'test1-author': '— Be my first student',
-                'test2-text': 'Every student gets my complete attention and dedication. Your questions matter. Your pace matters. You matter.',
-                'test2-author': '— Share your story',
-                'test3-text': "Ready to discover technology isn't scary? Let's start with a free call to discuss your goals and create your learning plan.",
-                'test3-author': '— Start today',
+                'exp-teaching': 'Years of Teaching', 'exp-passion': 'Passionate About Seniors',
+                'exp-local': 'Local Resident', 'exp-ai': 'AI Specialist',
                 'contact-title': 'Contact',
                 'contact-subtitle': 'Get AI and technology help in Côte Saint-Luc today. Fill out the form below or email me directly for personalized senior training.',
                 'contact-heading': 'AI & Technology Training in Côte Saint-Luc & Surrounding Areas',
                 'contact-call-note': 'Call anytime for questions or to schedule your free discovery call',
-                'form-name': 'Your Name',
-                'form-email': 'Email Address',
-                'form-phone': 'Phone Number',
+                'form-name': 'Your Name', 'form-email': 'Email Address', 'form-phone': 'Phone Number',
                 'form-interest': "I'm Interested In",
-                'form-goals': 'Your Goals (Optional)',
-                'form-goals-placeholder': "Tell me what you'd like to learn...",
-                'form-submit': 'Send Message',
-                'form-option-choose': 'Choose an option...',
-                'form-option-online': 'One-on-One (Online)',
-                'form-option-home': 'One-on-One (In-Home)',
-                'form-option-group': 'Group Workshop',
-                'form-option-call': 'Free Discovery Call',
+                'form-referral': 'How Did You Hear About Me?',
+                'form-optional': 'Optional',
+                'form-referral-choose': 'Choose an option...',
+                'form-referral-google': 'Google Search',
+                'form-referral-friend': 'Friend or Family',
+                'form-referral-neighbour': 'Neighbour',
+                'form-referral-csl': 'CSL Community Board / Bulletin',
+                'form-referral-facebook': 'Facebook',
+                'form-referral-linkedin': 'LinkedIn',
+                'form-referral-place-of-worship': 'Synagogue / Church / Place of Worship',
+                'form-referral-rec': 'CSL Recreation Centre',
+                'form-referral-health': "Doctor's Office / Pharmacy",
+                'form-referral-other': 'Other',
+                'form-goals': 'Your Goals (Optional)', 'form-goals-placeholder': "Tell me what you'd like to learn...",
+                'form-submit': 'Send Message', 'form-option-choose': 'Choose an option...',
+                'form-option-online': 'One-on-One (Online)', 'form-option-home': 'One-on-One (In-Home)',
+                'form-option-group': 'Group Workshop', 'form-option-call': 'Free Discovery Call',
                 'form-option-undecided': "Not sure - let's discuss!",
                 'free-call-title': '🎁 Free 30-Minute Discovery Call',
                 'free-call-text': "Let's chat about your goals with no pressure or obligation",
@@ -1498,115 +638,85 @@
                 'footer-services': 'ChatGPT lessons • Internet safety • Online skills • Email security',
                 'footer-rights': 'All rights reserved.'
             },
-                        fr: {
-                'nav-home': 'Accueil',
-                'nav-services': 'Services',
-                'nav-pricing': 'Tarifs',
-                'nav-faq': 'FAQ',
-                'nav-about': 'À Propos',
-                'nav-contact': 'Contact',
+            fr: {
+                'nav-home': 'Accueil', 'nav-services': 'Services', 'nav-pricing': 'Tarifs',
+                'nav-faq': 'FAQ', 'nav-about': 'À Propos', 'nav-contact': 'Contact',
                 'hero-title': 'Accompagnement en IA et Technologie pour Aînés à Côte Saint-Luc',
-                'hero-tagline': 'Une approche patiente et personnalisée pour maîtriser l\'IA et le monde numérique à Côte Saint-Luc, Québec.<br>Apprenez ChatGPT, la sécurité en ligne et les outils digitaux essentiels en toute confiance.',
+                'hero-tagline': "Une approche patiente et personnalisée pour maîtriser l'IA et le monde numérique à Côte Saint-Luc, Québec.<br>Apprenez ChatGPT, la sécurité en ligne et les outils digitaux essentiels en toute confiance.",
                 'hero-cta': 'Réservez votre appel découverte gratuit',
-                'stat-local': 'Local',
-                'stat-local-label': 'Côte Saint-Luc',
-                'stat-expert': 'Expert',
-                'stat-expert-label': "Années d'Expérience",
-                'stat-patient': 'Patient',
-                'stat-patient-label': 'Cours Particuliers',
-                'stat-free': 'Gratuit',
-                'stat-free-label': 'Appel Découverte',
+                'stat-local': 'Local', 'stat-local-label': 'Côte Saint-Luc',
+                'stat-expert': 'Expert', 'stat-expert-label': "Années d'Expérience",
+                'stat-patient': 'Patient', 'stat-patient-label': 'Cours Particuliers',
+                'stat-free': 'Gratuit', 'stat-free-label': 'Appel Découverte',
                 'services-title': 'Nos Services',
                 'services-subtitle': "Un accompagnement sur mesure pour les aînés de Côte Saint-Luc. Sans jargon, avec patience—des compétences pratiques pour rester connecté et autonome en ligne.",
                 'service1-title': "Cours Particuliers IA et Internet",
                 'service1-desc': 'Instruction technologique sur mesure à Côte Saint-Luc :',
-                'service1-item1': "Maîtriser ChatGPT et les outils d'écriture IA",
-                'service1-item2': 'Créer des images par intelligence artificielle',
-                'service1-item3': 'Sécurité des courriels et protection contre les fraudes',
-                'service1-item4': 'Utilisation des smartphones et tablettes',
-                'service1-item5': 'Appels vidéo avec vos proches',
-                'service1-item6': 'Gestion sécurisée de vos comptes en ligne',
+                'service1-item1': "Maîtriser ChatGPT et les outils d'écriture IA", 'service1-item2': 'Créer des images par intelligence artificielle',
+                'service1-item3': 'Sécurité des courriels et protection contre les fraudes', 'service1-item4': 'Utilisation des smartphones et tablettes',
+                'service1-item5': 'Appels vidéo avec vos proches', 'service1-item6': 'Gestion sécurisée de vos comptes en ligne',
                 'service2-title': 'Ateliers de Groupe à Côte Saint-Luc',
                 'service2-desc': "Apprenez l'IA et le numérique avec d'autres membres de la communauté :",
-                'service2-item1': 'Petits groupes (2 à 4 personnes)',
-                'service2-item2': 'Séances technologiques de 90 minutes',
-                'service2-item3': 'Partage d\'expériences conviviales',
-                'service2-item4': 'Une option plus abordable',
-                'service2-item5': 'Rencontrez vos voisins',
-                'service2-item6': 'Progressez ensemble',
+                'service2-item1': 'Petits groupes (2 à 4 personnes)', 'service2-item2': 'Séances technologiques de 90 minutes',
+                'service2-item3': "Partage d'expériences conviviales", 'service2-item4': 'Une option plus abordable',
+                'service2-item5': 'Rencontrez vos voisins', 'service2-item6': 'Progressez ensemble',
                 'service3-title': "Flexibilité de l'Apprentissage",
                 'service3-desc': "Une aide adaptée à votre emploi du temps et à votre confort :",
-                'service3-item1': 'Visites à domicile à Côte Saint-Luc',
-                'service3-item2': 'Séances en ligne par appel vidéo',
-                'service3-item3': 'Apprentissage à votre propre rythme',
-                'service3-item4': 'Aucune question n\'est trop simple',
-                'service3-item5': 'Compétences concrètes pour le quotidien',
-                'service3-item6': 'Suivi et soutien inclus',
+                'service3-item1': 'Visites à domicile à Côte Saint-Luc', 'service3-item2': 'Séances en ligne par appel vidéo',
+                'service3-item3': 'Apprentissage à votre propre rythme', 'service3-item4': "Aucune question n'est trop simple",
+                'service3-item5': 'Compétences concrètes pour le quotidien', 'service3-item6': 'Suivi et soutien inclus',
                 'pricing-title': 'Tarifs',
                 'pricing-subtitle': 'Formation de qualité et abordable pour les aînés à Côte Saint-Luc. Prix en CAD. Aucun frais caché.',
-                'pricing-single': 'Séance Individuelle',
-                'pricing-single-details': 'par heure',
-                'pricing-single-online': 'En ligne',
-                'pricing-single-home': 'À domicile',
-                'pricing-single-note': 'Idéal pour s\'initier aux leçons',
-                'pricing-starter': 'Forfait Débutant',
-                'pricing-starter-details': '5 heures • Économisez 25$',
-                'pricing-starter-rate': 'Seulement 55$/heure',
-                'pricing-starter-note': 'Parfait pour bâtir votre confiance au fil des séances',
-                'pricing-complete': 'Forfait Complet',
-                'pricing-complete-details': '10 heures • Économisez 100$',
-                'pricing-complete-rate': 'Seulement 50$/heure',
-                'pricing-complete-note': 'Un apprentissage complet pour maîtriser de nouvelles compétences',
-                'pricing-group': 'Atelier de Groupe',
-                'pricing-group-details': 'par personne',
-                'pricing-group-duration': '90 minutes',
-                'pricing-group-size': '2 à 4 personnes (max 6)',
+                'pricing-single': 'Séance Individuelle', 'pricing-single-details': 'par heure',
+                'pricing-single-online': 'En ligne', 'pricing-single-home': 'À domicile',
+                'pricing-single-note': "Idéal pour s'initier aux leçons",
+                'pricing-starter': 'Forfait Débutant', 'pricing-starter-details': '5 heures • Économisez 25$',
+                'pricing-starter-rate': 'Seulement 55$/heure', 'pricing-starter-note': 'Parfait pour bâtir votre confiance au fil des séances',
+                'pricing-complete': 'Forfait Complet', 'pricing-complete-details': '10 heures • Économisez 100$',
+                'pricing-complete-rate': 'Seulement 50$/heure', 'pricing-complete-note': 'Un apprentissage complet pour maîtriser de nouvelles compétences',
+                'pricing-group': 'Atelier de Groupe', 'pricing-group-details': 'par personne',
+                'pricing-group-duration': '90 minutes', 'pricing-group-size': '2 à 4 personnes (max 6)',
                 'pricing-group-note': 'Apprenez ensemble et économisez',
-                'badge-best': 'Meilleure Offre',
-                'badge-popular': 'Le Plus Demandé',
+                'badge-best': 'Meilleure Offre', 'badge-popular': 'Le Plus Demandé',
                 'faq-title': 'Questions Fréquentes',
                 'faq-subtitle': "Tout ce qu'il faut savoir pour commencer votre parcours avec l'IA.",
                 'faq-q1': "Faut-il avoir des connaissances préalables en technologie ?",
-                'faq-a1': 'Absolument pas. Mes cours sont conçus pour les débutants. Nous commençons là où vous vous sentez à l\'aise.',
-                'faq-q2': 'Est-il sécuritaire d\'utiliser ChatGPT et l\'IA ?',
+                'faq-a1': "Absolument pas. Mes cours sont conçus pour les débutants. Nous commençons là où vous vous sentez à l'aise.",
+                'faq-q2': "Est-il sécuritaire d'utiliser ChatGPT et l'IA ?",
                 'faq-a2': 'Oui, la sécurité est ma priorité. Nous couvrons la protection contre les fraudes et la confidentialité dans chaque leçon.',
                 'faq-q3': 'Vous déplacez-vous à domicile ?',
                 'faq-a3': "Oui, j'effectue des visites à domicile partout à Côte Saint-Luc et dans les environs pour votre confort.",
-                'about-title': 'À Propos de Robert',
-                'about-subtitle': "Votre instructeur local dévoué aux aînés de Côte Saint-Luc, Québec.",
+                'about-title': 'À Propos de Robert', 'about-subtitle': "Votre instructeur local dévoué aux aînés de Côte Saint-Luc, Québec.",
                 'about-heading': 'Faites la connaissance de Robert Simon',
                 'about-p1': "Je suis un instructeur passionné qui aide les aînés de Côte Saint-Luc à découvrir que la technologie et l'intelligence artificielle ne sont pas à craindre—ce sont des outils précieux pour rester connecté, indépendant et actif dans le monde d'aujourd'hui.",
                 'about-p2': "Fort de plus de 25 ans d'expérience en innovation numérique et en IA au sein d'organisations comme Bell, je me consacre désormais à aider notre communauté à maîtriser ces outils à leur propre rythme. Je comprends que l'apprentissage de ChatGPT ou des nouveaux smartphones puisse paraître intimidant. C'est précisément pour cela que je propose un accompagnement patient, étape par étape, ici même à Côte Saint-Luc.",
                 'about-p3': "Que vous souhaitiez utiliser ChatGPT pour vos courriels, apprendre à éviter les arnaques en ligne ou simplement passer des appels vidéo avec vos petits-enfants, je suis à vos côtés. J'offre un soutien technologique personnalisé à Côte Saint-Luc et dans les quartiers environnants de Montréal.",
                 'about-link': "🌐 En savoir plus sur mon parcours en innovation numérique",
-                'exp-teaching': "Années d'Enseignement",
-                'exp-passion': 'Dévoué à nos Aînés',
-                'exp-local': 'Résident de la Communauté',
-                'exp-ai': "Spécialiste en IA",
-                'testimonials-title': 'Témoignages',
-                'testimonials-subtitle': 'Soyez parmi les premiers à profiter d\'un accompagnement patient et personnalisé',
-                'test1-text': "Je bâtis un service unique pour notre communauté—un lieu où les aînés apprennent sans pression et à leur propre rythme.",
-                'test1-author': '— Soyez mon premier élève',
-                'test2-text': "Chaque élève bénéficie de toute mon attention. Vos questions sont importantes. Votre rythme est le mien. Vous êtes ma priorité.",
-                'test2-author': '— Partagez votre expérience',
-                'test3-text': "Prêt à découvrir que le numérique est à votre portée ? Commençons par un simple appel pour définir vos objectifs.",
-                'test3-author': "— Commencez aujourd'hui",
+                'exp-teaching': "Années d'Enseignement", 'exp-passion': 'Dévoué à nos Aînés',
+                'exp-local': 'Résident de la Communauté', 'exp-ai': "Spécialiste en IA",
                 'contact-title': 'Contact',
                 'contact-subtitle': "Besoin d'aide avec l'IA ou la technologie à Côte Saint-Luc ? Remplissez le formulaire ci-dessous ou envoyez-moi un courriel.",
                 'contact-heading': 'Accompagnement à Côte Saint-Luc et ses Environs',
                 'contact-call-note': "Appelez-moi pour toute question ou pour fixer votre appel découverte gratuit",
-                'form-name': 'Votre Nom',
-                'form-email': 'Adresse Courriel',
-                'form-phone': 'Numéro de Téléphone',
+                'form-name': 'Votre Nom', 'form-email': 'Adresse Courriel', 'form-phone': 'Numéro de Téléphone',
                 'form-interest': "Je suis intéressé(e) par",
-                'form-goals': 'Vos objectifs (Optionnel)',
-                'form-goals-placeholder': "Dites-moi ce que vous aimeriez apprendre...",
-                'form-submit': 'Envoyer le message',
-                'form-option-choose': 'Choisissez une option...',
-                'form-option-online': 'Cours Individuel (En ligne)',
-                'form-option-home': 'Cours Individuel (À domicile)',
-                'form-option-group': 'Atelier de Groupe',
-                'form-option-call': 'Appel Découverte Gratuit',
+                'form-referral': 'Comment avez-vous entendu parler de moi ?',
+                'form-optional': 'Optionnel',
+                'form-referral-choose': 'Choisissez une option...',
+                'form-referral-google': 'Recherche Google',
+                'form-referral-friend': 'Ami(e) ou famille',
+                'form-referral-neighbour': 'Voisin(e)',
+                'form-referral-csl': 'Babillard / Bulletin communautaire de CSL',
+                'form-referral-facebook': 'Facebook',
+                'form-referral-linkedin': 'LinkedIn',
+                'form-referral-place-of-worship': 'Synagogue / Église / Lieu de culte',
+                'form-referral-rec': 'Centre récréatif de CSL',
+                'form-referral-health': 'Cabinet médical / Pharmacie',
+                'form-referral-other': 'Autre',
+                'form-goals': 'Vos objectifs (Optionnel)', 'form-goals-placeholder': "Dites-moi ce que vous aimeriez apprendre...",
+                'form-submit': 'Envoyer le message', 'form-option-choose': 'Choisissez une option...',
+                'form-option-online': 'Cours Individuel (En ligne)', 'form-option-home': 'Cours Individuel (À domicile)',
+                'form-option-group': 'Atelier de Groupe', 'form-option-call': 'Appel Découverte Gratuit',
                 'form-option-undecided': 'Pas encore certain(e) - discutons-en !',
                 'free-call-title': '🎁 Appel Découverte de 30 Minutes Offert',
                 'free-call-text': 'Discutons de vos besoins, sans aucun engagement',
@@ -1617,67 +727,46 @@
                 'footer-rights': 'Tous droits réservés.'
             }
         };
-        
+
         function getCurrentLanguage() {
             const urlParams = new URLSearchParams(window.location.search);
             const urlLang = urlParams.get('lang');
-            if (urlLang && (urlLang === 'en' || urlLang === 'fr')) {
-                return urlLang;
-            }
+            if (urlLang && (urlLang === 'en' || urlLang === 'fr')) return urlLang;
             return localStorage.getItem('language') || 'en';
         }
-        
+
         function setLanguage(lang) {
             localStorage.setItem('language', lang);
             const url = new URL(window.location);
             url.searchParams.set('lang', lang);
             window.history.pushState({}, '', url);
-            
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    element.innerHTML = translations[lang][key];
-                }
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) el.innerHTML = translations[lang][key];
             });
-            
             const textarea = document.querySelector('[data-i18n-placeholder]');
             if (textarea) {
                 const key = textarea.getAttribute('data-i18n-placeholder');
-                if (translations[lang][key]) {
-                    textarea.placeholder = translations[lang][key];
-                }
+                if (translations[lang][key]) textarea.placeholder = translations[lang][key];
             }
-            
-            document.querySelectorAll('select option[data-i18n]').forEach(option => {
-                const key = option.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    option.textContent = translations[lang][key];
-                }
+            document.querySelectorAll('select option[data-i18n]').forEach(opt => {
+                const key = opt.getAttribute('data-i18n');
+                if (translations[lang][key]) opt.textContent = translations[lang][key];
             });
-            
             document.getElementById('language-select').value = lang;
-            
             if (lang === 'fr') {
                 document.title = 'Formation en IA et Technologie pour Aînés à Côte Saint-Luc | AI with Robert';
-                document.querySelector('meta[name="description"]').setAttribute('content', 
-                    'Formation patiente en IA et technologie pour aînés à Côte Saint-Luc. Apprenez ChatGPT, la sécurité en ligne, la sécurité des courriels et les bases internet. Leçons individuelles personnalisées à votre rythme. Appel découverte gratuit.');
+                document.querySelector('meta[name="description"]').setAttribute('content', 'Formation patiente en IA et technologie pour aînés à Côte Saint-Luc. Apprenez ChatGPT, la sécurité en ligne, la sécurité des courriels et les bases internet. Leçons individuelles personnalisées à votre rythme. Appel découverte gratuit.');
                 document.documentElement.lang = 'fr';
             } else {
                 document.title = 'AI & Technology Training for Seniors in Côte Saint-Luc | AI with Robert';
-                document.querySelector('meta[name="description"]').setAttribute('content', 
-                    'Patient AI and technology training for seniors in Côte Saint-Luc. Learn ChatGPT, online safety, email security, and internet basics. Personalized one-on-one lessons at your own pace. Free discovery call.');
+                document.querySelector('meta[name="description"]').setAttribute('content', 'Patient AI and technology training for seniors in Côte Saint-Luc. Learn ChatGPT, online safety, email security, and internet basics. Personalized one-on-one lessons at your own pace. Free discovery call.');
                 document.documentElement.lang = 'en';
             }
         }
-     
-        // Make setLanguage globally available for inline onchange
         window.setLanguage = setLanguage;
-        
-        window.addEventListener('DOMContentLoaded', () => {
-            const currentLang = getCurrentLanguage();
-            setLanguage(currentLang);
-        });
-        
+        window.addEventListener('DOMContentLoaded', () => setLanguage(getCurrentLanguage()));
+
         // Form logic
         const submitBtn = document.getElementById('submit-btn');
         const formHint = document.getElementById('form-hint');
@@ -1687,88 +776,64 @@
             'phone': document.getElementById('phone'),
             'session-type': document.getElementById('session-type')
         };
-        
         function checkFormValidity() {
-            let allFilled = true;
-            let missingFields = [];
-            
+            let allFilled = true, missingFields = [];
             for (let fieldName in requiredFields) {
                 const field = requiredFields[fieldName];
                 if (!field.value || field.value.trim() === '') {
                     allFilled = false;
-                    const label = field.previousElementSibling.textContent.replace(' *', '');
-                    missingFields.push(label);
+                    missingFields.push(field.previousElementSibling.textContent.replace(' *', ''));
                 } else if (field.type === 'tel' && !field.value.match(/[0-9]{3}-[0-9]{3}-[0-9]{4}/)) {
-                    allFilled = false;
-                    missingFields.push('Valid Phone Number');
+                    allFilled = false; missingFields.push('Valid Phone Number');
                 } else if (field.type === 'email' && !field.validity.valid) {
-                    allFilled = false;
-                    missingFields.push('Valid Email');
+                    allFilled = false; missingFields.push('Valid Email');
                 }
             }
-            
             submitBtn.disabled = !allFilled;
-            if (!allFilled && missingFields.length > 0) {
-                formHint.textContent = `Please complete: ${missingFields.join(', ')}`;
-            }
+            if (!allFilled && missingFields.length > 0) formHint.textContent = `Please complete: ${missingFields.join(', ')}`;
             return allFilled;
         }
-        
         for (let fieldName in requiredFields) {
-            const field = requiredFields[fieldName];
-            field.addEventListener('input', () => {
-                checkFormValidity();
-                formHint.style.display = 'none';
-                field.classList.remove('error');
+            requiredFields[fieldName].addEventListener('input', () => {
+                checkFormValidity(); formHint.style.display = 'none';
+                requiredFields[fieldName].classList.remove('error');
                 const errorMsg = document.getElementById(`${fieldName}-error`);
                 if (errorMsg) errorMsg.classList.remove('show');
             });
         }
-        
         submitBtn.addEventListener('mouseenter', () => { if (submitBtn.disabled) { checkFormValidity(); formHint.style.display = 'block'; } });
         submitBtn.addEventListener('mouseleave', () => { formHint.style.display = 'none'; });
-        
-        document.getElementById('phone').addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length <= 3) e.target.value = value;
-            else if (value.length <= 6) e.target.value = value.slice(0, 3) + '-' + value.slice(3);
-            else e.target.value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 10);
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length <= 3) e.target.value = v;
+            else if (v.length <= 6) e.target.value = v.slice(0,3) + '-' + v.slice(3);
+            else e.target.value = v.slice(0,3) + '-' + v.slice(3,6) + '-' + v.slice(6,10);
         });
-
         function checkFormSuccess() {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('submitted') === 'true') {
                 const form = document.querySelector('.contact-form');
                 const successMsg = document.getElementById('success-message');
                 if (form && successMsg) {
-                    form.style.display = 'none';
-                    successMsg.style.display = 'block';
-                    setTimeout(() => { successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300);
+                    form.style.display = 'none'; successMsg.style.display = 'block';
+                    setTimeout(() => successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
                 }
             }
         }
         window.addEventListener('load', checkFormSuccess);
-        
-        // Navigation Highlight
+
+        // Nav highlight
         const sections = document.querySelectorAll('section, .hero');
         const navLinks = document.querySelectorAll('nav a');
         function highlightNavigation() {
             let current = '';
             const scrollPos = window.scrollY + 250;
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
-                }
-            });
+            sections.forEach(s => { if (scrollPos >= s.offsetTop && scrollPos < s.offsetTop + s.clientHeight) current = s.getAttribute('id'); });
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + current) link.classList.add('active');
             });
         }
-        
-        // Call on scroll AND on initial page load
         window.addEventListener('scroll', highlightNavigation);
         window.addEventListener('DOMContentLoaded', highlightNavigation);
     </script>
