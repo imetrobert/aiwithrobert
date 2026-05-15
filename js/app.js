@@ -143,44 +143,10 @@ function highlightNav() {
 }
 window.addEventListener('scroll', highlightNav);
 
-/* ── Intersection Observer: lazy-load Google Map ──
-   The iframe uses data-src so it doesn't request Google's
-   servers until the user scrolls near the contact section.
-   Saves ~300KB on page load for users who never scroll that far. */
-function initMapLazyLoad() {
-    const wrap = document.querySelector('.map-wrap');
-    if (!wrap) return;
-    const iframe = wrap.querySelector('iframe[data-src]');
-    if (!iframe) return;
-
-    if (!('IntersectionObserver' in window)) {
-        // Fallback for very old browsers — load immediately
-        iframe.src = iframe.getAttribute('data-src');
-        return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                iframe.src = iframe.getAttribute('data-src');
-                // Remove placeholder text once iframe loads
-                iframe.addEventListener('load', () => {
-                    const placeholder = wrap.querySelector('.map-placeholder');
-                    if (placeholder) placeholder.style.display = 'none';
-                }, { once: true });
-                observer.unobserve(iframe);
-            }
-        });
-    }, { rootMargin: '300px' }); // Start loading 300px before visible
-
-    observer.observe(iframe);
-}
-
 /* ── Init ── */
 window.addEventListener('DOMContentLoaded', () => {
     setLanguage(getCurrentLanguage());
     checkFormValidity();
     highlightNav();
     checkFormSuccess();
-    initMapLazyLoad();
 });
