@@ -61,6 +61,8 @@ function setLanguage(lang) {
             'Robert Simon offers patient, one-on-one AI tutoring and technology training for seniors in C\u00f4te Saint-Luc, QC. Learn ChatGPT, online safety and email security. AI workshops available. Free 30-min discovery call. 514-250-8491.');
         document.documentElement.lang = 'en';
     }
+    // Re-render form hint in correct language if visible
+    checkFormValidity();
 }
 window.setLanguage = setLanguage;
 
@@ -89,9 +91,14 @@ function checkFormValidity() {
     }
     submitBtn.disabled = !ok;
     formHint.style.display = ok ? 'none' : 'block';
-    if (!ok) formHint.textContent = missing.length
-        ? 'Still needed: ' + missing.join(', ')
-        : 'Please fill in all required (*) fields above';
+    if (!ok) {
+        const lang = getCurrentLanguage();
+        const prefix  = lang === 'fr' ? 'Champs manquants : ' : 'Still needed: ';
+        const fallback = lang === 'fr'
+            ? 'Veuillez remplir tous les champs obligatoires (*) ci-dessus'
+            : 'Please fill in all required (*) fields above';
+        formHint.textContent = missing.length ? prefix + missing.join(', ') : fallback;
+    }
     return ok;
 }
 
