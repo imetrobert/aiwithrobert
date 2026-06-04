@@ -16,12 +16,15 @@
     <meta name="keywords" content="AI tutoring Côte Saint-Luc, AI training Côte Saint-Luc, AI workshops Côte Saint-Luc, technology help seniors Côte Saint-Luc, ChatGPT lessons seniors, AI tutor Montreal, senior tech support CSL, online safety seniors, email security training, technology instructor seniors Quebec">
     <meta name="author" content="Robert Simon - AI with Robert">
     <meta name="robots" content="index, follow">
-    <meta name="last-modified" content="2026-05">
+    <meta name="last-modified" content="2026-06">
     <link rel="canonical" href="https://aiwithrobert.com/">
     <link rel="alternate" hreflang="en" href="https://aiwithrobert.com/">
     <link rel="alternate" hreflang="fr" href="https://aiwithrobert.com/?lang=fr">
     <!-- Ties this site to your verified GBP -->
     <link rel="me" href="https://maps.app.goo.gl/XCDgdcPYrzbKkA5C7">
+    <!-- OPT: preconnect for GTM/GA4 to reduce DNS lookup latency -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
     <!-- Preload CSS off critical path -->
     <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
@@ -311,7 +314,8 @@
                     </div>
                     <div class="form-group">
                         <label for="phone"><span data-i18n="form-phone">Phone Number</span> *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="514-555-1234" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" autocomplete="tel" title="Format: XXX-XXX-XXXX">
+                        <!-- FIX: anchored pattern so extra digits no longer bypass validation -->
+                        <input type="tel" id="phone" name="phone" required placeholder="514-555-1234" pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$" autocomplete="tel" title="Format: XXX-XXX-XXXX">
                         <div class="error-message" id="phone-error">Please enter a valid phone number (XXX-XXX-XXXX)</div>
                     </div>
                     <div class="form-group">
