@@ -1,1 +1,57 @@
+name: Build Assets
 
+# Runs on every push to main.
+# Concatenates source JS and CSS files into the single files the HTML loads.
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'js/**'
+      - 'css/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # needed to push the built files back
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # ── Bundle JS ──────────────────────────────────────────────────────────
+      # Order matters: translations must load before language.js uses them,
+      # and main.js must be last (it calls functions from all other modules).
+      - name: Concatenate JS source files → js/bundle.js
+        run: |
+          cat \
+            js/i18n.js \
+            js/language.js \
+            js/form.js \
+            js/ui.js \
+            js/main.js \
+            > js/bundle.js
+
+      # ── Bundle CSS ─────────────────────────────────────────────────────────
+      # Order: base first (reset/variables), then components, responsive last.
+      - name: Concatenate CSS source files → css/styles.css
+        run: |
+          cat \
+            css/base.css \
+            css/nav.css \
+            css/hero.css \
+            css/sections.css \
+            css/footer.css \
+            css/responsive.css \
+            > css/styles.css
+
+      # ── Commit built files back to repo ───────────────────────────────────
+      - name: Commit and push bundle.js + styles.css
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add js/bundle.js css/styles.css
+          git diff --staged --quiet || git commit -m "chore: rebuild bundle.js and styles.css [skip ci]"
+          git push
