@@ -2,7 +2,7 @@
  * i18n.js — All site translations
  * ─────────────────────────────────────────────────────────────────────────────
  * THIS IS YOUR EDITORIAL FILE.
- * To update text on the site, edit the strings below and push to GitHub.
+ * To update text on the site,edit the strings below and push to GitHub.
  * English strings are under `en:`, French strings are under `fr:`.
  * ─────────────────────────────────────────────────────────────────────────────
  */
