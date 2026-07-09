@@ -16,6 +16,7 @@ const translations = {
     'nav-pricing':  'Pricing',
     'nav-faq':      'FAQ',
     'nav-about':    'About Robert',
+    'nav-testimonials': 'Testimonials',
     'nav-contact':  'Contact',
 
     /* ── Hero ── */
@@ -107,6 +108,20 @@ const translations = {
     'exp-passion':  'Passionate About Seniors',
     'exp-local':    'Local Resident',
     'exp-ai':       'AI Specialist',
+
+    /* ── Testimonials section ── */
+    'testimonials-title':    'What People Are Saying',
+    'testimonials-subtitle': 'Real feedback from workshops and one-on-one sessions with seniors in Côte Saint-Luc.',
+
+    'testimonial1-quote': `Mr. Simon delivered an engaging, informative, and highly practical introduction to artificial intelligence that resonated with our senior participants. He clearly explained the differences between AI tools and traditional search engines like Google, demonstrating how AI can be used effectively for everyday tasks while emphasizing privacy, safety, and thoughtful prompting.
+                    <br><br>
+                    What stood out most was Robert's ability to adapt the workshop to the experience level of the audience. Participants who were already somewhat comfortable with AI asked thoughtful, in-depth questions, and Robert responded with clear, patient, and detailed explanations. He skillfully guided discussions on topics such as AI neutrality, chatbots, and responsible use, keeping conversations informative and respectful.
+                    <br><br>
+                    The workshop was highly interactive, with participants experimenting with prompts and exploring creative and practical applications—from composing a poem in Yiddish to writing a personalized wedding message. The enthusiastic participation and numerous questions throughout the session reflected the workshop's success and the value it provided to our community.`,
+    'testimonial1-name':    'Maria Ressina',
+    'testimonial1-role':    'Programming and Community Engagement Coordinator',
+    'testimonial1-org':     'Eleanor London Côte Saint-Luc Public Library',
+    'testimonial1-context': 'Workshop: "Getting Started with AI: A Friendly Introduction for Seniors"',
 
     /* ── Contact section ── */
     'contact-title':     'Contact',
@@ -201,6 +216,7 @@ const translations = {
     'nav-pricing':  'Tarifs',
     'nav-faq':      'FAQ',
     'nav-about':    'À Propos',
+    'nav-testimonials': 'Témoignages',
     'nav-contact':  'Contact',
 
     /* ── Hero ── */
@@ -292,6 +308,20 @@ const translations = {
     'exp-passion':  'Dévoué à nos Aînés',
     'exp-local':    'Résident de la Communauté',
     'exp-ai':       'Spécialiste en IA',
+
+    /* ── Testimonials section ── */
+    'testimonials-title':    'Ce Que Disent Les Participants',
+    'testimonials-subtitle': "Des témoignages réels d'ateliers et de séances individuelles avec des aînés de Côte Saint-Luc.",
+
+    'testimonial1-quote': `M. Simon a offert une introduction à l'intelligence artificielle à la fois captivante, instructive et très pratique, qui a trouvé un écho auprès de nos participants aînés. Il a clairement expliqué les différences entre les outils d'IA et les moteurs de recherche traditionnels comme Google, montrant comment l'IA peut être utilisée efficacement au quotidien, tout en insistant sur la confidentialité, la sécurité et l'importance de bien formuler ses demandes.
+                    <br><br>
+                    Ce qui a le plus marqué, c'est la capacité de Robert à adapter l'atelier au niveau d'expérience de l'auditoire. Les participants déjà à l'aise avec l'IA ont posé des questions approfondies et réfléchies, et Robert y a répondu avec clarté, patience et précision. Il a habilement guidé les discussions sur des sujets comme la neutralité de l'IA, les clavardeurs (chatbots) et l'usage responsable, tout en gardant les échanges informatifs et respectueux.
+                    <br><br>
+                    L'atelier s'est révélé très interactif : les participants ont expérimenté avec des invites (prompts) et exploré des applications créatives et pratiques — de la composition d'un poème en yiddish à la rédaction d'un message de mariage personnalisé. La participation enthousiaste et les nombreuses questions tout au long de la séance témoignent du succès de l'atelier et de sa valeur pour notre communauté.`,
+    'testimonial1-name':    'Maria Ressina',
+    'testimonial1-role':    'Coordinatrice des programmes et de l\u2019engagement communautaire',
+    'testimonial1-org':     'Bibliothèque publique Eleanor London Côte Saint-Luc',
+    'testimonial1-context': 'Atelier : « S\u2019initier à l\u2019IA : une introduction conviviale pour les aînés »',
 
     /* ── Contact section ── */
     'contact-title':     'Contact',
