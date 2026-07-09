@@ -122,6 +122,7 @@ const translations = {
     'testimonial1-role':    'Programming and Community Engagement Coordinator',
     'testimonial1-org':     'Eleanor London Côte Saint-Luc Public Library',
     'testimonial1-context': 'Workshop: "Getting Started with AI: A Friendly Introduction for Seniors"',
+    'testimonial1-gbp-link': 'See this review on Google',
 
     /* ── Contact section ── */
     'contact-title':     'Contact',
@@ -322,6 +323,7 @@ const translations = {
     'testimonial1-role':    'Coordinatrice des programmes et de l\u2019engagement communautaire',
     'testimonial1-org':     'Bibliothèque publique Eleanor London Côte Saint-Luc',
     'testimonial1-context': 'Atelier : « S\u2019initier à l\u2019IA : une introduction conviviale pour les aînés »',
+    'testimonial1-gbp-link': 'Voir cet avis sur Google',
 
     /* ── Contact section ── */
     'contact-title':     'Contact',
