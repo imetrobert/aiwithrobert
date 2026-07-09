@@ -803,7 +803,7 @@ footer p {
 /* ── 1024px — single-column grid layouts ── */
 @media (max-width: 1024px) {
   .services-grid  { grid-template-columns: 1fr; }
-  .pricing-grid   { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid   { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .about-container {
     grid-template-columns: 1fr;
@@ -857,8 +857,15 @@ footer p {
   h2      { font-size: 2.2rem; }
   section { padding: 5rem 1.5rem; }
 
-  /* Pricing */
-  .pricing-grid              { grid-template-columns: repeat(2, 1fr); }
+  /* Pricing
+     FIX: at 2 columns, each card's intrinsic content (the large price
+     text, "BEST VALUE" badge, padding) is wider than a phone screen
+     can fit in half its width. Grid items default to min-width: auto,
+     so the track refused to shrink below that content width — which
+     pushed the whole grid wider than the viewport and forced the
+     horizontal scroll. Stacking to one full-width column removes the
+     squeeze entirely: every card fits, nothing gets cut off. */
+  .pricing-grid              { grid-template-columns: 1fr; }
   .pricing-card.featured     { transform: scale(1); }
 
   /* Stats */
