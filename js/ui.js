@@ -136,16 +136,19 @@ function initNavTapReveal() {
 
   function revealForHash(hash) {
     if (!hash) return;
+    // Only step in when the nav is actually scrollable — on a full-width
+    // nav (desktop/no overflow) there's nothing to center, so don't
+    // trigger an unnecessary no-op scroll animation.
+    if (!wrap.classList.contains('has-overflow')) return;
+
     let targetLink;
     try { targetLink = list.querySelector(`a[href="${hash}"]`); } catch (e) { return; }
     const li = targetLink ? targetLink.closest('li') : null;
     if (!li) return;
 
-    const listRect = list.getBoundingClientRect();
-    const liRect = li.getBoundingClientRect();
-    const fullyVisible = liRect.left >= listRect.left && liRect.right <= listRect.right;
-    if (fullyVisible) return;
-
+    // Always center the active item — not just when it's cut off —
+    // so there's consistently room to reach neighbors on both sides
+    // after tapping something near either edge.
     li.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
   }
 
