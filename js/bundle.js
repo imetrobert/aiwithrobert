@@ -687,31 +687,45 @@ function initNavScrollHint() {
 window.navScrollHint = initNavScrollHint;
 
 /* ── Tap-to-reveal for partially hidden nav items ──
-   If someone taps a nav label that's cut off at the edge of the
-   scrollable nav (e.g. "Testimonials" bleeding off-screen), bring it
-   fully into view by scrolling the nav horizontally, in addition to
-   the normal page jump to that section. This doubles as a second,
-   context-specific cue that the nav scrolls — it's the exact moment
-   someone would otherwise wonder "why is this link cut off?" */
+   If someone taps a link to a section that's cut off at the edge of
+   the scrollable nav (e.g. "Testimonials" bleeding off-screen), bring
+   it fully into view by scrolling the nav horizontally, in addition
+   to the normal page jump to that section. This doubles as a second,
+   context-specific cue that the nav scrolls.
+
+   Driven by the target hash rather than "whatever was clicked": the
+   logo also links to #home but lives outside the scrollable list, so
+   listening only on list links missed it. Listening on every #-link
+   in <nav> and resolving to the matching list item fixes that, and
+   naturally works in reverse too — scrollIntoView shifts the list
+   left or right, whichever direction is actually needed. */
 function initNavTapReveal() {
   const wrap = document.querySelector('.nav-scroll-wrap');
   const list = wrap ? wrap.querySelector('ul') : null;
   if (!list) return;
 
-  list.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      const li = link.closest('li');
-      if (!li) return;
-      // Only step in if the tapped item isn't already fully visible —
-      // avoids an unnecessary nudge when nothing was actually hidden.
-      const listRect = list.getBoundingClientRect();
-      const liRect = li.getBoundingClientRect();
-      const fullyVisible = liRect.left >= listRect.left && liRect.right <= listRect.right;
-      if (fullyVisible) return;
+  function revealForHash(hash) {
+    if (!hash) return;
+    let targetLink;
+    try { targetLink = list.querySelector(`a[href="${hash}"]`); } catch (e) { return; }
+    const li = targetLink ? targetLink.closest('li') : null;
+    if (!li) return;
 
-      li.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    const listRect = list.getBoundingClientRect();
+    const liRect = li.getBoundingClientRect();
+    const fullyVisible = liRect.left >= listRect.left && liRect.right <= listRect.right;
+    if (fullyVisible) return;
+
+    li.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      revealForHash(link.getAttribute('href'));
     });
   });
+
+  window.revealNavItemForHash = revealForHash;
 }
 
 window.navTapReveal = initNavTapReveal;
