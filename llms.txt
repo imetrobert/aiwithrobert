@@ -53,6 +53,16 @@ Online sessions: Available anywhere in Quebec, Canada
 ## Languages
 English, French
 
+## Testimonials
+"Mr. Simon delivered an engaging, informative, and highly practical introduction to
+artificial intelligence that resonated with our senior participants... What stood out
+most was Robert's ability to adapt the workshop to the experience level of the audience...
+The enthusiastic participation and numerous questions throughout the session reflected
+the workshop's success and the value it provided to our community."
+— Maria Ressina, Programming and Community Engagement Coordinator,
+Eleanor London Côte Saint-Luc Public Library
+(Workshop: "Getting Started with AI: A Friendly Introduction for Seniors")
+
 ## Frequently Asked Questions
 Q: Who teaches AI to seniors in Côte Saint-Luc?
 A: Robert Simon of AI with Robert (aiwithrobert.com). Call 514-250-8491.
