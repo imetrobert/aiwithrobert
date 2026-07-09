@@ -267,6 +267,41 @@ nav a.active {
   color: white !important;
   border-color: #2563eb !important;
 }
+
+/* ── Scrollable-nav affordance ──
+   .has-overflow is only added by JS when the list actually overflows
+   its container (narrower screens), so this stays invisible on desktop.
+   scrolled-start / scrolled-end hide whichever fade no longer applies. */
+.nav-scroll-wrap {
+  position: relative;
+  width: 100%;
+}
+.nav-scroll-wrap::before,
+.nav-scroll-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 5px; /* matches nav ul's padding-bottom that hides the scrollbar */
+  width: 28px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+.nav-scroll-wrap::before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff 75%);
+}
+.nav-scroll-wrap::after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff 75%);
+}
+.nav-scroll-wrap.has-overflow:not(.scrolled-end)::after {
+  opacity: 1;
+}
+.nav-scroll-wrap.has-overflow:not(.scrolled-start)::before {
+  opacity: 1;
+}
 /* =============================================================================
    hero.css — Hero section and stats row
    ============================================================================= */
