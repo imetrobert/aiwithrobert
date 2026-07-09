@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url='https://aiwithrobert.com/?lang=fr'" />
+    <!-- FIX: the redirect used to hardcode the target URL, so any anchor
+         (#services, #pricing, etc.) on a /fr/ link was silently dropped.
+         window.location.hash carries the anchor forward if present. -->
     <script type="text/javascript">
-      window.location.href = "https://aiwithrobert.com/?lang=fr"
+      window.location.replace("https://aiwithrobert.com/?lang=fr" + window.location.hash);
     </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url='https://aiwithrobert.com/?lang=fr'" />
+    </noscript>
     <title>Redirecting...</title>
   </head>
   <body>
