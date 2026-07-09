@@ -57,6 +57,55 @@
 }
 
 
+/* ── TESTIMONIALS ──────────────────────────────────────────────────────────── */
+
+.testimonials-container { max-width: 900px; margin: 0 auto; }
+
+.testimonial-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb, #22c55e);
+}
+.testimonial-quote-mark {
+  display: block;
+  font-size: 4rem;
+  line-height: 1;
+  color: #2563eb;
+  opacity: 0.25;
+  font-family: Georgia, serif;
+  margin-bottom: -1rem;
+}
+.testimonial-quote {
+  margin: 0 0 2rem;
+  color: #334155;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1.5rem;
+}
+.testimonial-name    { font-weight: 700; color: #0f172a; font-size: 1.05rem; font-style: normal; }
+.testimonial-role     { color: #4b5563; font-size: 0.95rem; }
+.testimonial-org       { color: #4b5563; font-size: 0.95rem; }
+.testimonial-context { color: #2563eb; font-size: 0.9rem; margin-top: 0.5rem; font-weight: 600; }
+
+
 /* ── PRICING ───────────────────────────────────────────────────────────────── */
 
 #pricing { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
