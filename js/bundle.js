@@ -685,6 +685,36 @@ function initNavScrollHint() {
 }
 
 window.navScrollHint = initNavScrollHint;
+
+/* ── Tap-to-reveal for partially hidden nav items ──
+   If someone taps a nav label that's cut off at the edge of the
+   scrollable nav (e.g. "Testimonials" bleeding off-screen), bring it
+   fully into view by scrolling the nav horizontally, in addition to
+   the normal page jump to that section. This doubles as a second,
+   context-specific cue that the nav scrolls — it's the exact moment
+   someone would otherwise wonder "why is this link cut off?" */
+function initNavTapReveal() {
+  const wrap = document.querySelector('.nav-scroll-wrap');
+  const list = wrap ? wrap.querySelector('ul') : null;
+  if (!list) return;
+
+  list.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      const li = link.closest('li');
+      if (!li) return;
+      // Only step in if the tapped item isn't already fully visible —
+      // avoids an unnecessary nudge when nothing was actually hidden.
+      const listRect = list.getBoundingClientRect();
+      const liRect = li.getBoundingClientRect();
+      const fullyVisible = liRect.left >= listRect.left && liRect.right <= listRect.right;
+      if (fullyVisible) return;
+
+      li.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    });
+  });
+}
+
+window.navTapReveal = initNavTapReveal;
 /**
  * main.js — Initialisation
  * Runs after DOM is ready. Order matters: language must apply before
@@ -697,6 +727,7 @@ window.addEventListener('DOMContentLoaded', () => {
   highlightNav();
   checkFormSuccess();
   navScrollHint();
+  navTapReveal();
 
   // Double rAF: wait for the i18n text swap above to actually reflow
   // the layout before measuring where the anchor now sits.

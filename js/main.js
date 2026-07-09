@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
   highlightNav();
   checkFormSuccess();
   navScrollHint();
+  navTapReveal();
 
   // Double rAF: wait for the i18n text swap above to actually reflow
   // the layout before measuring where the anchor now sits.
