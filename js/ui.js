@@ -34,10 +34,23 @@ function highlightNav() {
       cur = s.getAttribute('id');
     }
   });
+
+  const changed = cur !== highlightNav.lastActive;
+  highlightNav.lastActive = cur;
+
   navLinks.forEach(a => {
     a.classList.remove('active');
     if (a.getAttribute('href') === '#' + cur) a.classList.add('active');
   });
+
+  // Keep the scroll-highlighted nav item in view as the page scrolls,
+  // not just when someone taps a link — same centering used for taps.
+  // Guarded because revealNavItemForHash isn't wired up until
+  // navTapReveal() runs, which happens slightly after the first
+  // highlightNav() call on page load.
+  if (changed && cur && typeof window.revealNavItemForHash === 'function') {
+    window.revealNavItemForHash('#' + cur);
+  }
 }
 
 window.addEventListener('scroll', highlightNav, { passive: true });
