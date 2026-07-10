@@ -4,6 +4,40 @@
    Breakpoints: 1200px (tablet-landscape), 1024px (tablet), 768px (mobile)
    ============================================================================= */
 
+/* ── 1201px+ — compact single-row nav for real desktop screens ──
+   Below this, the nav stacks two rows (logo/phone/language, then the
+   link list) because a wide desktop screen is the only place there's
+   enough width to fit everything in one row without cramming. On
+   desktop this was eating a lot of vertical space for no reason, so
+   collapse it to one row and shrink the logo. Everything below 1200px
+   (including the mobile scrollable-nav behavior) is untouched. */
+@media (min-width: 1201px) {
+  nav { padding: 0.5rem 1.5rem; }
+
+  .nav-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-top {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    width: auto;
+  }
+
+  .nav-logo img { height: 52px; }
+
+  .nav-scroll-wrap { width: auto; }
+  nav ul            { width: auto; }
+
+  /* Hero and scroll-offset previously assumed a tall, two-row nav.
+     Shrinking the nav means less has to be cleared. */
+  .hero { margin-top: 40px; }
+  html  { scroll-padding-top: 100px; }
+}
 
 /* ── 1200px — slightly smaller nav logo and links ── */
 @media (max-width: 1200px) {
