@@ -22,6 +22,10 @@ html {
   scroll-padding-top: 170px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 /* Skip-to-content link (accessibility) */
 .skip-link {
   position: absolute;
@@ -247,7 +251,13 @@ nav a {
   font-size: 0.85rem;
   font-weight: 600;
   transition: all 0.3s;
-  padding: 0.5rem 0.7rem;
+  /* Slightly larger than the WCAG 2.2 AA minimum (24x24px) — this is a
+     senior-focused site, and a bigger tap target reduces mis-taps for
+     anyone with less precise fine motor control. */
+  padding: 0.75rem 0.85rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-radius: 8px;
   background: #f8f9fa;
   border: 2px solid #e2e8f0;
@@ -680,7 +690,10 @@ textarea.error {
 }
 
 .error-message {
-  color: #ef4444;
+  /* WCAG AA fix: #ef4444 measured 3.76:1 against white, below the 4.5:1
+     minimum for this text size/weight. #b91c1c gives 6.47:1 while still
+     reading clearly as a red "something's wrong" color. */
+  color: #b91c1c;
   font-size: 1rem;
   margin-top: 0.5rem;
   display: none;

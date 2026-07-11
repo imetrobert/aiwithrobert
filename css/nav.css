@@ -103,7 +103,13 @@ nav a {
   font-size: 0.85rem;
   font-weight: 600;
   transition: all 0.3s;
-  padding: 0.5rem 0.7rem;
+  /* Slightly larger than the WCAG 2.2 AA minimum (24x24px) — this is a
+     senior-focused site, and a bigger tap target reduces mis-taps for
+     anyone with less precise fine motor control. */
+  padding: 0.75rem 0.85rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-radius: 8px;
   background: #f8f9fa;
   border: 2px solid #e2e8f0;

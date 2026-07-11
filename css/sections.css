@@ -286,7 +286,10 @@ textarea.error {
 }
 
 .error-message {
-  color: #ef4444;
+  /* WCAG AA fix: #ef4444 measured 3.76:1 against white, below the 4.5:1
+     minimum for this text size/weight. #b91c1c gives 6.47:1 while still
+     reading clearly as a red "something's wrong" color. */
+  color: #b91c1c;
   font-size: 1rem;
   margin-top: 0.5rem;
   display: none;
