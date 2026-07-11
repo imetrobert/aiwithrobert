@@ -610,7 +610,14 @@ function highlightNav() {
 
   navLinks.forEach(a => {
     a.classList.remove('active');
-    if (a.getAttribute('href') === '#' + cur) a.classList.add('active');
+    // aria-current gives screen reader users the same "you are here"
+    // signal the visual .active style gives sighted users — without
+    // it, the active-section highlight was purely decorative.
+    a.removeAttribute('aria-current');
+    if (a.getAttribute('href') === '#' + cur) {
+      a.classList.add('active');
+      a.setAttribute('aria-current', 'true');
+    }
   });
 
   // Keep the scroll-highlighted nav item in view as the page scrolls,
@@ -664,6 +671,14 @@ window.scrollToHashTarget = scrollToHashTarget;
    fade on whichever edge has hidden content, plus a one-time gentle
    nudge on load so the scrollability is obvious without anyone
    having to discover it by accident. */
+/* Respect prefers-reduced-motion: reused by the nav nudge and the
+   centering behavior below. Some seniors are more sensitive to
+   on-screen motion (vestibular issues), and this is the standard way
+   browsers let people opt out of non-essential animation. */
+function prefersReducedMotion() {
+  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 function initNavScrollHint() {
   const wrap = document.querySelector('.nav-scroll-wrap');
   const list = wrap ? wrap.querySelector('ul') : null;
@@ -684,6 +699,14 @@ function initNavScrollHint() {
   updateFade();
 
   if (list.dataset.navHintShown) return;
+
+  // The nudge is purely decorative — skip it entirely under reduced
+  // motion rather than just making it instant, since even an instant
+  // jump-and-back reads as unwanted motion for this preference.
+  if (prefersReducedMotion()) {
+    list.dataset.navHintShown = 'true';
+    return;
+  }
 
   if (list.scrollWidth > list.clientWidth + 2) {
     list.dataset.navHintShown = 'true';
@@ -731,8 +754,14 @@ function initNavTapReveal() {
 
     // Always center the active item — not just when it's cut off —
     // so there's consistently room to reach neighbors on both sides
-    // after tapping something near either edge.
-    li.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    // after tapping something near either edge. Still centers under
+    // reduced motion (that's functional, not decorative) but skips
+    // the animation itself.
+    li.scrollIntoView({
+      behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+      inline: 'center',
+      block: 'nearest'
+    });
   }
 
   document.querySelectorAll('nav a[href^="#"]').forEach(link => {
