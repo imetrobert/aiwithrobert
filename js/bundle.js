@@ -22,6 +22,7 @@ const translations = {
     /* ── Hero ── */
     'hero-title':   'AI &amp; Technology Training for Seniors in Côte Saint-Luc',
     'hero-tagline': 'Patient, personalized AI tutoring and internet training for seniors in Côte Saint-Luc, Quebec.<br>Learn ChatGPT, online safety, and essential digital skills with confidence.',
+    'hero-area-note': 'Proudly based in Côte Saint-Luc — welcoming seniors from across Montreal, including Hampstead, NDG, and Westmount, in person or online.',
     'hero-cta':     'Start Your Free Discovery Call',
 
     /* ── Stats ── */
@@ -223,6 +224,7 @@ const translations = {
     /* ── Hero ── */
     'hero-title':   'Accompagnement en IA et Technologie pour Aînés à Côte Saint-Luc',
     'hero-tagline': "Une approche patiente et personnalisée pour maîtriser l'IA et le monde numérique à Côte Saint-Luc, Québec.<br>Apprenez ChatGPT, la sécurité en ligne et les outils digitaux essentiels en toute confiance.",
+    'hero-area-note': "Fièrement basé à Côte Saint-Luc — j'accueille aussi des aînés de partout à Montréal, y compris Hampstead, NDG et Westmount, en personne ou en ligne.",
     'hero-cta':     'Réservez votre appel découverte gratuit',
 
     /* ── Stats ── */
