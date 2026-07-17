@@ -87,6 +87,10 @@
   .nav-logo img  { height: 50px; }
   .nav-phone a   { font-size: 0.95rem; }
 
+  /* Hero logo — kept small on mobile so it doesn't push the headline
+     or hero image down noticeably. */
+  .hero-logo { height: 52px; margin-bottom: 0.75rem; }
+
   nav ul {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

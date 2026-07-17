@@ -40,6 +40,36 @@
   z-index: 1;
 }
 
+/* Hero logo — larger brand mark above the headline, separate from the
+   small fixed-nav logo. Fades and scales in on load for a subtle,
+   polished entrance. */
+.hero-logo {
+  height: 100px;
+  width: auto;
+  margin: 0 auto 1.25rem;
+  display: block;
+  opacity: 0;
+  animation: heroLogoFadeIn 0.8s ease-out 0.15s forwards;
+}
+
+@keyframes heroLogoFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 .hero h1 {
   font-size: 4.5rem;
   margin-bottom: 1.5rem;
