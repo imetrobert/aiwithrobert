@@ -5,6 +5,9 @@
  */
 
 window.addEventListener('DOMContentLoaded', () => {
+  const copyrightYear = document.getElementById('copyright-year');
+  if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
+
   setLanguage(getCurrentLanguage());
   checkFormValidity();
   highlightNav();
