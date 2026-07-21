@@ -139,7 +139,9 @@
   /* About */
   .experience-grid  { grid-template-columns: 1fr; }
 
-  /* GEO asides — hidden on mobile to reduce page weight */
-  #geo-summary    { padding: 1.5rem; display: none; }
-  #entity-aside   { padding: 1.2rem 1.5rem; display: none; }
+  /* GEO asides — kept visible on mobile: this is the quick-facts text
+     AI crawlers and mobile-first Google indexing read, and text costs
+     negligible page weight, so hiding it here only cost visibility. */
+  #geo-summary    { padding: 1.5rem; }
+  #entity-aside   { padding: 1.2rem 1.5rem; }
 }
