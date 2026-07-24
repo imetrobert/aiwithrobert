@@ -4,6 +4,27 @@ Static site (no framework, no server). One real page (`index.html`) plus
 metadata files. Written to be edited in small, cheap, surgical diffs —
 read this file first instead of exploring the repo.
 
+## Editing without Claude Code (plain claude.ai chat, no repo access)
+
+If you're pasting snippets into a regular chat rather than running an
+agent against the repo, the goal is the same — never paste more than the
+one section you need:
+
+1. Use the prefix table below to know which file(s)/key(s) you need.
+2. On GitHub, open the file, click "Raw" (or just the file view), and use
+   your browser's find (Ctrl/Cmd+F) for the `data-i18n` key name or the
+   fact (e.g. `514-250-8491`) — copy only that line or the small block
+   around it.
+3. Paste just that snippet into the chat with your requested change.
+4. Paste the returned snippet back via GitHub's web editor (pencil icon),
+   commit directly or via a PR.
+5. If the change touches a `data-i18n` key, repeat for **both**
+   `index.html` and `js/i18n.js` (see "golden rule" below) — two small
+   snippets, not two full files.
+6. If it's a repeated fact (phone/price/hours), see the checklist further
+   down for every location — each is a separate small paste, not one big
+   one, since the JSON-LD blocks are now one field per line.
+
 ## Where content actually lives
 
 **Visible on-page text is split across two files that must always agree:**
@@ -68,10 +89,11 @@ data). Changing any of these means touching **every** location below, not
 just the visible ones:
 
 - `index.html` `<meta name="description">` and `og:`/`twitter:` meta tags
-- `index.html` **5 separate JSON-LD `<script type="application/ld+json">`
-  blocks** in `<head>` (LocalBusiness, Person, FAQPage, WebPage, Review) —
-  each is one long single-line JSON blob; grep the fact rather than reading
-  the block
+- `index.html` **6 separate JSON-LD `<script type="application/ld+json">`
+  blocks** in `<head>` (LocalBusiness, Person, FAQPage, WebPage, WebSite,
+  Review) — pretty-printed one field per line, so you can copy/paste just
+  the field you need (e.g. `"telephone"`, `"priceRange"`, `"price"`) instead
+  of the whole block
 - `index.html` nav phone link, `#entity-aside`, `#geo-summary`, pricing
   cards, `#about` summary, contact section, FAQ answers, footer, and the
   hidden NAP `<div itemtype=".../LocalBusiness">` just before `</footer>`
