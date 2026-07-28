@@ -1,8 +1,23 @@
 # aiwithrobert.com — content editing guide
 
-Static site (no framework, no server). One real page (`index.html`) plus
-metadata files. Written to be edited in small, cheap, surgical diffs —
-read this file first instead of exploring the repo.
+Static site (no framework, no server). Written to be edited in small,
+cheap, surgical diffs — read this file first instead of exploring the repo.
+
+**Only two files ever need editing for a content change: `index.html` and
+`js/i18n.js`.** Prices, phone number, hours and copy live in those two.
+Everything else is either generated from them or infrastructure.
+
+**Never open, read, or edit these — they are generated, and reading them
+burns a large amount of context for zero benefit:**
+
+| Generated file    | Built from                       |
+|-------------------|----------------------------------|
+| `fr/index.html`   | `index.html` + `js/i18n.js` (fr) |
+| `js/bundle.js`    | the five `js/*.js` sources       |
+| `css/styles.css`  | the six `css/*.css` sources      |
+
+To refresh them after an edit: `python3 scripts/build_fr_page.py`
+(the GitHub workflow also does this automatically on push to `main`).
 
 ## Editing without Claude Code (plain claude.ai chat, no repo access)
 
