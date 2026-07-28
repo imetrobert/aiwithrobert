@@ -1,3 +1,104 @@
+# robots.txt — aiwithrobert.com
+#
+# Policy: everything on this site is public and we WANT it crawled, indexed,
+# and quoted — by traditional search engines and by AI answer engines alike.
+#
+# The wildcard group at the bottom already permits every bot. The named groups
+# above it are deliberate redundancy: robots.txt precedence rules say a bot
+# obeys the MOST SPECIFIC group matching its user-agent token and ignores the
+# wildcard entirely. Several AI crawlers are also run through third-party
+# infrastructure (CDNs, WAFs, "block AI scrapers" toggles) that look for an
+# explicit named allow before letting the request through. Naming them costs
+# nothing and removes any ambiguity about consent.
+#
+# Machine-readable business summary for LLMs: https://aiwithrobert.com/llms.txt
+
+# ── OpenAI / ChatGPT ──────────────────────────────────────────────────────
+# OAI-SearchBot builds the index ChatGPT search answers from — this is the one
+# that determines whether ChatGPT can surface this business at all.
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT-User fetches a page live when a user asks ChatGPT about it.
+User-agent: ChatGPT-User
+Allow: /
+
+# GPTBot crawls for model training.
+User-agent: GPTBot
+Allow: /
+
+# ── Anthropic / Claude ────────────────────────────────────────────────────
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# ── Perplexity ────────────────────────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# ── Google ────────────────────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+# Google-Extended governs Gemini grounding and AI Overviews. Blocking it (or
+# leaving it ambiguous) removes this site from Google's AI answers.
+User-agent: Google-Extended
+Allow: /
+
+# ── Microsoft / Bing / Copilot ────────────────────────────────────────────
+# Bing's index is a major retrieval source for ChatGPT search and Copilot.
+User-agent: bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# ── Apple ─────────────────────────────────────────────────────────────────
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ── Other AI answer engines and training crawlers ─────────────────────────
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# CCBot (Common Crawl) feeds a large share of public LLM training corpora.
+User-agent: CCBot
+Allow: /
+
+# ── Everyone else ─────────────────────────────────────────────────────────
 User-agent: *
 Allow: /
+
 Sitemap: https://aiwithrobert.com/sitemap.xml

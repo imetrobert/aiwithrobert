@@ -1,8 +1,23 @@
 # aiwithrobert.com — content editing guide
 
-Static site (no framework, no server). One real page (`index.html`) plus
-metadata files. Written to be edited in small, cheap, surgical diffs —
-read this file first instead of exploring the repo.
+Static site (no framework, no server). Written to be edited in small,
+cheap, surgical diffs — read this file first instead of exploring the repo.
+
+**Only two files ever need editing for a content change: `index.html` and
+`js/i18n.js`.** Prices, phone number, hours and copy live in those two.
+Everything else is either generated from them or infrastructure.
+
+**Never open, read, or edit these — they are generated, and reading them
+burns a large amount of context for zero benefit:**
+
+| Generated file    | Built from                       |
+|-------------------|----------------------------------|
+| `fr/index.html`   | `index.html` + `js/i18n.js` (fr) |
+| `js/bundle.js`    | the five `js/*.js` sources       |
+| `css/styles.css`  | the six `css/*.css` sources      |
+
+To refresh them after an edit: `python3 scripts/build_fr_page.py`
+(the GitHub workflow also does this automatically on push to `main`).
 
 ## Editing without Claude Code (plain claude.ai chat, no repo access)
 
@@ -103,6 +118,9 @@ just the visible ones:
   strings for `fr` and `en` that it swaps in on language switch (separate
   from the ones in `index.html`'s `<head>`, which only apply pre-JS)
 - `llms.txt` — plain-text business summary for AI answer engines
+- `fr/index.html` — **generated**, so don't edit it directly; it picks the
+  facts up automatically from `index.html` + `js/i18n.js` when you re-run
+  `python3 scripts/build_fr_page.py`
 
 Fastest way to find every occurrence of a fact: `grep -rn "514-250-8491"
 index.html js/i18n.js js/language.js llms.txt`.
@@ -119,14 +137,55 @@ real source files instead:
 
 `.github/workflows/build-assets.yml` concatenates them into `css/styles.css`
 and `js/bundle.js` automatically on every push to `main` that touches
-`js/**` or `css/**`. `index.html` only loads the bundled files, never the
-individual sources — so a source-only push looks like a no-op until it
-reaches `main` and the workflow runs.
+`js/**`, `css/**`, or `index.html`. `index.html` only loads the bundled
+files, never the individual sources — so a source-only push looks like a
+no-op until it reaches `main` and the workflow runs.
+
+The same workflow also runs `scripts/check_content_sync.py` (fails the
+build on EN/FR drift) and regenerates `fr/index.html`.
+
+## The French page (`/fr/`)
+
+`fr/index.html` is **generated** — treat it exactly like `bundle.js`.
+
+Previously `/fr/` was a JavaScript redirect to `/?lang=fr`, which meant no
+crawler ever saw any French: JS-rendering crawlers index the *default*
+state (English), non-rendering crawlers (ChatGPT/OAI-SearchBot,
+PerplexityBot, and most AI answer engines) saw only a redirect stub, and
+`?lang=fr` canonicalised back to `/` anyway. Now `/fr/` is a real static
+page with ~11k characters of crawlable French.
+
+To change French text: edit the `fr` strings in `js/i18n.js`, then run
+
+```
+python3 scripts/build_fr_page.py
+```
+
+The script replaces each `[data-i18n]` element's inner HTML with its `fr`
+string — the same thing `language.js` does at runtime — so the static page
+and the JS-rendered page can never disagree. It also rebuilds the FAQPage
+JSON-LD in French, rewrites relative asset paths to root-absolute (they'd
+404 one directory down), and flips the canonical/hreflang/og tags.
+
+It fails loudly rather than emitting a broken page if: a `fr` translation
+is missing, a relative asset path isn't in its rewrite list, or the
+`<title>`/`<meta description>` in `index.html` and `js/language.js` have
+drifted apart.
+
+**Language routing:** `/` serves English, `/fr/` serves French, and
+`js/language.js` treats the URL path as authoritative. Switching language
+in the dropdown navigates between the two URLs rather than swapping text
+in place — two distinct indexable URLs is what makes the `hreflang` pair
+valid.
 
 ## Other files
 
-- `fr/index.html` — a JS/meta-refresh redirect stub to `/?lang=fr`, not a
-  real French page. No content to edit here.
+- `fr/index.html` — **generated, never hand-edit.** It is a real, fully
+  static French page (not a redirect stub any more), built from
+  `index.html` + the `fr` table in `js/i18n.js` by
+  `scripts/build_fr_page.py`. To change French wording, edit the `fr`
+  strings in `js/i18n.js` and re-run the script. See "The French page"
+  below.
 - `manifest.json`, `robots.txt`, `sitemap.xml`, `CNAME` — infra, rarely
   touched by content edits.
 - `llms.txt` — freestanding plain-text business summary for AI search

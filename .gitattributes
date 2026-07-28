@@ -1,0 +1,15 @@
+# Generated files — built by the GitHub workflow from their sources, never
+# edited by hand. Marking them keeps a one-line price change from showing up
+# as a thousand-line diff in pull requests: GitHub collapses these by default
+# and excludes them from language stats.
+#
+#   fr/index.html   <- index.html + the `fr` table in js/i18n.js
+#   js/bundle.js    <- js/i18n.js js/language.js js/form.js js/ui.js js/main.js
+#   css/styles.css  <- css/base.css nav hero sections footer responsive
+#
+# linguist-generated also suppresses them in `git diff` review UIs; use
+# `git diff -- fr/index.html` explicitly if you ever do need to inspect one.
+
+fr/index.html   linguist-generated=true
+js/bundle.js    linguist-generated=true
+css/styles.css  linguist-generated=true
