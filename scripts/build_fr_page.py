@@ -50,11 +50,15 @@ ENTRY_RE = re.compile(
     r"""'([a-z0-9-]+)':\s*(?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)"|`((?:[^`\\]|\\.)*)`)"""
 )
 
-FR_TITLE = ("Tutoriel IA et Formation Technologique pour Aînés à "
-            "Côte Saint-Luc | AI with Robert")
-FR_DESC = ("Robert Simon offre un tutoriel IA patient et personnalisé pour aînés à "
-           "Côte Saint-Luc, Québec. Apprenez ChatGPT, la sécurité en ligne et les "
-           "bases internet. Ateliers IA disponibles. Appel découverte gratuit. "
+# Keep FR_TITLE <= 60 chars and FR_DESC <= 155. Both are hard SERP limits:
+# past them Bing/Google truncate mid-sentence, and Bing Webmaster Tools raises
+# them as SEO errors. The originals (83 and 221 chars) predate this file — they
+# lived only in js/language.js, where no crawler ever saw them because /fr/ was
+# a redirect stub. Making /fr/ a real page exposed them. check_metadata_agrees()
+# keeps these byte-identical to the copies in js/language.js.
+FR_TITLE = "Tutoriel IA pour Aînés — Côte Saint-Luc | AI with Robert"
+FR_DESC = ("Tutoriel IA pour aînés à Côte Saint-Luc et Montréal. Apprenez ChatGPT "
+           "et la sécurité en ligne, à votre rythme. Appel découverte gratuit. "
            "514-250-8491.")
 FR_KEYWORDS = ("tutoriel IA Côte Saint-Luc, formation IA Côte Saint-Luc, ateliers IA "
                "Côte Saint-Luc, aide technologique aînés Côte Saint-Luc, cours ChatGPT "
@@ -357,6 +361,18 @@ def check_metadata_agrees(lang_js: str) -> list:
             problems.append(
                 f"{label} in index.html <head> does not appear in "
                 f"js/language.js — they must match exactly:\n      {expected!r}")
+
+    # Hard SERP limits. Past these, engines truncate mid-sentence and Bing
+    # Webmaster Tools reports an SEO error — which is exactly how the original
+    # 83-char French title and 221-char description were caught.
+    for label, text, limit in (("English title", en_title, 60),
+                               ("English description", en_desc, 160),
+                               ("French title", FR_TITLE, 60),
+                               ("French description", FR_DESC, 160)):
+        if len(text) > limit:
+            problems.append(
+                f"{label} is {len(text)} chars, over the {limit}-char limit — "
+                f"search engines will truncate it:\n      {text!r}")
     return problems
 
 

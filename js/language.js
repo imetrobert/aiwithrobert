@@ -76,9 +76,12 @@ function setLanguage(lang) {
 
   // Update page-level meta
   if (lang === 'fr') {
-    document.title = 'Tutoriel IA et Formation Technologique pour Aînés à Côte Saint-Luc | AI with Robert';
+    // Must stay byte-identical to FR_TITLE/FR_DESC in scripts/build_fr_page.py,
+    // which bakes them into /fr/. Title <= 60 chars, description <= 155, or
+    // search engines truncate them and Bing flags an SEO error.
+    document.title = 'Tutoriel IA pour Aînés — Côte Saint-Luc | AI with Robert';
     document.querySelector('meta[name="description"]').setAttribute('content',
-      'Robert Simon offre un tutoriel IA patient et personnalisé pour aînés à Côte Saint-Luc, Québec. Apprenez ChatGPT, la sécurité en ligne et les bases internet. Ateliers IA disponibles. Appel découverte gratuit. 514-250-8491.');
+      'Tutoriel IA pour aînés à Côte Saint-Luc et Montréal. Apprenez ChatGPT et la sécurité en ligne, à votre rythme. Appel découverte gratuit. 514-250-8491.');
     document.documentElement.lang = 'fr';
   } else {
     // Must stay byte-identical to the <title>/<meta name="description"> in
