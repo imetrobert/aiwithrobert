@@ -23,12 +23,19 @@
     <meta name="description" content="Patient, one-on-one AI tutoring for seniors in Côte Saint-Luc & across Montreal. Learn ChatGPT & online safety. Free 30-min discovery call. 514-250-8491.">
     <meta name="keywords" content="AI tutoring Côte Saint-Luc, AI training Côte Saint-Luc, AI workshops Côte Saint-Luc, technology help seniors Côte Saint-Luc, ChatGPT lessons seniors, AI tutor Montreal, senior tech support CSL, senior AI classes Montreal, online safety seniors, email security training, technology instructor seniors Quebec">
     <meta name="author" content="Robert Simon - AI with Robert">
-    <meta name="robots" content="index, follow">
+    <!-- max-snippet:-1 lets Google/Bing quote the page at ANY length. Without it
+         they cap the excerpt, which directly limits how much of this page can be
+         used in AI Overviews, Copilot answers, and other generated summaries. -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="last-modified" content="2026-07">
     <link rel="canonical" href="https://aiwithrobert.com/">
     <link rel="alternate" hreflang="en" href="https://aiwithrobert.com/">
-    <link rel="alternate" hreflang="fr" href="https://aiwithrobert.com/?lang=fr">
+    <link rel="alternate" hreflang="fr" href="https://aiwithrobert.com/fr/">
     <link rel="alternate" hreflang="x-default" href="https://aiwithrobert.com/">
+    <!-- Plain-text business summary for AI answer engines (llms.txt convention) -->
+    <link rel="alternate" type="text/plain" title="llms.txt" href="https://aiwithrobert.com/llms.txt">
     <!-- Ties this site to your verified GBP -->
     <link rel="me" href="https://maps.app.goo.gl/XCDgdcPYrzbKkA5C7">
     <!-- OPT: preconnect for GTM/GA4 to reduce DNS lookup latency -->
@@ -328,7 +335,14 @@
       "@context": "https://schema.org",
       "@type": "WebPage",
       "@id": "https://aiwithrobert.com/",
+      "url": "https://aiwithrobert.com/",
       "name": "AI Tutoring and Technology Training for Seniors in Côte Saint-Luc | AI with Robert",
+      "description": "Patient, one-on-one AI tutoring and technology training for seniors in Côte Saint-Luc, Quebec. Learn ChatGPT, online safety, and essential digital skills with Robert Simon. Free 30-minute discovery call. 514-250-8491.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://aiwithrobert.com/#website"
+      },
+      "dateModified": "2026-07-28",
       "speakable": {
         "@type": "SpeakableSpecification",
         "cssSelector": [
@@ -811,6 +825,12 @@
         <p style="margin-top:0.5rem;" data-i18n="footer-services">ChatGPT lessons &bull; Internet safety &bull; Online skills &bull; Email security</p>
         <p style="margin-top:0.5rem;opacity:0.7;font-size:0.95rem;" data-i18n="footer-serving">Serving Côte Saint-Luc, Hampstead, NDG, Westmount &amp; Montreal Area</p>
         <p style="margin-top:0.5rem;opacity:0.7;font-size:0.95rem;">&#128222; <a href="tel:514-250-8491" style="color:rgba(255,255,255,0.7);text-decoration:none;">514-250-8491</a> &nbsp;|&nbsp; &#9993;&#65039; <a href="mailto:info@aiwithrobert.com" style="color:rgba(255,255,255,0.7);text-decoration:none;">info@aiwithrobert.com</a></p>
+        <!-- Real <a> link to the other language. The nav language switcher is a
+             <select>, which no crawler can operate — without this anchor the
+             French page is reachable only via hreflang/sitemap, and the AI
+             crawlers that don't parse either would never discover it.
+             scripts/build_fr_page.py flips this to point back at "/". -->
+        <p style="margin-top:0.75rem;font-size:0.95rem;" id="lang-alternate-link"><a href="/fr/" rel="alternate" hreflang="fr" lang="fr" style="color:rgba(255,255,255,0.85);">Cette page en français</a></p>
         <p style="margin-top:1rem;font-size:0.9rem;">&copy; <span id="copyright-year">2026</span> AI with Robert. <span data-i18n="footer-rights">All rights reserved.</span></p>
         <!-- Hidden plain-text NAP for Google crawler — DO NOT REMOVE -->
         <div itemscope itemtype="https://schema.org/LocalBusiness" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
