@@ -15,6 +15,7 @@ burns a large amount of context for zero benefit:**
 | `fr/index.html`   | `index.html` + `js/i18n.js` (fr) |
 | `js/bundle.js`    | the five `js/*.js` sources       |
 | `css/styles.css`  | the six `css/*.css` sources      |
+| `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | `logo.PNG` |
 
 To refresh them after an edit: `python3 scripts/build_fr_page.py`
 (the GitHub workflow also does this automatically on push to `main`).
@@ -177,6 +178,26 @@ drifted apart.
 in the dropdown navigates between the two URLs rather than swapping text
 in place — two distinct indexable URLs is what makes the `hreflang` pair
 valid.
+
+## Favicons / app icons
+
+All six icon files are generated from `logo.PNG`. Only re-run this if the
+logo artwork itself changes — it is **not** part of the CI build, because
+it needs Pillow and the logo almost never changes:
+
+```
+pip install Pillow && python3 scripts/build_favicons.py
+```
+
+The script crops `logo.PNG` down to just the icon mark (lightbulb + speech
+bubble) and throws away the "AI with Robert" wordmark — text is unreadable
+at 16-32px, and the old icons were the whole logo squashed into a square,
+which rendered as a grey smudge in browser tabs. At 16px it simplifies
+further to the bulb alone, so the bulb gets all 16 pixels instead of
+sharing them with the speech bubble.
+
+If you redraw the logo, update `ICON_BOX`/`BULB_BOX` in the script; it
+sanity-checks the crop and fails rather than emitting bad icons.
 
 ## Other files
 

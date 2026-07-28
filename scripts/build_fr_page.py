@@ -246,7 +246,8 @@ def rewrite_paths(doc: str) -> str:
     references would resolve to /fr/... and 404. Make them root-absolute."""
     assets = ["css/styles.css", "js/bundle.js", "logo.PNG", "users.jpg",
               "users.webp", "profile.jpg", "profile.webp", "favicon.ico",
-              "favicon-32x32.png", "apple-touch-icon.png", "manifest.json"]
+              "favicon-32x32.png", "favicon-16x16.png", "apple-touch-icon.png",
+              "icon-192.png", "icon-512.png", "manifest.json"]
     for a in assets:
         # srcset included deliberately: a <picture><source srcset> that 404s
         # fails silently (the browser just falls back to <img src>), so a miss
