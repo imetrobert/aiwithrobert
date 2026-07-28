@@ -45,19 +45,34 @@ jobs:
           KEY="f14ae760d18bad17bc1d40b88caa3ebd"
           HOST="aiwithrobert.com"
 
-          # Confirm the key file is actually reachable first. If it 404s the
-          # submission is rejected anyway, and a loud failure here is far easier
-          # to diagnose than silent non-indexing weeks later.
-          echo "Verifying key file is published..."
-          PUBLISHED=$(curl -fsS --retry 3 --retry-delay 5 \
-            "https://${HOST}/${KEY}.txt" || echo "FETCH_FAILED")
+          # Confirm the key file is actually reachable before submitting: the
+          # engine fetches it to authenticate us, so a 404 means the submission
+          # is rejected anyway, and failing loudly here is far easier to
+          # diagnose than silent non-indexing weeks later.
+          #
+          # This job starts on push, but GitHub Pages needs a minute or three to
+          # publish that same commit — so we are racing our own deploy, and on
+          # the very first run the key file has never been served at all. Hence
+          # a real polling loop rather than curl --retry, which does not retry
+          # 404s (only 408/429/5xx) and would give up instantly here.
+          echo "Waiting for key file at https://${HOST}/${KEY}.txt ..."
+          PUBLISHED=""
+          for attempt in $(seq 1 20); do
+            PUBLISHED=$(curl -fsS "https://${HOST}/${KEY}.txt" 2>/dev/null || true)
+            if [ "$PUBLISHED" = "$KEY" ]; then
+              echo "Key file OK (attempt ${attempt})."
+              break
+            fi
+            echo "  attempt ${attempt}/20: not served yet, retrying in 15s"
+            sleep 15
+          done
 
           if [ "$PUBLISHED" != "$KEY" ]; then
-            echo "::error::Key file check failed at https://${HOST}/${KEY}.txt"
-            echo "::error::expected '${KEY}', got '${PUBLISHED}'"
+            echo "::error::Key file never became available at https://${HOST}/${KEY}.txt"
+            echo "::error::after 5 minutes. Expected '${KEY}', last saw '${PUBLISHED}'."
+            echo "::error::Check that GitHub Pages published the file to the site root."
             exit 1
           fi
-          echo "Key file OK."
 
           # Built with printf rather than a heredoc on purpose: this step is
           # indented inside YAML, and an indented heredoc terminator does not
