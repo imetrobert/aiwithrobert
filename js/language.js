@@ -12,7 +12,13 @@
  * a duplicate of the English page.
  */
 function getPageLanguage() {
-  return window.location.pathname.replace(/\/+$/, '').endsWith('/fr') ? 'fr' : 'en';
+  // Strip a trailing slash and/or an explicit index.html before testing, so
+  // /fr/, /fr and /fr/index.html all read as French. Without the index.html
+  // case a direct hit on /fr/index.html — which crawlers and hand-typed links
+  // do produce — would fall through to 'en' and rewrite the French page into
+  // English while the address bar still said /fr/.
+  var path = window.location.pathname.replace(/\/(index\.html?)?$/i, '');
+  return path.endsWith('/fr') ? 'fr' : 'en';
 }
 
 function getCurrentLanguage() {

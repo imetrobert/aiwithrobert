@@ -102,7 +102,7 @@ const translations = {
     'about-p1': "I'm a dedicated AI tutor and technology instructor helping seniors in Côte Saint-Luc discover that technology and artificial intelligence aren't things to fear—they're tools for staying connected, independent, and engaged with the world around you.",
     'about-p2': "With over 25 years of experience in digital innovation and AI implementation at major organizations like Bell, I now focus on helping seniors in our community master technology at their own pace. I understand that learning new technology and AI tools like ChatGPT can feel overwhelming. That's exactly why I specialize in patient, step-by-step AI tutoring and technology training right here in Côte Saint-Luc.",
     'about-p3': "Whether you want to use ChatGPT to help write emails, learn to spot online scams, master video calling with family, or simply feel more confident using the internet and your smartphone, I'm here for you every step of the way.",
-    'about-link':   '🌐 Learn More About My Work in AI &amp; Digital Innovation',
+    'about-link':   'Learn More About My Work in AI &amp; Digital Innovation',
     'about-summary':'<strong>Quick facts about Robert Simon:</strong> Based in Côte Saint-Luc, QC. Over 25 years in technology and AI, including Bell Canada. AI tutor for seniors — teaches ChatGPT, internet safety, email security, smartphones, and video calling. In-home AI tutoring $65/hr, online sessions $60/hr. AI workshops also available. Free 30-minute discovery call. Phone: 514-250-8491. Email: info@aiwithrobert.com. Website: aiwithrobert.com.',
 
     'exp-teaching': 'Years of Teaching',
@@ -160,7 +160,7 @@ const translations = {
     'form-option-call':        'Free Discovery Call',
     'form-option-undecided':   "Not sure - let's discuss!",
 
-    'free-call-title': '🎁 Free 30-Minute Discovery Call',
+    'free-call-title': 'Free 30-Minute Discovery Call',
     'free-call-text':  "Let's chat about your goals with no pressure or obligation",
     'success-title':   'Thank You!',
     'success-text':    "Your request has been received and will be actioned as soon as possible.<br>I'll get back to you within 24 hours.",
@@ -200,7 +200,7 @@ const translations = {
     'faq-a-free':       'Yes. Robert offers a <strong>free 30-minute discovery call</strong> to all new students — no pressure, no obligation. Call <strong>514-250-8491</strong> or fill in the contact form to get started.',
 
     /* ── Asides (GEO/entity content) ── */
-    'entity-aside': '<strong>AI with Robert</strong> — AI tutoring &amp; technology training for seniors in Côte Saint-Luc, QC. Robert Simon teaches ChatGPT, internet safety, email security, smartphones &amp; video calling. In-home $65/hr · Online $60/hr · AI workshops $35/person · Free 30-min discovery call. 📞 <a href="tel:514-250-8491">514-250-8491</a> &nbsp;·&nbsp; <a href="mailto:info@aiwithrobert.com">info@aiwithrobert.com</a>',
+    'entity-aside': '<strong>AI with Robert</strong> — AI tutoring &amp; technology training for seniors in Côte Saint-Luc, QC. Robert Simon teaches ChatGPT, internet safety, email security, smartphones &amp; video calling. In-home $65/hr · Online $60/hr · AI workshops $35/person · Free 30-min discovery call. <a href="tel:514-250-8491">514-250-8491</a> &nbsp;·&nbsp; <a href="mailto:info@aiwithrobert.com">info@aiwithrobert.com</a>',
     'geo-summary':  '<strong>AI with Robert</strong> is a technology training service based in <strong>Côte Saint-Luc, Quebec</strong>, founded by <strong>Robert Simon</strong> — a technology professional with over 25 years of experience in digital innovation and AI, including work at Bell Canada. Robert specializes in teaching <strong>seniors how to use AI tools like ChatGPT</strong>, stay safe online, manage email scams, use smartphones and tablets, and make video calls with family. He offers <strong>one-on-one AI tutoring</strong> (in-home visits throughout Côte Saint-Luc and surrounding Montreal neighborhoods, or online via video call) as well as <strong>small group AI workshops</strong> for 2–6 seniors. No prior technology experience is required. Sessions start at <strong>$60/hour online</strong> or <strong>$65/hour in-home</strong>. A <strong>free 30-minute discovery call</strong> is offered to all new students. To book, call <strong>514-250-8491</strong> or email <strong>info@aiwithrobert.com</strong>.',
 
     /* ── Footer ── */
@@ -304,7 +304,7 @@ const translations = {
     'about-p1': "Je suis un tuteur IA et instructeur passionné qui aide les aînés de Côte Saint-Luc à découvrir que la technologie et l'intelligence artificielle ne sont pas à craindre—ce sont des outils précieux pour rester connecté, indépendant et actif.",
     'about-p2': "Fort de plus de 25 ans d'expérience en innovation numérique et en IA au sein d'organisations comme Bell, je me consacre désormais à aider notre communauté à maîtriser ces outils à leur propre rythme.",
     'about-p3': "Que vous souhaitiez utiliser ChatGPT pour vos courriels, apprendre à éviter les arnaques en ligne ou simplement passer des appels vidéo avec vos petits-enfants, je suis à vos côtés.",
-    'about-link':   "🌐 En savoir plus sur mon parcours en innovation numérique",
+    'about-link':   "En savoir plus sur mon parcours en innovation numérique",
     'about-summary':'<strong>Faits rapides sur Robert Simon :</strong> Tuteur IA basé à Côte Saint-Luc, QC. Plus de 25 ans en technologie et IA, dont chez Bell Canada. Enseigne aux aînés ChatGPT, sécurité Internet, sécurité des courriels, smartphones et appels vidéo. Tutoriel IA à domicile 65$/h, séances en ligne 60$/h. Ateliers IA disponibles. Appel découverte gratuit. Tél : 514-250-8491. Courriel : info@aiwithrobert.com.',
 
     'exp-teaching': "Années d'Enseignement",
@@ -362,7 +362,7 @@ const translations = {
     'form-option-call':        'Appel Découverte Gratuit',
     'form-option-undecided':   'Pas encore certain(e) - discutons-en !',
 
-    'free-call-title': '🎁 Appel Découverte de 30 Minutes Offert',
+    'free-call-title': 'Appel Découverte de 30 Minutes Offert',
     'free-call-text':  'Discutons de vos besoins, sans aucun engagement',
     'success-title':   'Merci !',
     'success-text':    "Votre demande a bien été reçue. Je vous recontacterai personnellement dans les 24 heures.",
@@ -402,7 +402,7 @@ const translations = {
     'faq-a-free':       "Oui. Robert offre un <strong>appel découverte gratuit de 30 minutes</strong> à tous les nouveaux élèves. Sans pression ni engagement. Appelez le <strong>514-250-8491</strong> ou remplissez le formulaire de contact.",
 
     /* ── Asides ── */
-    'entity-aside': '<strong>AI with Robert</strong> — Tutoriel IA &amp; formation technologique pour aînés à Côte Saint-Luc, QC. Robert Simon enseigne ChatGPT, sécurité Internet, sécurité des courriels, smartphones &amp; appels vidéo. À domicile 65$/h · En ligne 60$/h · Ateliers IA 35$/pers. · Appel découverte gratuit 30 min. 📞 <a href="tel:514-250-8491">514-250-8491</a> &nbsp;·&nbsp; <a href="mailto:info@aiwithrobert.com">info@aiwithrobert.com</a>',
+    'entity-aside': '<strong>AI with Robert</strong> — Tutoriel IA &amp; formation technologique pour aînés à Côte Saint-Luc, QC. Robert Simon enseigne ChatGPT, sécurité Internet, sécurité des courriels, smartphones &amp; appels vidéo. À domicile 65$/h · En ligne 60$/h · Ateliers IA 35$/pers. · Appel découverte gratuit 30 min. <a href="tel:514-250-8491">514-250-8491</a> &nbsp;·&nbsp; <a href="mailto:info@aiwithrobert.com">info@aiwithrobert.com</a>',
     'geo-summary':  "<strong>AI with Robert</strong> est un service de tutoriel IA et formation technologique basé à <strong>Côte Saint-Luc, Québec</strong>, fondé par <strong>Robert Simon</strong> — plus de 25 ans d'expérience en IA et innovation numérique, dont chez Bell Canada. Robert enseigne aux <strong>aînés comment utiliser ChatGPT</strong>, rester en sécurité en ligne, détecter les arnaques, utiliser les smartphones et faire des appels vidéo. Il offre des <strong>séances de tutoriel IA individuelles</strong> (à domicile ou en ligne) et des <strong>ateliers IA de groupe</strong> pour 2–6 aînés. Sessions à partir de <strong>60$/heure en ligne</strong> ou <strong>65$/heure à domicile</strong>. <strong>Appel découverte gratuit de 30 minutes</strong>. Appelez le <strong>514-250-8491</strong> ou écrivez à <strong>info@aiwithrobert.com</strong>.",
 
     /* ── Footer ── */
@@ -427,7 +427,13 @@ const translations = {
  * a duplicate of the English page.
  */
 function getPageLanguage() {
-  return window.location.pathname.replace(/\/+$/, '').endsWith('/fr') ? 'fr' : 'en';
+  // Strip a trailing slash and/or an explicit index.html before testing, so
+  // /fr/, /fr and /fr/index.html all read as French. Without the index.html
+  // case a direct hit on /fr/index.html — which crawlers and hand-typed links
+  // do produce — would fall through to 'en' and rewrite the French page into
+  // English while the address bar still said /fr/.
+  var path = window.location.pathname.replace(/\/(index\.html?)?$/i, '');
+  return path.endsWith('/fr') ? 'fr' : 'en';
 }
 
 function getCurrentLanguage() {
