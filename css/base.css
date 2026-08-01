@@ -146,3 +146,31 @@ h2 {
   color: #475569;
   line-height: 1.8;
 }
+
+
+/* ── Inline SVG icons ───────────────────────────────────────────────────────
+   These replaced the emoji that used to sit in the stats row, service cards,
+   experience grid and contact links. Emoji render in each platform's own
+   colour font, which reads as informal and looks different on every device;
+   these are monochrome line icons that inherit their context.
+
+   All use stroke="currentColor", so an icon is brand blue in the light
+   sections, white in the dark footer, and green in the success panel without
+   any per-icon colour rules. They ship inline in the HTML — no icon font, no
+   sprite sheet, no extra request.
+
+   Sizing: .icon is 1em so inline icons track the text they sit beside.
+   .icon-inline adds its own right margin, for normal (non-flex) text runs.
+   .icon-flex omits that margin, for parents that already supply a flex gap —
+   using the wrong one is the easy mistake here, so check the parent first. */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  flex: none;                 /* never let a flex parent squash the icon */
+}
+.icon-inline { width: 1.05em; height: 1.05em; vertical-align: -0.15em; margin-right: 0.45em; }
+.icon-flex   { width: 1.15em; height: 1.15em; }
+.icon-lg     { width: 1em;    height: 1em; }
+.icon-xl     { width: 4rem;   height: 4rem; }

@@ -146,6 +146,34 @@ h2 {
   color: #475569;
   line-height: 1.8;
 }
+
+
+/* ── Inline SVG icons ───────────────────────────────────────────────────────
+   These replaced the emoji that used to sit in the stats row, service cards,
+   experience grid and contact links. Emoji render in each platform's own
+   colour font, which reads as informal and looks different on every device;
+   these are monochrome line icons that inherit their context.
+
+   All use stroke="currentColor", so an icon is brand blue in the light
+   sections, white in the dark footer, and green in the success panel without
+   any per-icon colour rules. They ship inline in the HTML — no icon font, no
+   sprite sheet, no extra request.
+
+   Sizing: .icon is 1em so inline icons track the text they sit beside.
+   .icon-inline adds its own right margin, for normal (non-flex) text runs.
+   .icon-flex omits that margin, for parents that already supply a flex gap —
+   using the wrong one is the easy mistake here, so check the parent first. */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  flex: none;                 /* never let a flex parent squash the icon */
+}
+.icon-inline { width: 1.05em; height: 1.05em; vertical-align: -0.15em; margin-right: 0.45em; }
+.icon-flex   { width: 1.15em; height: 1.15em; }
+.icon-lg     { width: 1em;    height: 1em; }
+.icon-xl     { width: 4rem;   height: 4rem; }
 /* =============================================================================
    nav.css — Fixed top navigation bar and language selector
    ============================================================================= */
@@ -438,7 +466,8 @@ nav a.active {
   padding: 0 2rem;
 }
 .stat-item     { text-align: center; }
-.stat-icon     { font-size: 2.5rem; margin-bottom: 1rem; }
+.stat-icon     { display: block; margin-bottom: 1rem; line-height: 1; color: #2563eb; }
+.stat-icon .icon { width: 2.5rem; height: 2.5rem; }
 .stat-number   { font-size: 2rem; font-weight: 700; color: #0f172a; display: block; margin-bottom: 0.3rem; }
 .stat-label    { color: #4b5563; font-size: 0.95rem; font-weight: 500; }
 /* =============================================================================
@@ -481,7 +510,8 @@ nav a.active {
 }
 .service-card:hover::before { transform: scaleX(1); }
 
-.service-icon { font-size: 3rem; margin-bottom: 1.5rem; display: block; }
+.service-icon { display: block; margin-bottom: 1.5rem; line-height: 1; color: #2563eb; }
+.service-icon .icon { width: 3rem; height: 3rem; }
 .service-card h3 { font-size: 1.5rem; color: #0f172a; margin-bottom: 1rem; font-weight: 700; }
 .service-card p  { color: #4b5563; margin-bottom: 1.5rem; line-height: 1.7; }
 .service-card ul { list-style: none; padding: 0; }
@@ -677,7 +707,8 @@ nav a.active {
   border-radius: 12px;
   border: 1px solid #e2e8f0;
 }
-.experience-item-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+.experience-item-icon { display: block; margin-bottom: 0.5rem; line-height: 1; color: #2563eb; }
+.experience-item-icon .icon { width: 2rem; height: 2rem; }
 .experience-item-text { font-weight: 600; color: #0f172a; font-size: 0.95rem; }
 
 
@@ -795,7 +826,13 @@ textarea { resize: vertical; min-height: 140px; }
   transition: transform 0.3s;
   flex-shrink: 0;
   color: #2563eb;
+  line-height: 1;
 }
+/* The chevron is an inline SVG rather than the old "▼" character: a solid
+   triangle glyph renders at a different weight in every font, and sat
+   visually heavier than the rest of the type. The rotate-on-open below is
+   unchanged — it still keys off aria-expanded, which the JS toggles. */
+.faq-chevron .icon { width: 1.15rem; height: 1.15rem; display: block; }
 .faq-question[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
 
 .faq-answer {
