@@ -72,6 +72,16 @@
   }
   .about-photo::before { display: none; }
 
+  /* Once the about section stacks, the photo no longer shares the row with
+     the text and would stretch to the full column — 720x900 on a tablet.
+     Cap it and centre it so it reads as a portrait, not a hero image. */
+  .about-photo img {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
   .stats { grid-template-columns: repeat(2, 1fr); }
 }
 
