@@ -9,12 +9,12 @@ Type: Local business — AI tutoring and technology training for seniors
 Location: Côte Saint-Luc, Quebec, Canada (H4W)
 Phone: 514-250-8491
 Email: info@aiwithrobert.com
-Website: https://aiwithrobert.com
+Website: https://seniors.aiwithrobert.com
 Google Maps: https://maps.app.goo.gl/XCDgdcPYrzbKkA5C7
 
 ## Pages
-English (canonical): https://aiwithrobert.com/
-French / Français:   https://aiwithrobert.com/fr/
+English (canonical): https://seniors.aiwithrobert.com/
+French / Français:   https://seniors.aiwithrobert.com/fr/
 Both pages are fully server-rendered static HTML — no JavaScript is required to
 read any content on this site.
 
@@ -97,7 +97,7 @@ A: No. Lessons are designed for absolute beginners.
 
 Q: Does AI with Robert offer lessons in French?
 A: Yes. Robert Simon is fluent in English and French and teaches in either
-language. French page: https://aiwithrobert.com/fr/
+language. French page: https://seniors.aiwithrobert.com/fr/
 
 Q: Are group AI workshops available for seniors?
 A: Yes — small group workshops for 2 to 6 seniors, $35 per person for a

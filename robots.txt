@@ -1,4 +1,4 @@
-# robots.txt — aiwithrobert.com
+# robots.txt — seniors.aiwithrobert.com
 #
 # Policy: everything on this site is public and we WANT it crawled, indexed,
 # and quoted — by traditional search engines and by AI answer engines alike.
@@ -11,7 +11,7 @@
 # explicit named allow before letting the request through. Naming them costs
 # nothing and removes any ambiguity about consent.
 #
-# Machine-readable business summary for LLMs: https://aiwithrobert.com/llms.txt
+# Machine-readable business summary for LLMs: https://seniors.aiwithrobert.com/llms.txt
 
 # ── OpenAI / ChatGPT ──────────────────────────────────────────────────────
 # OAI-SearchBot builds the index ChatGPT search answers from — this is the one
@@ -101,4 +101,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://aiwithrobert.com/sitemap.xml
+Sitemap: https://seniors.aiwithrobert.com/sitemap.xml

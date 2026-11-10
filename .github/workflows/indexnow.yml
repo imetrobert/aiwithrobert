@@ -43,7 +43,7 @@ jobs:
           set -euo pipefail
 
           KEY="f14ae760d18bad17bc1d40b88caa3ebd"
-          HOST="aiwithrobert.com"
+          HOST="seniors.aiwithrobert.com"
 
           # Confirm the key file is actually reachable before submitting: the
           # engine fetches it to authenticate us, so a 404 means the submission
