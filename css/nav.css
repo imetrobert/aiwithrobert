@@ -71,7 +71,7 @@ nav {
 
 /* Phone link */
 .nav-phone a {
-  color: #2563eb;
+  color: #1f77ae;
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 700;
@@ -95,11 +95,11 @@ nav {
   transition: all 0.3s;
   font-family: inherit;
 }
-.language-selector select:hover  { border-color: #2563eb; }
+.language-selector select:hover  { border-color: #1f77ae; }
 .language-selector select:focus  {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  border-color: #1f77ae;
+  box-shadow: 0 0 0 3px rgba(31, 119, 174, 0.15);
 }
 .language-selector::after {
   content: '▼';
@@ -145,17 +145,17 @@ nav a {
   white-space: nowrap;
 }
 nav a:hover  {
-  color: #2563eb;
-  background: #eff6ff;
-  border-color: #2563eb;
+  color: #1f77ae;
+  background: #eaf5fc;
+  border-color: #1f77ae;
   transform: translateY(-2px);
 }
-nav a:focus  { outline: 3px solid #2563eb; outline-offset: 2px; }
+nav a:focus  { outline: 3px solid #1f77ae; outline-offset: 2px; }
 nav a:active { transform: translateY(0); }
 nav a.active {
-  background: #2563eb !important;
+  background: #1f77ae !important;
   color: white !important;
-  border-color: #2563eb !important;
+  border-color: #1f77ae !important;
 }
 
 /* Brand lockup is a logo, not a nav pill: no box, never "active" blue. */
@@ -168,7 +168,7 @@ nav a.brand-lockup:hover {
   transform: none;
   padding: 0.15rem 0.25rem;
 }
-nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
+nav a.brand-lockup:focus { outline: 3px solid #1f77ae; outline-offset: 2px; }
 
 /* ── Scrollable-nav affordance ──
    .has-overflow is only added by JS when the list actually overflows
