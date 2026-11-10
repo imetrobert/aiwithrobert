@@ -197,11 +197,11 @@ def rewrite_head(doc: str) -> str:
     doc = sub1(r'<meta name="keywords" content="[^"]*">',
                f'<meta name="keywords" content="{FR_KEYWORDS}">', doc, "keywords")
     doc = sub1(r'<link rel="canonical" href="[^"]*">',
-               '<link rel="canonical" href="https://aiwithrobert.com/fr/">',
+               '<link rel="canonical" href="https://seniors.aiwithrobert.com/fr/">',
                doc, "canonical")
 
     doc = sub1(r'<meta property="og:url" content="[^"]*">',
-               '<meta property="og:url" content="https://aiwithrobert.com/fr/">',
+               '<meta property="og:url" content="https://seniors.aiwithrobert.com/fr/">',
                doc, "og:url")
     doc = sub1(r'<meta property="og:title" content="[^"]*">',
                f'<meta property="og:title" content="{FR_OG_TITLE}">', doc, "og:title")
@@ -215,7 +215,7 @@ def rewrite_head(doc: str) -> str:
                doc, "og:locale:alternate")
 
     doc = sub1(r'<meta property="twitter:url" content="[^"]*">',
-               '<meta property="twitter:url" content="https://aiwithrobert.com/fr/">',
+               '<meta property="twitter:url" content="https://seniors.aiwithrobert.com/fr/">',
                doc, "twitter:url")
     doc = sub1(r'<meta property="twitter:title" content="[^"]*">',
                f'<meta property="twitter:title" content="{FR_OG_TITLE}">',
@@ -225,10 +225,10 @@ def rewrite_head(doc: str) -> str:
                doc, "twitter:description")
 
     # WebPage schema: this URL, in French.
-    doc = sub1(r'"@type": "WebPage",\n      "@id": "https://aiwithrobert\.com/",\n'
-               r'      "url": "https://aiwithrobert\.com/",',
-               '"@type": "WebPage",\n      "@id": "https://aiwithrobert.com/fr/",\n'
-               '      "url": "https://aiwithrobert.com/fr/",',
+    doc = sub1(r'"@type": "WebPage",\n      "@id": "https://seniors\.aiwithrobert\.com/",\n'
+               r'      "url": "https://seniors\.aiwithrobert\.com/",',
+               '"@type": "WebPage",\n      "@id": "https://seniors.aiwithrobert.com/fr/",\n'
+               '      "url": "https://seniors.aiwithrobert.com/fr/",',
                doc, "WebPage @id/url")
     doc = sub1(r'"inLanguage": "en",', '"inLanguage": "fr",', doc, "WebPage inLanguage")
 
@@ -323,9 +323,9 @@ def insert_hreflang_and_banner(doc: str) -> str:
         r'<link rel="alternate" hreflang="en"[^>]*>\s*'
         r'<link rel="alternate" hreflang="fr"[^>]*>\s*'
         r'<link rel="alternate" hreflang="x-default"[^>]*>',
-        '<link rel="alternate" hreflang="en" href="https://aiwithrobert.com/">\n'
-        '    <link rel="alternate" hreflang="fr" href="https://aiwithrobert.com/fr/">\n'
-        '    <link rel="alternate" hreflang="x-default" href="https://aiwithrobert.com/">',
+        '<link rel="alternate" hreflang="en" href="https://seniors.aiwithrobert.com/">\n'
+        '    <link rel="alternate" hreflang="fr" href="https://seniors.aiwithrobert.com/fr/">\n'
+        '    <link rel="alternate" hreflang="x-default" href="https://seniors.aiwithrobert.com/">',
         doc, count=1)
 
     banner = (
