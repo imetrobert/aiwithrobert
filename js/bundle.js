@@ -11,6 +11,7 @@ const translations = {
 
   en: {
     /* ── Navigation ── */
+    'brand-tagline': 'for Seniors',
     'nav-home':     'Home',
     'nav-services': 'Services',
     'nav-pricing':  'Pricing',
@@ -213,6 +214,7 @@ const translations = {
   // ─────────────────────────────────────────────────────────────────────────
   fr: {
     /* ── Navigation ── */
+    'brand-tagline': 'pour aînés',
     'nav-home':     'Accueil',
     'nav-services': 'Services',
     'nav-pricing':  'Tarifs',
