@@ -98,7 +98,7 @@ js/i18n.js` and edit both occurrences.
 
 ## Facts repeated for SEO (NAP consistency) — update ALL locations
 
-Phone (`514-250-8491`), email (`info@aiwithrobert.com`), prices ($60/$65/
+Phone (`514-250-8491`), email (`seniors@aiwithrobert.com`), prices ($60/$65/
 $275/$500/$35), and hours are intentionally repeated across many places for
 local-SEO/schema.org reasons (Google rewards consistent Name-Address-Phone
 data). Changing any of these means touching **every** location below, not
