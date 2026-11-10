@@ -28,7 +28,9 @@
     width: auto;
   }
 
-  .nav-logo img { height: 52px; }
+  .nav-logo img { height: 48px; width: 48px; }
+  .brand-name   { font-size: 1.15rem; }
+  .brand-tag    { font-size: 0.9rem; }
 
   .nav-scroll-wrap { width: auto; }
   nav ul            { width: auto; }
@@ -41,7 +43,7 @@
 
 /* ── 1200px — slightly smaller nav logo and links ── */
 @media (max-width: 1200px) {
-  .nav-logo img { height: 60px; }
+  .nav-logo img { height: 56px; width: 56px; }
   nav a         { font-size: 0.82rem; padding: 0.4rem 0.6rem; }
   .nav-phone a  { font-size: 1rem; }
 
@@ -94,12 +96,15 @@
   nav { padding: 0.8rem; }
   .nav-container { flex-direction: column; gap: 0.8rem; }
   .nav-top       { justify-content: space-between; }
-  .nav-logo img  { height: 50px; }
+  .nav-logo img  { height: 44px; width: 44px; }
+  .brand-lockup  { gap: 0.5rem; padding: 0; }
+  .brand-name    { font-size: 1.02rem; }
+  .brand-tag     { font-size: 0.82rem; }
   .nav-phone a   { font-size: 0.95rem; }
 
   /* Hero logo — kept small on mobile so it doesn't push the headline
      or hero image down noticeably. */
-  .hero-logo { height: 52px; margin-bottom: 0.75rem; }
+  .hero-logo { height: 64px; margin-bottom: 0.75rem; }
 
   nav ul {
     overflow-x: auto;
@@ -154,4 +159,27 @@
      negligible page weight, so hiding it here only cost visibility. */
   #geo-summary    { padding: 1.5rem; }
   #entity-aside   { padding: 1.2rem 1.5rem; }
+}
+
+
+/* ── 480px — small phones: keep logo + name + phone + language on one row ── */
+@media (max-width: 480px) {
+  .nav-top { gap: 0.4rem; }
+  .nav-logo img { height: 38px; width: 38px; }
+  .nav-top .brand-lockup { gap: 0.4rem; min-width: 0; }
+  .brand-name { font-size: 0.92rem; letter-spacing: -0.4px; }
+  .brand-tag  { font-size: 0.74rem; }
+  .nav-top .nav-phone a { font-size: 0.8rem; padding: 0.4rem 0.4rem; min-width: 0; gap: 0.2rem; }
+  .nav-top .nav-phone a svg { width: 14px; height: 14px; }
+  .language-selector select { padding: 0.5rem 1.6rem 0.5rem 0.5rem; font-size: 0.8rem; min-width: 3.6rem; }
+  .language-selector::after { right: 0.5rem; }
+}
+
+/* ── 380px — narrowest phones ── */
+@media (max-width: 380px) {
+  .nav-logo img { height: 34px; width: 34px; }
+  .brand-name { font-size: 0.85rem; }
+  .brand-tag  { font-size: 0.7rem; }
+  .nav-top .nav-phone a { font-size: 0.74rem; padding: 0.4rem 0.3rem; }
+  .language-selector select { min-width: 0; padding-right: 1.4rem; }
 }

@@ -9,11 +9,12 @@ all. At 180px that is merely cramped; at 32px and 16px the words "AI with
 Robert" collapse into an unreadable smudge and the icon reads as a grey blob
 in the browser tab.
 
-A favicon is a 16-pixel-wide identity badge. Text never survives at that size,
-so this script crops logo.PNG down to just the icon mark — the lightbulb with
-the maple leaf plus the teal speech bubble — which stays recognisable when
-tiny, and drops the wordmark entirely. The full logo with text is still used
-on the page itself, where there is room to read it.
+A favicon is a 16-pixel-wide identity badge. Text never survives at that size.
+logo.PNG is now the picture-only mark (lightbulb with the maple leaf plus the
+speech bubble, in the seniors sky-blue variant) — no words are baked into the
+image; the brand name and tagline are live text in the page. This script trims
+the transparent margin, centres the mark on a white plate, and at 16px keeps
+the bulb alone. logo.svg is the editable source of the mark.
 
 Run after changing logo.PNG:  python3 scripts/build_favicons.py
 
@@ -30,17 +31,18 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 LOGO = ROOT / "logo.PNG"
 
-# Bounding box of the icon mark inside logo.PNG (excludes the wordmark).
-# logo.PNG is 360x540; the mark occupies the top ~57%, separated from the
-# "AI with Robert" text by a blank band at y=309..339. Recompute these if the
-# logo artwork is ever redrawn — verify_crop() below will catch a bad box.
-ICON_BOX = (15, 6, 351, 309)          # left, top, right, bottom
+# logo.PNG is now the picture-only mark (lightbulb + maple leaf + speech
+# bubble) on a transparent square, with no wordmark: the brand name and the
+# "for Seniors" tagline are live text on the page. So the icon box is simply
+# the artwork's own bounding box, computed from the alpha channel, and the
+# source of truth is logo.svg (re-export logo.PNG from it at 512x512).
+ICON_BOX = None                       # filled in by artwork_box()
 
 # At 16px the full mark gives the bulb and the speech bubble about 7px each,
 # and both turn to mush. This box is the bulb alone, so it gets the whole
 # 16px instead of half — the standard trick of simplifying a mark at its
 # smallest size. Used for 16px only; 32px and up keep the full mark.
-BULB_BOX = (16, 8, 233, 308)
+BULB_FRACTION = 0.67                  # bulb is the left ~65% of the artwork width
 TINY_MAX = 16
 
 BACKGROUND = (255, 255, 255)          # matches manifest background_color
@@ -57,6 +59,24 @@ PNG_TARGETS = [
     ("icon-512.png", 512),
 ]
 ICO_SIZES = [48, 32, 16]              # largest first — Pillow uses [0] as base
+
+
+def flatten(logo: Image.Image) -> Image.Image:
+    """Composite the (transparent) logo over the white favicon plate so the
+    RGB conversions below never see the black that sits under alpha=0."""
+    rgba = logo.convert("RGBA")
+    plate = Image.new("RGBA", rgba.size, BACKGROUND + (255,))
+    plate.alpha_composite(rgba)
+    return plate.convert("RGB")
+
+
+def artwork_box(logo: Image.Image):
+    """Bounding box of the visible artwork (alpha > 8), as (l, t, r, b)."""
+    alpha = logo.convert("RGBA").getchannel("A").point(lambda a: 255 if a > 8 else 0)
+    box = alpha.getbbox()
+    if not box:
+        raise SystemExit("logo.PNG has no visible artwork (fully transparent?)")
+    return box
 
 
 def verify_crop(mark: Image.Image) -> None:
@@ -87,20 +107,22 @@ def verify_crop(mark: Image.Image) -> None:
         raise SystemExit("ICON_BOX has slack on every side — tighten it")
 
 
-def bulb_only(logo: Image.Image) -> Image.Image:
+def bulb_only(logo: Image.Image, icon_box) -> Image.Image:
     """The bulb with the speech bubble removed, for the 16px icons.
 
     The bubble sits behind the bulb, so cropping alone still leaves teal
     slivers showing around the bulb's round edge. Those few stray pixels read
     as dirt at 16px, so paint them out rather than crop tighter (a tighter
     crop would clip the bulb itself)."""
-    bulb = logo.convert("RGB").crop(BULB_BOX).copy()
+    l, t, r, b = icon_box
+    bulb_box = (l, t, l + round((r - l) * BULB_FRACTION), b)
+    bulb = logo.convert("RGB").crop(bulb_box).copy()
     px = bulb.load()
     w, h = bulb.size
     for y in range(h):
         for x in range(w):
             r, g, b = px[x, y]
-            if g > 120 and b > 120 and r < 150 and g > r + 30:   # teal
+            if g > 120 and b > 120 and r < 150 and g > r + 30:   # bubble blue/teal
                 px[x, y] = BACKGROUND
     return bulb
 
@@ -137,10 +159,12 @@ def main() -> int:
     if not LOGO.exists():
         sys.exit(f"missing {LOGO}")
 
-    logo = Image.open(LOGO)
-    mark = logo.crop(ICON_BOX)
+    raw = Image.open(LOGO)
+    icon_box = artwork_box(raw)
+    logo = flatten(raw)
+    mark = logo.crop(icon_box)
     verify_crop(mark)
-    tiny = bulb_only(logo)
+    tiny = bulb_only(logo, icon_box)
     print(f"icon mark {mark.size[0]}x{mark.size[1]} · "
           f"simplified 16px mark {tiny.size[0]}x{tiny.size[1]}")
 

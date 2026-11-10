@@ -179,25 +179,27 @@ in the dropdown navigates between the two URLs rather than swapping text
 in place — two distinct indexable URLs is what makes the `hreflang` pair
 valid.
 
-## Favicons / app icons
+## Logo, tagline and favicons
+
+`logo.PNG` is a **picture-only** 512×512 transparent mark (lightbulb +
+speech bubble, seniors sky-blue variant). It contains no words: the site
+name ("AI with Robert") is live text in the nav (`.brand-name`) and the
+tagline is `data-i18n="brand-tagline"` ("for Seniors" / "pour aînés"), so it
+stays bilingual and crisp. `logo.svg` is the editable vector source of the
+mark — change colours/shape there, export a 512×512 transparent PNG over
+`logo.PNG`, then regenerate icons.
 
 All six icon files are generated from `logo.PNG`. Only re-run this if the
-logo artwork itself changes — it is **not** part of the CI build, because
-it needs Pillow and the logo almost never changes:
+logo artwork changes — it is **not** part of the CI build (needs Pillow):
 
 ```
 pip install Pillow && python3 scripts/build_favicons.py
 ```
 
-The script crops `logo.PNG` down to just the icon mark (lightbulb + speech
-bubble) and throws away the "AI with Robert" wordmark — text is unreadable
-at 16-32px, and the old icons were the whole logo squashed into a square,
-which rendered as a grey smudge in browser tabs. At 16px it simplifies
-further to the bulb alone, so the bulb gets all 16 pixels instead of
-sharing them with the speech bubble.
-
-If you redraw the logo, update `ICON_BOX`/`BULB_BOX` in the script; it
-sanity-checks the crop and fails rather than emitting bad icons.
+The script finds the artwork box from the alpha channel, flattens onto
+white, and at 16px keeps only the bulb (bubble pixels painted white) so the
+tab icon stays legible. It sanity-checks the crop and fails rather than
+emitting bad icons.
 
 ## Other files
 
