@@ -102,6 +102,33 @@ function setLanguage(lang) {
   checkFormValidity();
 }
 
+/**
+ * The footer's "This page in English" / "Cette page en français" link is a plain
+ * <a href> so crawlers and no-JS visitors can follow it (hreflang pair). Followed
+ * as-is it would NOT update the saved preference, and on "/" the init code in
+ * main.js would read the stale 'fr' from localStorage and bounce the visitor
+ * straight back to /fr/. So route clicks through setLanguage(), exactly like the
+ * nav dropdown does: it saves the preference, then navigates to the right URL.
+ * Modified clicks (new tab/window) just save the preference and keep the default.
+ */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('#lang-alternate-link a[hreflang]');
+  if (!a) return;
+  var lang = a.getAttribute('hreflang');
+  if (lang !== 'en' && lang !== 'fr') return;
+  var plain = e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey;
+  if (plain) {
+    e.preventDefault();
+    setLanguage(lang);
+  } else {
+    localStorage.setItem('language', lang);
+  }
+});
+document.addEventListener('auxclick', function (e) {
+  var a = e.target.closest && e.target.closest('#lang-alternate-link a[hreflang]');
+  if (a && e.button === 1) localStorage.setItem('language', a.getAttribute('hreflang'));
+});
+
 window.setLanguage = setLanguage;
 window.getCurrentLanguage = getCurrentLanguage;
 window.getPageLanguage = getPageLanguage;
