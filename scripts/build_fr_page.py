@@ -163,7 +163,8 @@ def apply_translations(doc: str, fr: dict) -> tuple:
             continue
         start = open_tag_start(doc, m.start())
         end = tag_end(doc, start)
-        ph = re.search(r'placeholder="([^"]*)"', doc[start:end])
+        # (?<![\w-]) so we match the real placeholder= attribute, not the tail of data-i18n-placeholder=
+        ph = re.search(r'(?<![\w-])placeholder="([^"]*)"', doc[start:end])
         if ph:
             edits.append((start + ph.start(1), start + ph.end(1),
                           html.escape(fr[key], quote=True)))
