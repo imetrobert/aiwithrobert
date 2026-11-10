@@ -31,7 +31,7 @@ html {
   position: absolute;
   top: -50px;
   left: 1rem;
-  background: #2563eb;
+  background: #1f77ae;
   color: white;
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
@@ -62,7 +62,7 @@ section {
 
 h2 {
   font-size: 3.5rem;
-  color: #0f172a;
+  color: #11304c;
   margin-bottom: 1.5rem;
   font-weight: 800;
   letter-spacing: -1px;
@@ -78,7 +78,7 @@ h2 {
 /* Primary CTA button (used in hero and elsewhere) */
 .cta-button {
   display: inline-block;
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #1f77ae 0%, #185f8c 100%);
   color: white;
   padding: 1.2rem 3rem;
   font-size: 1.15rem;
@@ -88,11 +88,11 @@ h2 {
   transition: all 0.3s;
   border: none;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 10px 30px rgba(31, 119, 174, 0.3);
 }
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 15px 40px rgba(31, 119, 174, 0.4);
 }
 .cta-button:focus {
   outline: 3px solid #fbbf24;
@@ -110,8 +110,8 @@ h2 {
 
 /* GEO / entity asides */
 #entity-aside {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-  border-left: 5px solid #2563eb;
+  background: linear-gradient(135deg, #eaf5fc 0%, #cfe8f7 100%);
+  border-left: 5px solid #1f77ae;
   border-radius: 0 12px 12px 0;
   padding: 1.4rem 2rem;
   max-width: 900px;
@@ -120,8 +120,8 @@ h2 {
   color: #1e3a8a;
   line-height: 1.7;
 }
-#entity-aside strong { color: #1e40af; }
-#entity-aside a      { color: #1e40af; font-weight: 700; }
+#entity-aside strong { color: #154f78; }
+#entity-aside a      { color: #154f78; font-weight: 700; }
 
 #geo-summary {
   background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
@@ -247,7 +247,7 @@ nav {
 
 /* Phone link */
 .nav-phone a {
-  color: #2563eb;
+  color: #1f77ae;
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 700;
@@ -271,11 +271,11 @@ nav {
   transition: all 0.3s;
   font-family: inherit;
 }
-.language-selector select:hover  { border-color: #2563eb; }
+.language-selector select:hover  { border-color: #1f77ae; }
 .language-selector select:focus  {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  border-color: #1f77ae;
+  box-shadow: 0 0 0 3px rgba(31, 119, 174, 0.15);
 }
 .language-selector::after {
   content: '▼';
@@ -321,17 +321,17 @@ nav a {
   white-space: nowrap;
 }
 nav a:hover  {
-  color: #2563eb;
-  background: #eff6ff;
-  border-color: #2563eb;
+  color: #1f77ae;
+  background: #eaf5fc;
+  border-color: #1f77ae;
   transform: translateY(-2px);
 }
-nav a:focus  { outline: 3px solid #2563eb; outline-offset: 2px; }
+nav a:focus  { outline: 3px solid #1f77ae; outline-offset: 2px; }
 nav a:active { transform: translateY(0); }
 nav a.active {
-  background: #2563eb !important;
+  background: #1f77ae !important;
   color: white !important;
-  border-color: #2563eb !important;
+  border-color: #1f77ae !important;
 }
 
 /* Brand lockup is a logo, not a nav pill: no box, never "active" blue. */
@@ -344,7 +344,7 @@ nav a.brand-lockup:hover {
   transform: none;
   padding: 0.15rem 0.25rem;
 }
-nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
+nav a.brand-lockup:focus { outline: 3px solid #1f77ae; outline-offset: 2px; }
 
 /* ── Scrollable-nav affordance ──
    .has-overflow is only added by JS when the list actually overflows
@@ -385,7 +385,7 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
    ============================================================================= */
 
 .hero {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #cfe8f7 100%);
   padding: 7rem 2rem 5rem;
   text-align: center;
   position: relative;
@@ -399,7 +399,7 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
   position: absolute;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(31, 119, 174, 0.15) 0%, transparent 70%);
   top: -200px;
   right: -100px;
   border-radius: 50%;
@@ -455,7 +455,7 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
 .hero h1 {
   font-size: 4.5rem;
   margin-bottom: 1.5rem;
-  color: #0f172a;
+  color: #11304c;
   font-weight: 800;
   letter-spacing: -2px;
   line-height: 1.1;
@@ -516,9 +516,9 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
   padding: 0 2rem;
 }
 .stat-item     { text-align: center; }
-.stat-icon     { display: block; margin-bottom: 1rem; line-height: 1; color: #2563eb; }
+.stat-icon     { display: block; margin-bottom: 1rem; line-height: 1; color: #1f77ae; }
 .stat-icon .icon { width: 2.5rem; height: 2.5rem; }
-.stat-number   { font-size: 2rem; font-weight: 700; color: #0f172a; display: block; margin-bottom: 0.3rem; }
+.stat-number   { font-size: 2rem; font-weight: 700; color: #11304c; display: block; margin-bottom: 0.3rem; }
 .stat-label    { color: #4b5563; font-size: 0.95rem; font-weight: 500; }
 /* =============================================================================
    sections.css — Services, Pricing, About, Contact, FAQ
@@ -549,20 +549,20 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #2563eb, #22c55e);
+  background: linear-gradient(90deg, #1f77ae, #22c55e);
   transform: scaleX(0);
   transition: transform 0.3s;
 }
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-  border-color: #2563eb;
+  border-color: #1f77ae;
 }
 .service-card:hover::before { transform: scaleX(1); }
 
-.service-icon { display: block; margin-bottom: 1.5rem; line-height: 1; color: #2563eb; }
+.service-icon { display: block; margin-bottom: 1.5rem; line-height: 1; color: #1f77ae; }
 .service-icon .icon { width: 3rem; height: 3rem; }
-.service-card h3 { font-size: 1.5rem; color: #0f172a; margin-bottom: 1rem; font-weight: 700; }
+.service-card h3 { font-size: 1.5rem; color: #11304c; margin-bottom: 1rem; font-weight: 700; }
 .service-card p  { color: #4b5563; margin-bottom: 1.5rem; line-height: 1.7; }
 .service-card ul { list-style: none; padding: 0; }
 .service-card li {
@@ -598,13 +598,13 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #2563eb, #22c55e);
+  background: linear-gradient(90deg, #1f77ae, #22c55e);
 }
 .testimonial-quote-mark {
   display: block;
   font-size: 4rem;
   line-height: 1;
-  color: #2563eb;
+  color: #1f77ae;
   opacity: 0.25;
   font-family: Georgia, serif;
   margin-bottom: -1rem;
@@ -623,10 +623,10 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
   border-top: 1px solid #e2e8f0;
   padding-top: 1.5rem;
 }
-.testimonial-name    { font-weight: 700; color: #0f172a; font-size: 1.05rem; font-style: normal; }
+.testimonial-name    { font-weight: 700; color: #11304c; font-size: 1.05rem; font-style: normal; }
 .testimonial-role     { color: #4b5563; font-size: 0.95rem; }
 .testimonial-org       { color: #4b5563; font-size: 0.95rem; }
-.testimonial-context { color: #2563eb; font-size: 0.9rem; margin-top: 0.5rem; font-weight: 600; }
+.testimonial-context { color: #1f77ae; font-size: 0.9rem; margin-top: 0.5rem; font-weight: 600; }
 
 .testimonial-gbp-link {
   display: inline-flex;
@@ -643,9 +643,9 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
   transition: all 0.2s;
 }
 .testimonial-gbp-link:hover {
-  border-color: #2563eb;
-  background: #eff6ff;
-  color: #2563eb;
+  border-color: #1f77ae;
+  background: #eaf5fc;
+  color: #1f77ae;
 }
 .testimonial-gbp-link svg { flex-shrink: 0; }
 
@@ -673,10 +673,10 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
 .pricing-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-  border-color: #2563eb;
+  border-color: #1f77ae;
 }
 .pricing-card.featured {
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #1f77ae 0%, #185f8c 100%);
   border: none;
   color: white;
   transform: scale(1.05);
@@ -698,10 +698,10 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
   display: inline-block;
   margin-bottom: 1rem;
 }
-.pricing-card.featured .badge { background: white; color: #2563eb; }
+.pricing-card.featured .badge { background: white; color: #1f77ae; }
 
-.pricing-card h3    { font-size: 1.3rem; color: #0f172a; margin-bottom: 1rem; font-weight: 700; }
-.price              { font-size: 3rem; font-weight: 800; color: #0f172a; margin: 1rem 0; line-height: 1; }
+.pricing-card h3    { font-size: 1.3rem; color: #11304c; margin-bottom: 1rem; font-weight: 700; }
+.price              { font-size: 3rem; font-weight: 800; color: #11304c; margin: 1rem 0; line-height: 1; }
 .price-details      { color: #4b5563; font-size: 0.9rem; margin-bottom: 1.5rem; }
 .pricing-card.featured .price-details { color: rgba(255, 255, 255, 0.9); }
 .pricing-features   { margin: 2rem 0; }
@@ -734,7 +734,7 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #2563eb, #22c55e);
+  background: linear-gradient(135deg, #1f77ae, #22c55e);
   border-radius: 24px;
   top: 20px;
   left: 20px;
@@ -742,7 +742,7 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
   opacity: 0.15;
 }
 
-.about-text h3  { font-size: 2.5rem; color: #0f172a; margin-bottom: 1.5rem; font-weight: 800; }
+.about-text h3  { font-size: 2.5rem; color: #11304c; margin-bottom: 1.5rem; font-weight: 800; }
 .about-text p   { color: #475569; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
 
 .experience-grid {
@@ -757,9 +757,9 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
   border-radius: 12px;
   border: 1px solid #e2e8f0;
 }
-.experience-item-icon { display: block; margin-bottom: 0.5rem; line-height: 1; color: #2563eb; }
+.experience-item-icon { display: block; margin-bottom: 0.5rem; line-height: 1; color: #1f77ae; }
 .experience-item-icon .icon { width: 2rem; height: 2rem; }
-.experience-item-text { font-weight: 600; color: #0f172a; font-size: 0.95rem; }
+.experience-item-text { font-weight: 600; color: #11304c; font-size: 0.95rem; }
 
 
 /* ── CONTACT ───────────────────────────────────────────────────────────────── */
@@ -768,8 +768,8 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
 
 .contact-container  { max-width: 800px; margin: 0 auto; }
 .contact-info       { text-align: center; margin-bottom: 3rem; }
-.contact-info h3    { font-size: 1.5rem; color: #0f172a; margin-bottom: 1rem; font-weight: 700; }
-.contact-info a     { color: #2563eb; text-decoration: none; font-weight: 600; font-size: 1.15rem; }
+.contact-info h3    { font-size: 1.5rem; color: #11304c; margin-bottom: 1rem; font-weight: 700; }
+.contact-info a     { color: #1f77ae; text-decoration: none; font-weight: 600; font-size: 1.15rem; }
 
 .contact-form {
   background: white;
@@ -780,7 +780,7 @@ nav a.brand-lockup:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
 }
 
 .form-group       { margin-bottom: 1.8rem; }
-label             { display: block; font-weight: 600; margin-bottom: 0.6rem; color: #0f172a; font-size: 1.05rem; }
+label             { display: block; font-weight: 600; margin-bottom: 0.6rem; color: #11304c; font-size: 1.05rem; }
 
 input,
 select,
@@ -798,9 +798,9 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: #1f77ae;
   background: white;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(31, 119, 174, 0.1);
 }
 input.error,
 select.error,
@@ -856,7 +856,7 @@ textarea { resize: vertical; min-height: 140px; }
   padding: 1.8rem 2rem;
   font-size: 1.05rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #11304c;
   text-align: left;
   cursor: pointer;
   display: flex;
@@ -867,15 +867,15 @@ textarea { resize: vertical; min-height: 140px; }
   transition: background 0.2s;
   min-height: 54px;
 }
-.faq-question:hover               { background: #eff6ff; color: #2563eb; }
-.faq-question[aria-expanded="true"] { background: #eff6ff; color: #2563eb; }
-.faq-question:focus               { outline: 3px solid #2563eb; outline-offset: -3px; }
+.faq-question:hover               { background: #eaf5fc; color: #1f77ae; }
+.faq-question[aria-expanded="true"] { background: #eaf5fc; color: #1f77ae; }
+.faq-question:focus               { outline: 3px solid #1f77ae; outline-offset: -3px; }
 
 .faq-chevron {
   font-size: 1rem;
   transition: transform 0.3s;
   flex-shrink: 0;
-  color: #2563eb;
+  color: #1f77ae;
   line-height: 1;
 }
 /* The chevron is an inline SVG rather than the old "▼" character: a solid
@@ -899,7 +899,7 @@ textarea { resize: vertical; min-height: 140px; }
    ============================================================================= */
 
 footer {
-  background: #0f172a;
+  background: #11304c;
   color: white;
   padding: 3rem 2rem;
   text-align: center;
