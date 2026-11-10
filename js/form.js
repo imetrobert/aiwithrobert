@@ -90,3 +90,15 @@ function checkFormSuccess() {
 
 window.checkFormValidity = checkFormValidity;
 window.checkFormSuccess  = checkFormSuccess;
+
+// Tag each submission with brand + language so the email subject and body show where it came from
+(function () {
+  const form = document.querySelector('.contact-form form');
+  if (!form) return;
+  form.addEventListener('submit', function () {
+    const fr = getCurrentLanguage() === 'fr';
+    document.getElementById('form-subject').value =
+      '[Seniors · ' + (fr ? 'FR' : 'EN') + '] New Contact Form Submission - AI with Robert';
+    document.getElementById('form-language').value = fr ? 'Français' : 'English';
+  });
+})();
