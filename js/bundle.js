@@ -502,7 +502,7 @@ function setLanguage(lang) {
     // Must stay byte-identical to FR_TITLE/FR_DESC in scripts/build_fr_page.py,
     // which bakes them into /fr/. Title <= 60 chars, description <= 155, or
     // search engines truncate them and Bing flags an SEO error.
-    document.title = 'Tutoriel IA pour Aînés — Côte Saint-Luc | AI with Robert';
+    document.title = 'AI with Robert pour aînés — Tutoriel IA, Côte Saint-Luc';
     document.querySelector('meta[name="description"]').setAttribute('content',
       'Tutoriel IA pour aînés à Côte Saint-Luc et Montréal. Apprenez ChatGPT et la sécurité en ligne, à votre rythme. Appel découverte gratuit. 514-250-8491.');
     document.documentElement.lang = 'fr';
@@ -510,7 +510,7 @@ function setLanguage(lang) {
     // Must stay byte-identical to the <title>/<meta name="description"> in
     // index.html's <head>. JS overwrites them on load, so any drift means
     // crawlers that render JS see different metadata than those that don't.
-    document.title = 'AI Tutoring for Seniors — Côte Saint-Luc | AI with Robert';
+    document.title = 'AI with Robert for Seniors — AI Tutoring, Côte Saint-Luc';
     document.querySelector('meta[name="description"]').setAttribute('content',
       'Patient, one-on-one AI tutoring for seniors in Côte Saint-Luc & across Montreal. Learn ChatGPT & online safety. Free 30-min discovery call. 514-250-8491.');
     document.documentElement.lang = 'en';
