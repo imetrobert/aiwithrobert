@@ -31,7 +31,7 @@ html {
   position: absolute;
   top: -50px;
   left: 1rem;
-  background: #2563eb;
+  background: #1f77ae;
   color: white;
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
@@ -62,7 +62,7 @@ section {
 
 h2 {
   font-size: 3.5rem;
-  color: #0f172a;
+  color: #11304c;
   margin-bottom: 1.5rem;
   font-weight: 800;
   letter-spacing: -1px;
@@ -78,7 +78,7 @@ h2 {
 /* Primary CTA button (used in hero and elsewhere) */
 .cta-button {
   display: inline-block;
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #1f77ae 0%, #185f8c 100%);
   color: white;
   padding: 1.2rem 3rem;
   font-size: 1.15rem;
@@ -88,11 +88,11 @@ h2 {
   transition: all 0.3s;
   border: none;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 10px 30px rgba(31, 119, 174, 0.3);
 }
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 15px 40px rgba(31, 119, 174, 0.4);
 }
 .cta-button:focus {
   outline: 3px solid #fbbf24;
@@ -110,8 +110,8 @@ h2 {
 
 /* GEO / entity asides */
 #entity-aside {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-  border-left: 5px solid #2563eb;
+  background: linear-gradient(135deg, #eaf5fc 0%, #cfe8f7 100%);
+  border-left: 5px solid #1f77ae;
   border-radius: 0 12px 12px 0;
   padding: 1.4rem 2rem;
   max-width: 900px;
@@ -120,8 +120,8 @@ h2 {
   color: #1e3a8a;
   line-height: 1.7;
 }
-#entity-aside strong { color: #1e40af; }
-#entity-aside a      { color: #1e40af; font-weight: 700; }
+#entity-aside strong { color: #154f78; }
+#entity-aside a      { color: #154f78; font-weight: 700; }
 
 #geo-summary {
   background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
