@@ -8,7 +8,7 @@ Owner: Robert Simon
 Type: Local business — AI tutoring and technology training for seniors
 Location: Côte Saint-Luc, Quebec, Canada (H4W)
 Phone: 514-250-8491
-Email: info@aiwithrobert.com
+Email: seniors@aiwithrobert.com
 Website: https://seniors.aiwithrobert.com
 Google Maps: https://maps.app.goo.gl/XCDgdcPYrzbKkA5C7
 
