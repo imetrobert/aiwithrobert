@@ -22,6 +22,7 @@ on:
     paths:
       - 'index.html'
       - 'fr/**'
+      - 'articles/**'
       - 'llms.txt'
       - 'sitemap.xml'
       - 'js/**'
@@ -38,6 +39,9 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Submit changed URLs to IndexNow
         run: |
           set -euo pipefail
@@ -77,8 +81,9 @@ jobs:
           # Built with printf rather than a heredoc on purpose: this step is
           # indented inside YAML, and an indented heredoc terminator does not
           # close the heredoc (<<- strips tabs only, never spaces).
-          BODY=$(printf '{"host":"%s","key":"%s","keyLocation":"https://%s/%s.txt","urlList":["https://%s/","https://%s/fr/","https://%s/llms.txt"]}' \
-            "$HOST" "$KEY" "$HOST" "$KEY" "$HOST" "$HOST" "$HOST")
+          # Every URL in sitemap.xml (home, French, and all guide pages) plus llms.txt.
+          # python3 -c on one line, not a heredoc, to stay safe inside YAML indentation.
+          BODY=$(HOST="$HOST" KEY="$KEY" python3 -c 'import json,os,re;h=os.environ["HOST"];k=os.environ["KEY"];u=re.findall(r"<loc>([^<]+)</loc>",open("sitemap.xml",encoding="utf-8").read());u.append("https://%s/llms.txt"%h);print(json.dumps({"host":h,"key":k,"keyLocation":"https://%s/%s.txt"%(h,k),"urlList":u}))')
 
           echo "Submitting to IndexNow..."
           CODE=$(curl -sS -o /tmp/indexnow.out -w '%{http_code}' \

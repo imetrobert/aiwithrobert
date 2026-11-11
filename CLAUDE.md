@@ -213,3 +213,11 @@ emitting bad icons.
   touched by content edits.
 - `llms.txt` — freestanding plain-text business summary for AI search
   engines; not templated from anything, update by hand when facts change.
+
+## Guides (articles) — generated, edit the data file
+
+The guide pages live at `articles/<slug>/` (EN) and `fr/articles/<slug>/` (FR) and are **generated** by
+`python3 scripts/build_articles.py` from `scripts/articles_data.py`. Edit wording in the data file, never the
+generated HTML. The script also refreshes the guide block in `sitemap.xml` (between `GUIDES:START/END`) and the
+`## Guides` section of `llms.txt`. The IndexNow workflow submits every URL in `sitemap.xml`. Independence wording
+(Bell Canada) and the Person id (`https://www.imetrobert.com/#robert-simon`) are set in `build_articles.py`.
