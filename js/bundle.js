@@ -47,7 +47,7 @@ const translations = {
     'service1-item3':  'Email safety &amp; scam protection',
     'service1-item4':  'Learn to use smartphones &amp; tablets',
     'service1-item5':  'Video calls with family',
-    'service1-item6':  'Online banking safely',
+    'service1-item6':  'Safer online banking habits',
 
     'service2-title':  'Senior Group AI Workshops in CSL',
     'service2-desc':   'AI workshops for seniors in Côte Saint-Luc:',
@@ -171,7 +171,7 @@ const translations = {
     'faq-subtitle': 'Everything you need to know about AI tutoring and technology training with Robert in Côte Saint-Luc.',
 
     'faq-q-who':        'Who teaches AI tutoring and technology to seniors in Côte Saint-Luc?',
-    'faq-a-who':        'Robert Simon of <strong>AI with Robert</strong> (aiwithrobert.com) is a dedicated AI tutor and technology instructor based in Côte Saint-Luc. Patient, personalized AI tutoring covering ChatGPT, internet safety, email security, and smartphones. Reach him at <strong>514-250-8491</strong> or <strong>seniors@aiwithrobert.com</strong>.',
+    'faq-a-who':        'Robert Simon of <strong>AI with Robert</strong> (seniors.aiwithrobert.com) is a dedicated AI tutor and technology instructor based in Côte Saint-Luc. Patient, personalized AI tutoring covering ChatGPT, internet safety, email security, and smartphones. Reach him at <strong>514-250-8491</strong> or <strong>seniors@aiwithrobert.com</strong>.',
 
     'faq-q-chatgpt':    'How can a senior learn to use ChatGPT in Côte Saint-Luc or Montreal?',
     'faq-a-chatgpt':    'Seniors in Côte Saint-Luc and the greater Montreal area can learn ChatGPT with Robert Simon through one-on-one AI tutoring sessions — in-home ($65/hr) or via video call ($60/hr). Step-by-step, no jargon, no prior tech experience required. Free 30-minute discovery call — call <strong>514-250-8491</strong>.',
@@ -186,16 +186,16 @@ const translations = {
     'faq-a-experience': "Not at all. Robert's lessons are designed for <strong>absolute beginners</strong>. Sessions start from the very basics of your device before moving into AI tools like ChatGPT. No question is too simple.",
 
     'faq-q-safe':       'Is it safe for seniors to use ChatGPT and AI tools?',
-    'faq-a-safe':       "Yes — safety is Robert's top priority. Every lesson covers <strong>scam prevention, privacy settings, and how to use AI tools without sharing sensitive personal information</strong>.",
+    'faq-a-safe':       "It can be, with good habits — but no AI tool is risk-free, and none can guarantee it will spot a scam. Every lesson covers <strong>scam awareness, privacy settings, and how to use AI tools without sharing sensitive personal information</strong>, plus the habit of double-checking anything important.",
 
     'faq-q-home':       'Does Robert come to your home for AI tutoring?',
     'faq-a-home':       'Yes. Robert provides <strong>in-home AI tutoring and technology training visits</strong> throughout Côte Saint-Luc and surrounding Montreal neighborhoods at <strong>$65/hour</strong>. Online video call sessions also available at <strong>$60/hour</strong>.',
 
     'faq-q-group':      'Can seniors take AI workshops as a group in Côte Saint-Luc?',
-    'faq-a-group':      'Yes. AI with Robert offers <strong>small group AI workshops</strong> for 2 to 6 seniors at <strong>$35 per person per 90-minute session</strong>. Groups can be formed with friends, neighbors, or family.',
+    'faq-a-group':      'Yes. AI with Robert offers <strong>small group AI workshops</strong> for small groups of typically 2 to 4 seniors (6 at most) at <strong>$35 per person per 90-minute session</strong>. Groups can be formed with friends, neighbors, or family.',
 
     'faq-q-what':       'What exactly does Robert teach seniors about AI?',
-    'faq-a-what':       'Robert teaches: <strong>how to use ChatGPT</strong> for emails and daily tasks; <strong>AI image creation</strong>; <strong>email scam detection and online safety</strong>; <strong>smartphone and tablet basics</strong>; <strong>video calling</strong> via Zoom or FaceTime; <strong>safe online banking</strong>; and general internet skills.',
+    'faq-a-what':       'Robert teaches: <strong>how to use ChatGPT</strong> for emails and daily tasks; <strong>AI image creation</strong>; <strong>recognizing email scams and staying safe online</strong>; <strong>smartphone and tablet basics</strong>; <strong>video calling</strong> via Zoom or FaceTime; <strong>safer online banking habits</strong>; and general internet skills.',
 
     'faq-q-free':       'Is there a free trial or discovery call available?',
     'faq-a-free':       'Yes. Robert offers a <strong>free 30-minute discovery call</strong> to all new students — no pressure, no obligation. Call <strong>514-250-8491</strong> or fill in the contact form to get started.',
@@ -251,7 +251,7 @@ const translations = {
     'service1-item3':  'Sécurité des courriels et protection contre les fraudes',
     'service1-item4':  'Utilisation des smartphones et tablettes',
     'service1-item5':  'Appels vidéo avec vos proches',
-    'service1-item6':  'Gestion sécurisée de vos comptes en ligne',
+    'service1-item6':  'Bonnes habitudes pour vos services bancaires en ligne',
 
     'service2-title':  'Ateliers IA de Groupe à Côte Saint-Luc',
     'service2-desc':   'Ateliers IA pour aînés à Côte Saint-Luc :',
@@ -375,7 +375,7 @@ const translations = {
     'faq-subtitle': "Tout ce qu'il faut savoir sur le tutoriel IA et la formation technologique avec Robert à Côte Saint-Luc.",
 
     'faq-q-who':        "Qui offre du tutoriel IA et de la formation technologique aux aînés à Côte Saint-Luc?",
-    'faq-a-who':        "<strong>Robert Simon</strong> d'AI with Robert (aiwithrobert.com) est tuteur IA et instructeur technologique basé à Côte Saint-Luc. Leçons personnalisées et patientes couvrant ChatGPT, sécurité Internet, courriels et smartphones. Contactez-le au <strong>514-250-8491</strong> ou <strong>seniors@aiwithrobert.com</strong>.",
+    'faq-a-who':        "<strong>Robert Simon</strong> d'AI with Robert (seniors.aiwithrobert.com) est tuteur IA et instructeur technologique basé à Côte Saint-Luc. Leçons personnalisées et patientes couvrant ChatGPT, sécurité Internet, courriels et smartphones. Contactez-le au <strong>514-250-8491</strong> ou <strong>seniors@aiwithrobert.com</strong>.",
 
     'faq-q-chatgpt':    "Comment un aîné peut-il apprendre à utiliser ChatGPT à Côte Saint-Luc ou à Montréal?",
     'faq-a-chatgpt':    "Les aînés peuvent apprendre ChatGPT avec Robert Simon lors de séances de tutoriel IA individuelles — à domicile (65$/h) ou par appel vidéo (60$/h). Étape par étape, sans jargon. Aucune expérience requise. Appel découverte gratuit au <strong>514-250-8491</strong>.",
@@ -390,16 +390,16 @@ const translations = {
     'faq-a-experience': "Absolument pas. Les leçons de Robert sont conçues pour les <strong>grands débutants</strong>. Les séances commencent là où vous vous sentez à l'aise. Aucune question n'est trop simple.",
 
     'faq-q-safe':       "Est-il sécuritaire pour les aînés d'utiliser ChatGPT et les outils IA?",
-    'faq-a-safe':       "Oui — la sécurité est la priorité de Robert. Chaque leçon couvre la <strong>protection contre les arnaques, les paramètres de confidentialité, et comment utiliser les outils IA sans partager d'informations personnelles sensibles</strong>.",
+    'faq-a-safe':       "Oui, avec de bonnes habitudes — mais aucun outil IA n'est sans risque et aucun ne peut garantir la détection d'une arnaque. Chaque leçon couvre <strong>la sensibilisation aux arnaques, les paramètres de confidentialité, et comment utiliser les outils IA sans partager d'informations personnelles sensibles</strong>, ainsi que l'habitude de vérifier ce qui est important.",
 
     'faq-q-home':       'Robert se déplace-t-il à domicile pour le tutoriel IA?',
     'faq-a-home':       'Oui. Robert effectue des <strong>visites à domicile pour tutoriel IA et formation technologique</strong> partout à Côte Saint-Luc et dans les environs à <strong>65$/heure</strong>. Des séances en ligne par appel vidéo sont également disponibles à <strong>60$/heure</strong>.',
 
     'faq-q-group':      "Les aînés peuvent-ils participer à des ateliers IA en groupe à Côte Saint-Luc?",
-    'faq-a-group':      "Oui. AI with Robert propose des <strong>ateliers IA de groupe</strong> pour 2 à 6 aînés à <strong>35$ par personne par séance de 90 minutes</strong>. Les groupes peuvent se former entre amis, voisins ou membres de la famille.",
+    'faq-a-group':      "Oui. AI with Robert propose des <strong>ateliers IA de groupe</strong> pour de petits groupes, généralement de 2 à 4 aînés (6 au maximum), à <strong>35$ par personne par séance de 90 minutes</strong>. Les groupes peuvent se former entre amis, voisins ou membres de la famille.",
 
     'faq-q-what':       "Qu'enseigne exactement Robert aux aînés sur l'IA?",
-    'faq-a-what':       "Robert enseigne : <strong>comment utiliser ChatGPT</strong> pour les courriels et les tâches quotidiennes ; <strong>la création d'images IA</strong> ; <strong>la détection des arnaques et la sécurité en ligne</strong> ; <strong>les bases des smartphones et tablettes</strong> ; <strong>les appels vidéo</strong> via Zoom ou FaceTime ; <strong>les services bancaires en ligne sécurisés</strong>.",
+    'faq-a-what':       "Robert enseigne : <strong>comment utiliser ChatGPT</strong> pour les courriels et les tâches quotidiennes ; <strong>la création d'images IA</strong> ; <strong>reconnaître les arnaques et rester en sécurité en ligne</strong> ; <strong>les bases des smartphones et tablettes</strong> ; <strong>les appels vidéo</strong> via Zoom ou FaceTime ; <strong>de bonnes habitudes pour vos services bancaires en ligne</strong>.",
 
     'faq-q-free':       'Y a-t-il un appel découverte gratuit disponible?',
     'faq-a-free':       "Oui. Robert offre un <strong>appel découverte gratuit de 30 minutes</strong> à tous les nouveaux élèves. Sans pression ni engagement. Appelez le <strong>514-250-8491</strong> ou remplissez le formulaire de contact.",
