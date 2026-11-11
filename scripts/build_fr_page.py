@@ -242,6 +242,11 @@ def rewrite_head(doc: str) -> str:
                '<a href="/" rel="alternate" hreflang="en" lang="en" '
                'style="color:rgba(255,255,255,0.85);">This page in English</a></p>',
                doc, "footer language link")
+
+    # Footer link to the hub opens the French hub page on this page.
+    doc = sub1(r'<a data-hub-link href="https://aiwithrobert\.com/"',
+               '<a data-hub-link href="https://aiwithrobert.com/fr/"',
+               doc, "footer hub link")
     return doc
 
 

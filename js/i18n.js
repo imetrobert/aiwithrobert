@@ -208,6 +208,7 @@ const translations = {
     'footer-tagline':  'AI Tutoring &amp; Technology Training for Seniors in Côte Saint-Luc, Quebec',
     'footer-services': 'ChatGPT lessons • Internet safety • Online skills • Email security',
     'footer-rights':   'All rights reserved.',
+    'footer-hub-link':   'AI with Robert main site',
     'footer-serving':  'Serving Côte Saint-Luc, Hampstead, NDG, Westmount &amp; Montreal Area',
   },
 
@@ -411,6 +412,7 @@ const translations = {
     'footer-tagline':  'Tutoriel IA &amp; Formation Technologique pour Aînés à Côte Saint-Luc, Québec',
     'footer-services': 'Cours ChatGPT • Sécurité Internet • Compétences Numériques • Sécurité Courriels',
     'footer-rights':   'Tous droits réservés.',
+    'footer-hub-link':   'Site principal AI with Robert',
     'footer-serving':  'Desservant Côte Saint-Luc, Hampstead, NDG, Westmount &amp; la région de Montréal',
   }
 
