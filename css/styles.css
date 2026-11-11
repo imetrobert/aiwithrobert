@@ -912,6 +912,9 @@ footer p {
   margin: 0.5rem 0;
   opacity: 0.8;
 }
+
+#footer-guides a { color: rgba(255,255,255,0.9); text-decoration: underline; text-underline-offset: 2px; }
+#footer-guides strong { font-weight: 600; }
 /* =============================================================================
    responsive.css — All breakpoints
    Edit this file to adjust layout at different screen sizes.

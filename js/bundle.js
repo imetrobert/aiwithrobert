@@ -211,6 +211,7 @@ const translations = {
     'footer-rights':   'All rights reserved.',
     'footer-hub-link':   'AI with Robert main site',
     'footer-serving':  'Serving Côte Saint-Luc, Hampstead, NDG, Westmount &amp; Montreal Area',
+    'footer-guides':   '<strong>Guides:</strong> <a href="/articles/is-ai-safe-for-seniors/">Is AI safe for seniors?</a> · <a href="/articles/what-to-expect-private-ai-tutor/">What to expect from a tutor</a> · <a href="/articles/chatgpt-vs-google/">ChatGPT vs Google</a> · <a href="/articles/ai-workshops-for-libraries-and-community-groups/">Workshops for groups</a>',
   },
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -416,6 +417,7 @@ const translations = {
     'footer-rights':   'Tous droits réservés.',
     'footer-hub-link':   'Site principal AI with Robert',
     'footer-serving':  'Desservant Côte Saint-Luc, Hampstead, NDG, Westmount &amp; la région de Montréal',
+    'footer-guides':   '<strong>Guides :</strong> <a href="/fr/articles/lia-est-elle-securitaire-pour-les-aines/">L’IA est-elle sécuritaire?</a> · <a href="/fr/articles/ce-quon-apprend-avec-un-tuteur-prive-en-ia/">À quoi s’attendre avec un tuteur</a> · <a href="/fr/articles/chatgpt-ou-google/">ChatGPT ou Google</a> · <a href="/fr/articles/ateliers-ia-bibliotheques-groupes-communautaires/">Ateliers pour groupes</a>',
   }
 
 }; // end translations
