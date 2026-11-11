@@ -894,6 +894,8 @@ textarea { resize: vertical; min-height: 140px; }
   background: white;
 }
 .faq-answer.open { display: block; }
+
+.about-text p.about-disclaimer { font-size: 0.85rem; line-height: 1.5; color: #5b6b7b; margin: 0 0 1.5rem; }
 /* =============================================================================
    footer.css — Site footer
    ============================================================================= */
