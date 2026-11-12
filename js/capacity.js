@@ -67,7 +67,7 @@
     try { msg.scrollIntoView({ block: "center", behavior: "smooth" }); } catch (e) {}
   }
   function submit(form, msg, btn) {
-    if (form.elements["awr-website"].value) { done(form, msg); return; }
+    if (form.elements["awr-hp-field"].value) { done(form, msg); return; }
     var svc = [].slice.call(form.querySelectorAll("input[name=svc]:checked")).map(function (x) { return x.value; });
     btn.disabled = true; btn.textContent = C.sending; msg.textContent = "";
     fetch(CONFIG.url + "/rest/v1/rpc/join_waitlist", { method: "POST", headers: { apikey: CONFIG.key, "Content-Type": "application/json" },
@@ -90,7 +90,7 @@
     })));
     var consent = h("input", { type: "checkbox", id: "awr-consent", name: "awr-consent", required: "required" });
     var form = h("form", { novalidate: "novalidate" }, [
-      h("div", { "class": "awr-hp", "aria-hidden": "true" }, [h("input", { type: "text", name: "awr-website", tabindex: "-1", autocomplete: "off" })]),
+      h("div", { "class": "awr-hp", "aria-hidden": "true" }, [h("input", { type: "text", name: "awr-hp-field", tabindex: "-1", autocomplete: "off", "data-lpignore": "true", "data-form-type": "other" })]),
       field("awr-name", C.name, "text", true, "name"), field("awr-org", C.org, "text", false, "organization"), field("awr-email", C.email, "email", true, "email"), field("awr-phone", C.phone, "tel", false, "tel"),
       fs, h("p", {}, [h("label", { "class": "awr-consent" }, [consent, h("span", {}, [doc.createTextNode(C.consent + " "), h("span", { "class": "awr-star", text: "*", "aria-hidden": "true" })])])]), btn]);
     form.addEventListener("submit", function (e) {
