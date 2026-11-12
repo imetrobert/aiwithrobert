@@ -17,12 +17,12 @@
     phone: "514-250-8491", scrub: ".faq-qa, aside",
     en: {
       title: "My schedule is full right now",
-      body: "Thank you for your interest in AI with Robert for Seniors. I'm fully booked and unable to take on new students at the moment. If you'd like, leave your details below and I'll contact you personally as soon as a spot opens up.",
+      body: "Thank you for your interest in AI with Robert for Seniors. I'm fully booked and unable to take on new bookings at the moment. If you'd like, leave your details below and I'll contact you personally as soon as a spot opens up.",
       services: ["One-on-one online session", "One-on-one in-home session", "Starter Package (5 hours)", "Complete Package (10 hours)", "Group workshop", "Not sure yet"]
     },
     fr: {
       title: "Mon horaire est complet pour le moment",
-      body: "Merci de votre intérêt pour AI with Robert pour aînés. Je suis complet et je ne peux pas accepter de nouveaux élèves pour le moment. Si vous le souhaitez, laissez vos coordonnées ci-dessous et je vous contacterai personnellement dès qu'une place se libérera.",
+      body: "Merci de votre intérêt pour AI with Robert pour aînés. Je suis complet et je ne peux pas accepter de nouvelles réservations pour le moment. Si vous le souhaitez, laissez vos coordonnées ci-dessous et je vous contacterai personnellement dès qu'une place se libérera.",
       services: ["Séance individuelle en ligne", "Séance individuelle à domicile", "Forfait de départ (5 heures)", "Forfait complet (10 heures)", "Atelier de groupe", "Je ne suis pas certain"]
     }
   };
