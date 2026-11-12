@@ -648,6 +648,14 @@ function checkFormSuccess() {
 window.checkFormValidity = checkFormValidity;
 window.checkFormSuccess  = checkFormSuccess;
 
+// Send French visitors back to the French page after formsubmit.co redirects
+(function () {
+  const next = document.getElementById('form-next');
+  if (next && /^\/fr(\/|$)/i.test(window.location.pathname)) {
+    next.value = window.location.origin + '/fr/?submitted=true#contact';
+  }
+})();
+
 // Tag each submission with brand + language so the email subject and body show where it came from
 (function () {
   const form = document.querySelector('.contact-form form');
