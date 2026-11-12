@@ -221,3 +221,14 @@ The guide pages live at `articles/<slug>/` (EN) and `fr/articles/<slug>/` (FR) a
 generated HTML. The script also refreshes the guide block in `sitemap.xml` (between `GUIDES:START/END`) and the
 `## Guides` section of `llms.txt`. The IndexNow workflow submits every URL in `sitemap.xml`. Independence wording
 (Bell Canada) and the Person id (`https://www.imetrobert.com/#robert-simon`) are set in `build_articles.py`.
+
+## At-capacity mode (waitlist instead of inbound requests)
+
+`js/capacity.js` is a standalone script (NOT in `js/bundle.js`) loaded on every page, including generated guide pages
+(`scripts/build_articles.py`). It calls the public Supabase RPC `site_capacity('seniors')`; the owner switches the mode on/off
+and schedules it in the toolkit ("Site availability"). When on: `data-cap="hide"` elements are hidden (nav phone, large phone
+box, contact form, discovery box, footer contact line, summary asides and FAQ items that print the phone number),
+`data-cap="wait"` buttons become "Join the waitlist", `data-cap="swap"` call-to-action boxes become a short notice, and the
+contact section shows the notice + waitlist form (RPC `join_waitlist`; rows are read in the toolkit's Waitlist screen). Notice
+wording EN/FR is inside `capacity.js` (CONFIG/COMMON). Adding an inbound CTA or a phone number to the page? Give it a
+`data-cap` attribute. The phone stays in JSON-LD on purpose. Tables/functions: `migration/site_capacity.sql` in the toolkit repo.

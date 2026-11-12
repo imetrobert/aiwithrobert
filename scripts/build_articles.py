@@ -96,12 +96,13 @@ def render(lang, a):
 <h1>{E(d['h1'])}</h1>
 <p class="lead">{d['intro']}</p>
 {body}
-<div class="cta"><p>{d['cta']}</p>
+<div class="cta" data-cap="swap"><p>{d['cta']}</p>
 <a class="btn" href="tel:{TEL}">{u['call']} {PHONE}</a><a class="btn alt" href="mailto:{EMAIL}">{u['write']} {EMAIL}</a></div>
 <nav class="rel" aria-label="{u['related']}"><h2>{u['related']}</h2><ul>{rel}</ul></nav>
 <p><a href="{u['home']}">{u['back']}</a></p>
 </main>
-<footer><p>{u['indep']}</p><p>{PHONE} · <a href="mailto:{EMAIL}">{EMAIL}</a></p></footer>
+<footer><p>{u['indep']}</p><p data-cap="hide">{PHONE} · <a href="mailto:{EMAIL}">{EMAIL}</a></p></footer>
+<script defer src="/js/capacity.js?v=20261112"></script>
 </body>
 </html>
 """
