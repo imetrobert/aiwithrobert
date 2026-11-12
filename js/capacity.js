@@ -29,10 +29,10 @@
   var COMMON = {
     en: { reopen: "I expect to have availability around ", wait: "Join the waitlist", name: "Your name", org: "Organization / company", email: "Email address", phone: "Phone number (optional)", svc: "Services you're interested in",
       consent: "I agree that these details may be used only to contact me about availability. They are not sold or shared.", send: "Join the waitlist", sending: "Sending...",
-      ok: "Thank you. You're on the waitlist and I'll be in touch when I have availability.", err: "Sorry, something went wrong. Please check your details and try again in a moment.", open: "Good news: requests have just reopened. Please reload this page.", home: "/#contact" },
+      ok: "Thank you. You're on the waitlist and I'll be in touch when I have availability.", eName: "Please enter your name.", eEmail: "Please enter a valid email address.", eConsent: "Please tick the box to agree before joining the waitlist.", err: "Sorry, something went wrong. Please check your details and try again in a moment.", open: "Good news: requests have just reopened. Please reload this page.", home: "/#contact" },
     fr: { reopen: "Je prévois avoir de la disponibilité vers le ", wait: "Rejoindre la liste d'attente", name: "Votre nom", org: "Organisation / entreprise", email: "Adresse courriel", phone: "Numéro de téléphone (facultatif)", svc: "Services qui vous intéressent",
       consent: "J'accepte que ces renseignements servent uniquement à me contacter au sujet des disponibilités. Ils ne sont ni vendus ni partagés.", send: "Rejoindre la liste d'attente", sending: "Envoi...",
-      ok: "Merci. Vous êtes sur la liste d'attente et je vous contacterai dès que j'aurai de la disponibilité.", err: "Désolé, une erreur s'est produite. Vérifiez vos renseignements et réessayez dans un instant.", open: "Bonne nouvelle : les demandes viennent de rouvrir. Veuillez recharger cette page.", home: "/fr/#contact" }
+      ok: "Merci. Vous êtes sur la liste d'attente et je vous contacterai dès que j'aurai de la disponibilité.", eName: "Veuillez entrer votre nom.", eEmail: "Veuillez entrer une adresse courriel valide.", eConsent: "Veuillez cocher la case pour accepter avant de rejoindre la liste d'attente.", err: "Désolé, une erreur s'est produite. Vérifiez vos renseignements et réessayez dans un instant.", open: "Bonne nouvelle : les demandes viennent de rouvrir. Veuillez recharger cette page.", home: "/fr/#contact" }
   };
   var FR = /^\/fr(\/|$)/.test(location.pathname), L = FR ? "fr" : "en", T = CONFIG[L], C = COMMON[L], CK = "awr_cap_" + CONFIG.site, doc = document;
 
@@ -41,7 +41,7 @@
     ".awr-cap-notice{background:" + CONFIG.bg + ";border:1px solid " + CONFIG.border + ";border-radius:12px;padding:1.4rem 1.3rem;max-width:680px;margin:1.5rem auto;color:" + CONFIG.ink + ";text-align:left}" +
     ".awr-cap-notice h3{margin:0 0 .5rem;font-size:1.35rem}.awr-cap-notice p{margin:.4rem 0}.awr-cap-notice fieldset{border:0;padding:0;margin:0 0 1rem}" +
     ".awr-cap-notice legend{font-weight:600;margin-bottom:.4rem;padding:0}.awr-cap-notice .awr-svc label{display:flex;gap:.55rem;align-items:flex-start;margin:.35rem 0;font-weight:400}" +
-    ".awr-cap-notice .awr-svc input{width:auto;margin-top:.25rem}.awr-cap-notice .awr-hp{position:absolute;left:-9999px;height:0;overflow:hidden}.awr-cap-msg{margin:.8rem 0 0;font-weight:600}";
+    ".awr-cap-notice input[type=checkbox]{width:1.3rem;height:1.3rem;min-width:1.3rem;padding:0;margin:.2rem 0 0;flex:none}.awr-cap-notice label.awr-consent{display:flex;gap:.7rem;align-items:flex-start;font-weight:400}.awr-cap-notice label.awr-consent span{flex:1}.awr-cap-notice .awr-hp{position:absolute;left:-9999px;height:0;overflow:hidden}.awr-cap-msg{margin:.8rem 0 0;font-weight:600}";
   doc.head.appendChild(st);
 
   function h(tag, attrs, kids) {
@@ -86,11 +86,13 @@
     var form = h("form", { novalidate: "novalidate" }, [
       h("div", { "class": "awr-hp", "aria-hidden": "true" }, [h("input", { type: "text", name: "awr-website", tabindex: "-1", autocomplete: "off" })]),
       field("awr-name", C.name, "text", true, "name"), field("awr-org", C.org, "text", false, "organization"), field("awr-email", C.email, "email", true, "email"), field("awr-phone", C.phone, "tel", false, "tel"),
-      fs, h("p", {}, [h("label", { style: "display:flex;gap:.55rem;align-items:flex-start;font-weight:400" }, [consent, h("span", { text: C.consent })])]), btn]);
+      fs, h("p", {}, [h("label", { "class": "awr-consent" }, [consent, h("span", { text: C.consent })])]), btn]);
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var f = form.elements;
-      if (!f["awr-name"].value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f["awr-email"].value.trim()) || !consent.checked) { msg.textContent = C.err; return; }
+      if (!f["awr-name"].value.trim()) { msg.textContent = C.eName; f["awr-name"].focus(); return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f["awr-email"].value.trim())) { msg.textContent = C.eEmail; f["awr-email"].focus(); return; }
+      if (!consent.checked) { msg.textContent = C.eConsent; return; }
       submit(form, msg, btn);
     });
     box.appendChild(form); box.appendChild(msg);
