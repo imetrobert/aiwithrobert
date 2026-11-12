@@ -29,10 +29,10 @@
   var COMMON = {
     en: { reopen: "I expect to have availability around ", wait: "Join the waitlist", name: "Your name", org: "Organization / company", email: "Email address", phone: "Phone number (optional)", svc: "Services you're interested in",
       consent: "I agree that these details may be used only to contact me about availability. They are not sold or shared.", send: "Join the waitlist", sending: "Sending...",
-      ok: "Thank you. You're on the waitlist and I'll be in touch when I have availability.", eName: "Please enter your name.", eEmail: "Please enter a valid email address.", eConsent: "Please tick the box to agree before joining the waitlist.", err: "Sorry, something went wrong. Please check your details and try again in a moment.", open: "Good news: requests have just reopened. Please reload this page.", home: "/#contact" },
+      okT: "Your request is logged \u2713", ok: "Thank you. Your details have been saved to the waitlist and I'll reach out as soon as I'm available.", eName: "Please enter your name.", eEmail: "Please enter a valid email address.", eConsent: "Please tick the box to agree before joining the waitlist.", err: "Sorry, something went wrong. Please check your details and try again in a moment.", open: "Good news: requests have just reopened. Please reload this page.", home: "/#contact" },
     fr: { reopen: "Je prévois avoir de la disponibilité vers le ", wait: "Rejoindre la liste d'attente", name: "Votre nom", org: "Organisation / entreprise", email: "Adresse courriel", phone: "Numéro de téléphone (facultatif)", svc: "Services qui vous intéressent",
       consent: "J'accepte que ces renseignements servent uniquement à me contacter au sujet des disponibilités. Ils ne sont ni vendus ni partagés.", send: "Rejoindre la liste d'attente", sending: "Envoi...",
-      ok: "Merci. Vous êtes sur la liste d'attente et je vous contacterai dès que j'aurai de la disponibilité.", eName: "Veuillez entrer votre nom.", eEmail: "Veuillez entrer une adresse courriel valide.", eConsent: "Veuillez cocher la case pour accepter avant de rejoindre la liste d'attente.", err: "Désolé, une erreur s'est produite. Vérifiez vos renseignements et réessayez dans un instant.", open: "Bonne nouvelle : les demandes viennent de rouvrir. Veuillez recharger cette page.", home: "/fr/#contact" }
+      okT: "Votre demande est enregistrée \u2713", ok: "Merci. Vos coordonnées ont été ajoutées à la liste d'attente et je vous contacterai dès que je serai disponible.", eName: "Veuillez entrer votre nom.", eEmail: "Veuillez entrer une adresse courriel valide.", eConsent: "Veuillez cocher la case pour accepter avant de rejoindre la liste d'attente.", err: "Désolé, une erreur s'est produite. Vérifiez vos renseignements et réessayez dans un instant.", open: "Bonne nouvelle : les demandes viennent de rouvrir. Veuillez recharger cette page.", home: "/fr/#contact" }
   };
   var FR = /^\/fr(\/|$)/.test(location.pathname), L = FR ? "fr" : "en", T = CONFIG[L], C = COMMON[L], CK = "awr_cap_" + CONFIG.site, doc = document;
 
@@ -41,6 +41,7 @@
     ".awr-cap-notice{background:" + CONFIG.bg + ";border:1px solid " + CONFIG.border + ";border-radius:12px;padding:1.4rem 1.3rem;max-width:680px;margin:1.5rem auto;color:" + CONFIG.ink + ";text-align:left}" +
     ".awr-cap-notice h3{margin:0 0 .5rem;font-size:1.35rem}.awr-cap-notice p{margin:.4rem 0}.awr-cap-notice fieldset{border:0;padding:0;margin:0 0 1rem}" +
     ".awr-cap-notice legend{font-weight:600;margin-bottom:.4rem;padding:0}.awr-cap-notice .awr-svc label{display:flex;gap:.55rem;align-items:flex-start;margin:.35rem 0;font-weight:400}" +
+    ".awr-cap-msg.awr-done{display:block;margin-top:1rem;padding:1.1rem 1.2rem;background:#ecfdf5;border:2px solid #22c55e;border-radius:12px;color:#14532d;font-size:1.1rem;line-height:1.6}.awr-cap-msg.awr-done strong{display:block;font-size:1.25rem;margin-bottom:.3rem}" +
     ".awr-cap-notice input[type=checkbox]{width:1.3rem;height:1.3rem;min-width:1.3rem;padding:0;margin:.2rem 0 0;flex:none}.awr-cap-notice label.awr-consent{display:flex;gap:.7rem;align-items:flex-start;font-weight:400}.awr-cap-notice label.awr-consent span{flex:1}.awr-cap-notice .awr-hp{position:absolute;left:-9999px;height:0;overflow:hidden}.awr-cap-msg{margin:.8rem 0 0;font-weight:600}.awr-cap-msg.awr-err{color:#b42318}.awr-cap-notice .awr-invalid{outline:2px solid #b42318;outline-offset:3px;border-radius:8px;background:#fdecec}.awr-cap-notice input.awr-invalid{border-color:#b42318!important}.awr-cap-notice .awr-star{color:#b42318;font-weight:700}";
   doc.head.appendChild(st);
 
@@ -60,8 +61,13 @@
     var p = reopen.split("-"), d = new Date(+p[0], +p[1] - 1, +p[2]);
     return h("p", { text: C.reopen + d.toLocaleDateString(FR ? "fr-CA" : "en-CA", { year: "numeric", month: "long", day: "numeric" }) + "." });
   }
+  function done(form, msg) {
+    form.style.display = "none"; msg.className = "awr-cap-msg awr-done"; msg.textContent = "";
+    msg.appendChild(h("strong", { text: C.okT })); msg.appendChild(h("span", { text: C.ok }));
+    try { msg.scrollIntoView({ block: "center", behavior: "smooth" }); } catch (e) {}
+  }
   function submit(form, msg, btn) {
-    if (form.elements["awr-website"].value) { msg.textContent = C.ok; return; }
+    if (form.elements["awr-website"].value) { done(form, msg); return; }
     var svc = [].slice.call(form.querySelectorAll("input[name=svc]:checked")).map(function (x) { return x.value; });
     btn.disabled = true; btn.textContent = C.sending; msg.textContent = "";
     fetch(CONFIG.url + "/rest/v1/rpc/join_waitlist", { method: "POST", headers: { apikey: CONFIG.key, "Content-Type": "application/json" },
@@ -69,7 +75,7 @@
         p_phone: form.elements["awr-phone"].value, p_services: svc, p_language: L, p_consent: form.elements["awr-consent"].checked }) })
       .then(function (r) { return r.text().then(function (t) { return { ok: r.ok, t: t }; }); })
       .then(function (r) {
-        if (r.ok) { form.style.display = "none"; msg.textContent = C.ok; return; }
+        if (r.ok) { done(form, msg); return; }
         btn.disabled = false; btn.textContent = C.send;
         msg.classList.add("awr-err"); msg.textContent = /not_at_capacity/.test(r.t) ? C.open : C.err;
       })
