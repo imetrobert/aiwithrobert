@@ -165,7 +165,7 @@ const translations = {
     'free-call-title': 'Free 30-Minute Discovery Call',
     'free-call-text':  "Let's chat about your goals with no pressure or obligation",
     'success-title':   'Thank You!',
-    'success-text':    "Your request has been received and will be actioned as soon as possible.<br>I'll get back to you within 24 hours.",
+    'success-text':    "Your request has been received and logged.<br>I'll reach out as soon as I'm available.",
 
     /* ── FAQ section ── */
     'faq-title':    'Frequently Asked Questions',
@@ -371,7 +371,7 @@ const translations = {
     'free-call-title': 'Appel Découverte de 30 Minutes Offert',
     'free-call-text':  'Discutons de vos besoins, sans aucun engagement',
     'success-title':   'Merci !',
-    'success-text':    "Votre demande a bien été reçue. Je vous recontacterai personnellement dans les 24 heures.",
+    'success-text':    "Votre demande a bien été reçue et enregistrée.<br>Je vous contacterai dès que je serai disponible.",
 
     /* ── FAQ section ── */
     'faq-title':    'Questions Fréquentes',
