@@ -5,6 +5,28 @@
 // Anchored regex: exactly XXX-XXX-XXXX, no extra digits
 const PHONE_RE = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
 
+// Saved copy of each submission in the owner's own database (shown in the toolkit's Inquiries screen).
+// The formsubmit.co email stays the primary path; this is fire-and-forget and never blocks or fails the form.
+// Table + function: migration/site_inquiries.sql in the toolkit repo.
+function saveInquiryCopy(form, site) {
+  try {
+    const fd = new FormData(form), extra = {}, core = {};
+    fd.forEach(function (v, k) {
+      if (k.charAt(0) === '_' || k === 'brand' || k === 'language' || typeof v !== 'string') return;
+      if (k === 'name' || k === 'email' || k === 'phone' || k === 'company' || k === 'message') { core[k] = v; return; }
+      if (v.trim() !== '') extra[k] = v.trim().slice(0, 200);
+    });
+    fetch('https://ipnajvgwtjrlecbqfwrh.supabase.co/rest/v1/rpc/submit_inquiry', {
+      method: 'POST', keepalive: true,
+      headers: { apikey: 'sb_publishable_oPa7fZdSTeXKuCwpOF338Q_PcXS57go', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        p_site: site, p_name: core.name || '', p_organization: core.company || '', p_email: core.email || '', p_phone: core.phone || '',
+        p_message: core.message || '', p_extra: extra, p_language: /^\/fr(\/|$)/.test(location.pathname) ? 'fr' : 'en'
+      })
+    }).catch(function () {});
+  } catch (e) {}
+}
+
 const submitBtn = document.getElementById('submit-btn');
 const formHint  = document.getElementById('form-hint');
 
@@ -104,6 +126,7 @@ window.checkFormSuccess  = checkFormSuccess;
   const form = document.querySelector('.contact-form form');
   if (!form) return;
   form.addEventListener('submit', function () {
+    saveInquiryCopy(form, 'seniors');
     const fr = getCurrentLanguage() === 'fr';
     document.getElementById('form-subject').value =
       '[Seniors · ' + (fr ? 'FR' : 'EN') + '] New Contact Form Submission - AI with Robert';

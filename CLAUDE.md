@@ -232,3 +232,12 @@ box, contact form, discovery box, footer contact line, summary asides and FAQ it
 contact section shows the notice + waitlist form (RPC `join_waitlist`; rows are read in the toolkit's Waitlist screen). Notice
 wording EN/FR is inside `capacity.js` (CONFIG/COMMON). Adding an inbound CTA or a phone number to the page? Give it a
 `data-cap` attribute. The phone stays in JSON-LD on purpose. Tables/functions: `migration/site_capacity.sql` in the toolkit repo.
+
+## Contact form: saved copy (Inquiries)
+
+`saveInquiryCopy()` in `js/form.js` sends every contact-form submission to the Supabase RPC `submit_inquiry` as a
+fire-and-forget copy (formsubmit.co still emails it and stays the primary path; a Supabase failure never affects the form).
+Core fields (name, email, phone, company, message) become columns; every other named form field lands in `extra`.
+Renaming or adding form fields? Names flow through automatically, but the toolkit's Inquiries screen reads `interest`,
+`session-type`, `referral`, `team_size`, `tool_*`, `need_*`, `personal_info` by name. Table/function: `migration/site_inquiries.sql`
+in the toolkit repo.
