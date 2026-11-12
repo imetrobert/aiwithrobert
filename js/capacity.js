@@ -41,7 +41,7 @@
     ".awr-cap-notice{background:" + CONFIG.bg + ";border:1px solid " + CONFIG.border + ";border-radius:12px;padding:1.4rem 1.3rem;max-width:680px;margin:1.5rem auto;color:" + CONFIG.ink + ";text-align:left}" +
     ".awr-cap-notice h3{margin:0 0 .5rem;font-size:1.35rem}.awr-cap-notice p{margin:.4rem 0}.awr-cap-notice fieldset{border:0;padding:0;margin:0 0 1rem}" +
     ".awr-cap-notice legend{font-weight:600;margin-bottom:.4rem;padding:0}.awr-cap-notice .awr-svc label{display:flex;gap:.55rem;align-items:flex-start;margin:.35rem 0;font-weight:400}" +
-    ".awr-cap-notice input[type=checkbox]{width:1.3rem;height:1.3rem;min-width:1.3rem;padding:0;margin:.2rem 0 0;flex:none}.awr-cap-notice label.awr-consent{display:flex;gap:.7rem;align-items:flex-start;font-weight:400}.awr-cap-notice label.awr-consent span{flex:1}.awr-cap-notice .awr-hp{position:absolute;left:-9999px;height:0;overflow:hidden}.awr-cap-msg{margin:.8rem 0 0;font-weight:600}";
+    ".awr-cap-notice input[type=checkbox]{width:1.3rem;height:1.3rem;min-width:1.3rem;padding:0;margin:.2rem 0 0;flex:none}.awr-cap-notice label.awr-consent{display:flex;gap:.7rem;align-items:flex-start;font-weight:400}.awr-cap-notice label.awr-consent span{flex:1}.awr-cap-notice .awr-hp{position:absolute;left:-9999px;height:0;overflow:hidden}.awr-cap-msg{margin:.8rem 0 0;font-weight:600}.awr-cap-msg.awr-err{color:#b42318}.awr-cap-notice .awr-invalid{outline:2px solid #b42318;outline-offset:3px;border-radius:8px;background:#fdecec}.awr-cap-notice input.awr-invalid{border-color:#b42318!important}.awr-cap-notice .awr-star{color:#b42318;font-weight:700}";
   doc.head.appendChild(st);
 
   function h(tag, attrs, kids) {
@@ -71,7 +71,7 @@
       .then(function (r) {
         if (r.ok) { form.style.display = "none"; msg.textContent = C.ok; return; }
         btn.disabled = false; btn.textContent = C.send;
-        msg.textContent = /not_at_capacity/.test(r.t) ? C.open : C.err;
+        msg.classList.add("awr-err"); msg.textContent = /not_at_capacity/.test(r.t) ? C.open : C.err;
       })
       .catch(function () { btn.disabled = false; btn.textContent = C.send; msg.textContent = C.err; });
   }
@@ -86,15 +86,20 @@
     var form = h("form", { novalidate: "novalidate" }, [
       h("div", { "class": "awr-hp", "aria-hidden": "true" }, [h("input", { type: "text", name: "awr-website", tabindex: "-1", autocomplete: "off" })]),
       field("awr-name", C.name, "text", true, "name"), field("awr-org", C.org, "text", false, "organization"), field("awr-email", C.email, "email", true, "email"), field("awr-phone", C.phone, "tel", false, "tel"),
-      fs, h("p", {}, [h("label", { "class": "awr-consent" }, [consent, h("span", { text: C.consent })])]), btn]);
+      fs, h("p", {}, [h("label", { "class": "awr-consent" }, [consent, h("span", {}, [doc.createTextNode(C.consent + " "), h("span", { "class": "awr-star", text: "*", "aria-hidden": "true" })])])]), btn]);
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var f = form.elements;
-      if (!f["awr-name"].value.trim()) { msg.textContent = C.eName; f["awr-name"].focus(); return; }
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f["awr-email"].value.trim())) { msg.textContent = C.eEmail; f["awr-email"].focus(); return; }
-      if (!consent.checked) { msg.textContent = C.eConsent; return; }
+      var f = form.elements, label = consent.parentNode;
+      [].slice.call(form.querySelectorAll(".awr-invalid")).forEach(function (n) { n.classList.remove("awr-invalid"); });
+      function bad(el, text) { el.classList.add("awr-invalid"); msg.textContent = text; msg.classList.add("awr-err"); if (el.focus && el !== label) el.focus(); try { el.scrollIntoView({ block: "center", behavior: "smooth" }); } catch (e) {} }
+      msg.classList.remove("awr-err");
+      if (!f["awr-name"].value.trim()) { bad(f["awr-name"], C.eName); return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f["awr-email"].value.trim())) { bad(f["awr-email"], C.eEmail); return; }
+      if (!consent.checked) { bad(label, C.eConsent); return; }
       submit(form, msg, btn);
     });
+    form.addEventListener("input", function (e) { e.target.classList.remove("awr-invalid"); if (e.target === consent) consent.parentNode.classList.remove("awr-invalid"); });
+    consent.addEventListener("change", function () { consent.parentNode.classList.remove("awr-invalid"); });
     box.appendChild(form); box.appendChild(msg);
     return box;
   }

@@ -111,6 +111,7 @@ A: Yes — small group workshops for typically 2 to 4 seniors (6 at most), $35 p
 
 
 
+
 ## Guides
 Short, practical guides, each in English and in French:
 - Is AI safe for seniors?: https://seniors.aiwithrobert.com/articles/is-ai-safe-for-seniors/ (French: https://seniors.aiwithrobert.com/fr/articles/lia-est-elle-securitaire-pour-les-aines/)

@@ -102,7 +102,7 @@ def render(lang, a):
 <p><a href="{u['home']}">{u['back']}</a></p>
 </main>
 <footer><p>{u['indep']}</p><p data-cap="hide">{PHONE} · <a href="mailto:{EMAIL}">{EMAIL}</a></p></footer>
-<script defer src="/js/capacity.js?v=20261112b"></script>
+<script defer src="/js/capacity.js?v=20261112c"></script>
 </body>
 </html>
 """
