@@ -20,6 +20,13 @@ burns a large amount of context for zero benefit:**
 To refresh them after an edit: `python3 scripts/build_fr_page.py`
 (the GitHub workflow also does this automatically on push to `main`).
 
+## After any edit (automatic)
+
+Run `python3 scripts/check_site.py` and `python3 scripts/check_content_sync.py` (each prints OK or the exact problem). Push to `main`
+and CI does the rest: rebuilds `js/bundle.js` and `css/styles.css`, stamps the `?v=` cache versions (`scripts/stamp_assets.py`, content
+hash, never bump by hand), regenerates `fr/index.html` and all guide pages, runs both checks and commits the result.
+Step-by-step recipes for the likely edits (change a price or hours, new testimonial, FAQ, guide, wording) are in `docs/common-edits.md`: read that instead of exploring.
+
 ## Editing without Claude Code (plain claude.ai chat, no repo access)
 
 If you're pasting snippets into a regular chat rather than running an

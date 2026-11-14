@@ -12,6 +12,9 @@ on:
       # fr/index.html is generated from index.html + js/i18n.js, so an
       # English-only content edit still has to rebuild the French page.
       - 'index.html'
+      # guide pages are generated from these two
+      - 'scripts/articles_data.py'
+      - 'scripts/build_articles.py'
   workflow_dispatch:
 
 jobs:
@@ -54,6 +57,11 @@ jobs:
       # ── Verify English/French text agree before building anything ─────────
       # Runs first so a missing or mismatched translation fails the build
       # loudly instead of silently shipping a half-English French page.
+      # ?v= on styles/bundle/capacity becomes a hash of the file's content, so
+      # nobody has to bump versions by hand.
+      - name: Stamp asset versions
+        run: python3 scripts/stamp_assets.py
+
       - name: Check index.html and js/i18n.js are in sync
         run: python3 scripts/check_content_sync.py
 
@@ -65,10 +73,16 @@ jobs:
         run: python3 scripts/build_fr_page.py
 
       # ── Commit built files back to repo ───────────────────────────────────
+      - name: Generate guide pages (EN + FR)
+        run: python3 scripts/build_articles.py
+
+      - name: Site checks (bundle, versions, JSON-LD, anchors, phone/email/prices)
+        run: python3 scripts/check_site.py
+
       - name: Commit and push generated files
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add js/bundle.js css/styles.css fr/index.html
-          git diff --staged --quiet || git commit -m "chore: rebuild bundle.js, styles.css and fr/index.html [skip ci]"
+          git add -A index.html js/bundle.js css/styles.css fr articles sitemap.xml llms.txt scripts/build_articles.py
+          git diff --staged --quiet || git commit -m "chore: rebuild bundle, styles, versions, French page and guides [skip ci]"
           git push
