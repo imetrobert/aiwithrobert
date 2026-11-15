@@ -137,7 +137,7 @@ window.checkFormSuccess  = checkFormSuccess;
 
 // Google Analytics events (no personal data is sent): generate_lead on form submit, phone_click, email_click.
 // Mark generate_lead as a key event in GA4 (Admin > Events).
-function trackEvent(name, params) { try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {} }
+function trackEvent(name, params) { try { if (window.gtag) { params = params || {}; params.transport_type = 'beacon'; window.gtag('event', name, params); } } catch (e) {} } // beacon: still delivered when the Mail app opens and Safari is paused
 document.addEventListener('click', function (e) {
   const a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
   if (!a) return;
