@@ -128,8 +128,20 @@ window.checkFormSuccess  = checkFormSuccess;
   form.addEventListener('submit', function () {
     saveInquiryCopy(form, 'seniors');
     const fr = getCurrentLanguage() === 'fr';
+    trackEvent('generate_lead', { language: fr ? 'fr' : 'en', site: 'seniors' });
     document.getElementById('form-subject').value =
       '[Seniors · ' + (fr ? 'FR' : 'EN') + '] New Contact Form Submission - AI with Robert';
     document.getElementById('form-language').value = fr ? 'Français' : 'English';
   });
 })();
+
+// Google Analytics events (no personal data is sent): generate_lead on form submit, phone_click, email_click.
+// Mark generate_lead as a key event in GA4 (Admin > Events).
+function trackEvent(name, params) { try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {} }
+document.addEventListener('click', function (e) {
+  const a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  if (href.indexOf('tel:') === 0) trackEvent('phone_click', { link_url: href });
+  else if (href.indexOf('mailto:') === 0) trackEvent('email_click', { link_url: href });
+}, true);
