@@ -38,7 +38,7 @@ if cat(css_src) != read("css/styles.css"):
 
 # 2. cache-busting stamps current
 idx = read("index.html")
-for a in ["css/styles.css", "js/bundle.js", "js/capacity.js"]:
+for a in ["css/styles.css", "js/bundle.js", "js/capacity.js", "js/hits.js"]:
     h = hashlib.sha1((ROOT / a).read_bytes()).hexdigest()[:8]
     if a + "?v=" + h not in idx:
         bad.append(f"index.html: {a} version is not current ({h}); run python3 scripts/stamp_assets.py")
