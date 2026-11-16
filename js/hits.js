@@ -4,14 +4,14 @@
    - visit: first page of the day on a device (a local date is kept in localStorage, never sent)
    - view: every page (path only, no query string)   - event: the same events Google Analytics gets (gtag is wrapped, see EVENTS)
    - source: utm_source in the link, else the referring website's host name (kept for the tab in sessionStorage)
-   - skipped for bots, headless browsers and any device that opened a page with ?notrack=1 (?notrack=0 undoes it).
+   - skipped for bots, headless browsers and any device that opened a page with ?countme=1 (?countme=0 undoes it).
    Fails silently; a broken counter never affects the page. Loaded as a separate file on every page (NOT part of js/bundle.js). */
 (function () {
   "use strict";
   var CONFIG = { site: "seniors", url: "https://ipnajvgwtjrlecbqfwrh.supabase.co", key: "sb_publishable_oPa7fZdSTeXKuCwpOF338Q_PcXS57go" };
   var EVENTS = { feasibility_submit: 1, generate_lead: 1, phone_click: 1, email_click: 1, booking_click: 1, brand_card_click: 1 };
   try {
-    var q = new URLSearchParams(location.search), nt = q.get("notrack");
+    var q = new URLSearchParams(location.search), nt = q.get("countme");
     if (nt === "1") localStorage.setItem("hits-off", "1"); else if (nt === "0") localStorage.removeItem("hits-off");
     if (localStorage.getItem("hits-off") === "1") return;
     if (navigator.webdriver || /bot|crawl|spider|slurp|headless|lighthouse|preview|monitor|curl|wget/i.test(navigator.userAgent || "")) return;
