@@ -105,7 +105,7 @@ def render(lang, a):
 </main>
 <footer><p>{u['indep']}</p><p data-cap="hide">{PHONE} · <a href="mailto:{EMAIL}">{EMAIL}</a></p></footer>
 <script defer src="/js/capacity.js?v=fb4fafdd"></script>
-<script defer src="/js/hits.js?v=11b51705"></script>
+<script defer src="/js/hits.js?v=a16302e3"></script>
 </body>
 </html>
 """
