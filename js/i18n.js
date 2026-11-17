@@ -115,6 +115,7 @@ const translations = {
     /* ── Testimonials section ── */
     'testimonials-title':    'What People Are Saying',
     'testimonials-subtitle': 'Real feedback from workshops and one-on-one sessions with seniors in Côte Saint-Luc.',
+    'testimonial-gbp-link': 'See this review on Google',
 
 
     /* ── Contact section ── */
@@ -311,6 +312,7 @@ const translations = {
     /* ── Testimonials section ── */
     'testimonials-title':    'Ce Que Disent Les Participants',
     'testimonials-subtitle': "Des témoignages réels d'ateliers et de séances individuelles avec des aînés de Côte Saint-Luc.",
+    'testimonial-gbp-link': 'Voir cet avis sur Google',
 
 
     /* ── Contact section ── */
