@@ -57,3 +57,8 @@ Still hand-written on purpose (AI-facing copies): the Review JSON-LD and the quo
 
 ### Google review link on a testimonial (Seniors only)
 Each published testimonial can carry an optional Google review link (set in the toolkit's Testimonials screen, field "Google review link"). `js/testimonials.js` (`reviewLinks: true` here only; the Business site has no Google profile) shows it as the "See this review on Google" button (`.testimonial-gbp-link`, EN/FR by page path). Only https links on Google domains are accepted.
+
+### Testimonials are baked into the page every morning (2026-11-17)
+`scripts/sync_testimonials.py` (workflow "Sync testimonials", daily 09:17 UTC and on demand) reads the public RPC `public_testimonials`, writes the cards between `<!-- TESTIMONIALS:START/END -->` in index.html, shows or hides the `#testimonials` section, and rewrites the Review JSON-LD and the "## Testimonials" section of llms.txt (anonymous testimonials are left out of the JSON-LD). `fr/index.html` is rebuilt from it.
+Right after publishing or unpublishing in the toolkit: Actions > Sync testimonials > Run workflow. Until then `js/testimonials.js` adds new ones live (it skips quotes already in the page). Never edit the baked cards or those blocks by hand. Offline test: `TESTIMONIALS_JSON=rows.json python3 scripts/sync_testimonials.py`.
+The Google button label is i18n key `testimonial-gbp-link`.

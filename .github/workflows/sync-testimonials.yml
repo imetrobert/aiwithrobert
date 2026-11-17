@@ -1,0 +1,36 @@
+name: Sync testimonials
+
+# Bakes the testimonials published in the toolkit into the static pages (cards, Review data, llms.txt), so search engines and
+# AI crawlers that do not run JavaScript can read them. Runs every morning and on demand (Actions > Sync testimonials > Run workflow:
+# do this right after publishing or unpublishing in the toolkit). Commits only when something changed.
+
+on:
+  schedule:
+    - cron: '17 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch published testimonials and update the pages
+        run: python3 scripts/sync_testimonials.py
+
+      - name: Rebuild French page, versions and checks
+        run: |
+          python3 scripts/check_content_sync.py
+          python3 scripts/stamp_assets.py
+          python3 scripts/build_fr_page.py
+          python3 scripts/check_site.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A index.html fr llms.txt
+          git diff --staged --quiet || git commit -m "chore: sync published testimonials [skip ci]"
+          git push

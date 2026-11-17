@@ -47,7 +47,9 @@
       method: "POST", headers: { apikey: CONFIG.key, "Content-Type": "application/json" }, body: JSON.stringify({ p_site: CONFIG.site })
     }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
       if (!Array.isArray(rows)) return;
-      rows.slice(0, 12).forEach(function (t) { if (t && typeof t.text === "string" && t.text.length >= 20) box.appendChild(card(t)); });
+      var norm = function (x) { return String(x || "").replace(/\s+/g, " ").trim(); }, have = {};
+      Array.prototype.forEach.call(box.querySelectorAll(".testimonial-quote"), function (q) { var x = ""; Array.prototype.forEach.call(q.childNodes, function (n) { x += n.nodeName === "BR" ? " " : n.textContent; }); have[norm(x)] = 1; });   /* already baked into the page by scripts/sync_testimonials.py */
+      rows.slice(0, 12).forEach(function (t) { if (t && typeof t.text === "string" && t.text.length >= 20 && !have[norm(t.text)]) box.appendChild(card(t)); });
       var shown = document.querySelector(CONFIG.reveal);
       if (shown && box.querySelector("[data-published]")) shown.style.display = "";   /* the section starts hidden so no empty heading shows */
     }).catch(function () {});
