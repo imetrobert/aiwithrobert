@@ -54,3 +54,6 @@ Only consented, approved wording is ever returned (checked by the database). To 
 ### Testimonials are no longer hand-written here (2026-11-17)
 The hand-written testimonial cards and their i18n keys were removed. The section starts hidden (`display:none` in index.html) and `js/testimonials.js` reveals it when at least one testimonial is published in the toolkit's Testimonials screen. Do not add testimonial text to index.html or i18n.js; add it in the toolkit.
 Still hand-written on purpose (AI-facing copies): the Review JSON-LD and the quote in llms.txt on the Seniors site; update them if the wording of a published testimonial changes.
+
+### Google review link on a testimonial (Seniors only)
+Each published testimonial can carry an optional Google review link (set in the toolkit's Testimonials screen, field "Google review link"). `js/testimonials.js` (`reviewLinks: true` here only; the Business site has no Google profile) shows it as the "See this review on Google" button (`.testimonial-gbp-link`, EN/FR by page path). Only https links on Google domains are accepted.
