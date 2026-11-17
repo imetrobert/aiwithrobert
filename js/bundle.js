@@ -573,6 +573,7 @@ function saveInquiryCopy(form, site) {
       if (k === 'name' || k === 'email' || k === 'phone' || k === 'company' || k === 'message') { core[k] = v; return; }
       if (v.trim() !== '') extra[k] = v.trim().slice(0, 200);
     });
+    try { const q = new URLSearchParams(location.search), src = [q.get('utm_source'), q.get('utm_campaign')].filter(Boolean).join('/').replace(/[^A-Za-z0-9_\/-]/g, '').slice(0, 80); if (src) extra.source = src; } catch (e) {}
     fetch('https://ipnajvgwtjrlecbqfwrh.supabase.co/rest/v1/rpc/submit_inquiry', {
       method: 'POST', keepalive: true,
       headers: { apikey: 'sb_publishable_oPa7fZdSTeXKuCwpOF338Q_PcXS57go', 'Content-Type': 'application/json' },
