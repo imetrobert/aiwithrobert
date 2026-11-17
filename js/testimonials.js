@@ -52,6 +52,7 @@
       rows.slice(0, 12).forEach(function (t) { if (t && typeof t.text === "string" && t.text.length >= 20 && !have[norm(t.text)]) box.appendChild(card(t)); });
       var shown = document.querySelector(CONFIG.reveal);
       if (shown && box.querySelector("[data-published]")) shown.style.display = "";   /* the section starts hidden so no empty heading shows */
+      var nl = document.getElementById("nav-testimonials"); if (nl && shown && shown.style.display === "") nl.style.display = "";
     }).catch(function () {});
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();

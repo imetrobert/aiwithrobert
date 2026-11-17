@@ -88,6 +88,12 @@ def update_index(rows):
         s = s.replace(other, want, 1)
     elif want not in s:
         sys.exit("cannot find the testimonials section/container tag to show or hide: " + hidden)
+    nav_h, nav_s = '<li id="nav-testimonials" style="display:none">', '<li id="nav-testimonials">'
+    nw, no = (nav_s, nav_h) if rows else (nav_h, nav_s)
+    if no in s:
+        s = s.replace(no, nw, 1)
+    elif nw not in s:
+        sys.exit("cannot find the nav-testimonials list item to show or hide")
     p.write_text(s, encoding="utf-8")
 
 
