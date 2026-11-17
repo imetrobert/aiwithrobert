@@ -50,3 +50,7 @@ Bump `<lastmod>` for `/` and `/fr/` in `sitemap.xml`. The IndexNow workflow ping
 ### Published testimonials (added from the toolkit)
 `js/testimonials.js` (separate file, NOT in bundle.js, home page only) calls the public Supabase RPC `public_testimonials(site)` and appends the testimonials Robert published in the toolkit's "Testimonials" screen as extra cards in the existing testimonials container (same classes, so styling is inherited).
 Only consented, approved wording is ever returned (checked by the database). To remove one, unpublish it in the toolkit, not here. The hand-written testimonial cards in index.html and i18n.js are unchanged. The `?v=` stamp is automatic (scripts/stamp_assets.py).
+
+### Testimonials are no longer hand-written here (2026-11-17)
+The hand-written testimonial cards and their i18n keys were removed. The section starts hidden (`display:none` in index.html) and `js/testimonials.js` reveals it when at least one testimonial is published in the toolkit's Testimonials screen. Do not add testimonial text to index.html or i18n.js; add it in the toolkit.
+Still hand-written on purpose (AI-facing copies): the Review JSON-LD and the quote in llms.txt on the Seniors site; update them if the wording of a published testimonial changes.

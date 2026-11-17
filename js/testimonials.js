@@ -1,11 +1,11 @@
 /* Published testimonials. Asks Supabase (public RPC public_testimonials, no login) for the testimonials Robert has published from the
    toolkit's "Testimonials" screen and adds them as cards after the ones already in the page (same markup and classes, so the existing
-   styles apply). Only text a client agreed to share is ever returned: the database refuses to publish without a consent record.
+   styles apply). The section is hidden in the HTML until at least one testimonial is published. Only text a client agreed to share is ever returned: the database refuses to publish without a consent record.
    Same file on the Business and Seniors sites; only CONFIG differs. Table and function: migration/site_testimonials.sql in the toolkit repo.
    Loaded as a separate file on the home page (NOT part of js/bundle.js). Fails silently: if it cannot load, the page shows as before. */
 (function () {
   "use strict";
-  var CONFIG = { site: "seniors", url: "https://ipnajvgwtjrlecbqfwrh.supabase.co", key: "sb_publishable_oPa7fZdSTeXKuCwpOF338Q_PcXS57go", mount: "#testimonials .testimonials-container" };
+  var CONFIG = { site: "seniors", url: "https://ipnajvgwtjrlecbqfwrh.supabase.co", key: "sb_publishable_oPa7fZdSTeXKuCwpOF338Q_PcXS57go", reveal: "#testimonials", mount: "#testimonials .testimonials-container" };
   function add(box, name, cls, text) {
     if (!text) return null;
     var s = document.createElement("span"); s.className = cls; s.textContent = text; box.appendChild(s); return s;
@@ -27,6 +27,8 @@
     }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
       if (!Array.isArray(rows)) return;
       rows.slice(0, 12).forEach(function (t) { if (t && typeof t.text === "string" && t.text.length >= 20) box.appendChild(card(t)); });
+      var shown = document.querySelector(CONFIG.reveal);
+      if (shown && box.querySelector("[data-published]")) shown.style.display = "";   /* the section starts hidden so no empty heading shows */
     }).catch(function () {});
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
