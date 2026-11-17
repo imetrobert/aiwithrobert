@@ -76,13 +76,8 @@ Online sessions: Available anywhere in Quebec, Canada
 English, French
 
 ## Testimonials
-"Mr. Simon delivered an engaging, informative, and highly practical introduction to
-artificial intelligence that resonated with our senior participants... What stood out
-most was Robert's ability to adapt the workshop to the experience level of the audience...
-The enthusiastic participation and numerous questions throughout the session reflected
-the workshop's success and the value it provided to our community."
-— Maria Ressina, Programming and Community Engagement Coordinator,
-Eleanor London Côte Saint-Luc Public Library
+"Mr. Simon delivered an engaging, informative, and highly practical introduction to artificial intelligence that resonated with our senior participants. He clearly explained the differences between AI tools and traditional search engines like Google, demonstrating how AI can be used effectively for everyday tasks while emphasizing privacy, safety, and thoughtful prompting. What stood out most was Robert's ability to adapt the workshop to the experience level of the audience. Participants who were already somewhat comfortable with AI asked thoughtful, in-depth questions, and Robert responded with clear, patient, and detailed explanations. He skillfully guided discussions on topics such as AI neutrality, chatbots, and responsible use, keeping conversations informative and respectful. The workshop was highly interactive, with participants experimenting with prompts and exploring creative and practical applications—from composing a poem in Yiddish to writing a personalized wedding message. The enthusiastic participation and numerous questions throughout the session reflected the workshop's success and the value it provided to our community."
+— Maria Ressina, Programming and Community Engagement Coordinator, Eleanor London Côte Saint-Luc Public Library
 (Workshop: "Getting Started with AI: A Friendly Introduction for Seniors")
 
 ## Frequently Asked Questions
