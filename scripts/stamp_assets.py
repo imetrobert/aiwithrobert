@@ -13,7 +13,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-ASSETS = ["css/styles.css", "js/bundle.js", "js/capacity.js", "js/hits.js"]
+ASSETS = ["css/styles.css", "js/bundle.js", "js/capacity.js", "js/hits.js", "js/testimonials.js"]
 TARGETS = ["index.html", "scripts/build_articles.py"]
 
 
