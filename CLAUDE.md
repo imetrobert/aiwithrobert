@@ -95,7 +95,7 @@ reading the whole file:
 | `service1-`..`service3-` | Services section (3 cards)    |
 | `pricing-`, `badge-` | Pricing cards                     |
 | `about-`, `exp-`     | About Robert section               |
-| `testimonial1-`      | Testimonials                      |
+| (none)               | Testimonials are no longer in the page: published from the toolkit (js/testimonials.js) |
 | `contact-`, `form-`, `free-call-`, `success-` | Contact section + form |
 | `faq-q-`, `faq-a-`   | FAQ questions/answers              |
 | `footer-`            | Footer                            |
