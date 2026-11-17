@@ -55,7 +55,10 @@ def clean(rows):
             url = url if (u.scheme == "https" and GOOGLE.search(u.hostname or "")) else ""
         except Exception:
             url = ""
+        lang = "fr" if str(t.get("lang") or "").lower() == "fr" else "en"   # language the quote was written in
+        alt = str(t.get("text_alt") or "").strip()[:1200]
         out.append({"name": g("name", 80), "role": g("role", 120), "org": g("org", 120), "context": g("context", 160), "text": t["text"].strip()[:1200],
+                    "lang": lang, "text_alt": alt if len(alt) >= 20 else "", "context_alt": g("context_alt", 160) if len(alt) >= 20 else "",
                     "review_url": url if CONFIG["review_links"] else ""})
     return out[:12]
 
@@ -64,15 +67,31 @@ def esc(s):
     return html.escape(s, quote=True)
 
 
-def card(t):
-    body = "<br><br>".join(esc(p.strip()) for p in re.split(r"\n\s*\n", t["text"]) if p.strip())
-    cap = "".join('<span class="%s">%s</span>' % (c, esc(t[k])) for c, k in (("testimonial-name", "name"), ("testimonial-role", "role"), ("testimonial-org", "org"), ("testimonial-context", "context")) if t[k])
+LANGNAME = {"en": {"en": "English", "fr": "French"}, "fr": {"en": "anglais", "fr": "fran\u00e7ais"}}
+ORIG_LABEL = {"en": "Testimonial in its original language (%s)", "fr": "T\u00e9moignage dans sa langue d\u2019origine (%s)"}
+
+
+def pick(t, page):
+    """Which wording this page shows: the quote if it is in the page language, else its approved translation, else the original (labelled)."""
+    if t["lang"] == page:
+        return t["text"], t["context"], page, None
+    if t["text_alt"]:
+        return t["text_alt"], t["context_alt"] or t["context"], page, None
+    return t["text"], t["context"], t["lang"], t["lang"]
+
+
+def card(t, page="en"):
+    text, context, tlang, orig = pick(t, page)
+    body = "<br><br>".join(esc(p.strip()) for p in re.split(r"\n\s*\n", text) if p.strip())
+    vals = dict(t, context=context)
+    cap = "".join('<span class="%s">%s</span>' % (c, esc(vals[k])) for c, k in (("testimonial-name", "name"), ("testimonial-role", "role"), ("testimonial-org", "org"), ("testimonial-context", "context")) if vals[k])
+    label = '<p class="testimonial-original">%s</p>' % esc(ORIG_LABEL[page] % LANGNAME[page][orig]) if orig else ""
     link = ""
     if t["review_url"]:
         link = ('<a class="testimonial-gbp-link" href="%s" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">%s</svg>'
                 '<span data-i18n="testimonial-gbp-link">See this review on Google</span></a>') % (esc(t["review_url"]), "".join('<path fill="%s" d="%s"/>' % p for p in G_PATHS))
     return ('<figure class="testimonial-card" data-published="1"><span class="testimonial-quote-mark" aria-hidden="true">&#8220;</span>'
-            '<blockquote class="testimonial-quote">%s</blockquote>%s%s</figure>') % (body, '<figcaption class="testimonial-author">%s</figcaption>' % cap if cap else "", link)
+            '<blockquote class="testimonial-quote" lang="%s">%s</blockquote>%s%s%s</figure>') % (tlang, body, label, '<figcaption class="testimonial-author">%s</figcaption>' % cap if cap else "", link)
 
 
 def update_index(rows):
@@ -81,7 +100,12 @@ def update_index(rows):
     a, b = s.find(START), s.find(END)
     if a < 0 or b < a:
         sys.exit("index.html has no TESTIMONIALS:START / TESTIMONIALS:END markers inside the testimonials container")
-    s = s[:a + len(START)] + "".join(card(t) for t in rows) + s[b:]
+    s = s[:a + len(START)] + "".join(card(t, "en") for t in rows) + s[b:]
+    # French cards travel in an invisible comment right after the END marker; scripts/build_fr_page.py moves them into /fr/.
+    s = re.sub(r"<!--TESTIMONIALS_FR:.*?:TESTIMONIALS_FR-->", "", s, flags=re.S)
+    fr_html = "".join(card(t, "fr") for t in rows).replace("--", "-&#45;")
+    i = s.find(END) + len(END)
+    s = s[:i] + "<!--TESTIMONIALS_FR:" + fr_html + ":TESTIMONIALS_FR-->" + s[i:]
     hidden, shown = CONFIG["hidden"], CONFIG["shown"]
     want, other = (shown, hidden) if rows else (hidden, shown)
     if other in s:
