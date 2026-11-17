@@ -6,6 +6,17 @@
 (function () {
   "use strict";
   var CONFIG = { site: "seniors", reviewLinks: true, url: "https://ipnajvgwtjrlecbqfwrh.supabase.co", key: "sb_publishable_oPa7fZdSTeXKuCwpOF338Q_PcXS57go", reveal: "#testimonials", mount: "#testimonials .testimonials-container" };
+  /* Language: /fr/ pages show a French wording, other pages English. Each testimonial says which language it was written in (t.lang) and may carry an
+     approved translation (t.text_alt). No translation: the original is shown with a small label. Same rule as scripts/sync_testimonials.py. */
+  var PAGE = /^\/fr(\/|$)/.test(location.pathname) ? "fr" : "en";
+  var NAMES = { en: { en: "English", fr: "French" }, fr: { en: "anglais", fr: "fran\u00e7ais" } };
+  var LABEL = { en: "Testimonial in its original language (%s)", fr: "T\u00e9moignage dans sa langue d\u2019origine (%s)" };
+  function wording(t) {
+    var lang = t.lang === "fr" ? "fr" : "en", alt = typeof t.text_alt === "string" && t.text_alt.length >= 20 ? t.text_alt : "";
+    if (lang === PAGE) return { text: t.text, context: t.context, lang: PAGE, orig: "" };
+    if (alt) return { text: alt, context: t.context_alt || t.context, lang: PAGE, orig: "" };
+    return { text: t.text, context: t.context, lang: lang, orig: lang };
+  }
   function add(box, name, cls, text) {
     if (!text) return null;
     var s = document.createElement("span"); s.className = cls; s.textContent = text; box.appendChild(s); return s;
@@ -32,9 +43,11 @@
   function card(t) {
     var f = document.createElement("figure"); f.className = "testimonial-card"; f.setAttribute("data-published", "1");
     var m = document.createElement("span"); m.className = "testimonial-quote-mark"; m.setAttribute("aria-hidden", "true"); m.textContent = "“"; f.appendChild(m);
-    var q = document.createElement("blockquote"); q.className = "testimonial-quote"; q.textContent = t.text; f.appendChild(q);
+    var w = wording(t);
+    var q = document.createElement("blockquote"); q.className = "testimonial-quote"; q.lang = w.lang; q.textContent = w.text; f.appendChild(q);
+    if (w.orig) { var o = document.createElement("p"); o.className = "testimonial-original"; o.textContent = LABEL[PAGE].replace("%s", NAMES[PAGE][w.orig]); f.appendChild(o); }
     var c = document.createElement("figcaption"); c.className = "testimonial-author";
-    add(c, "", "testimonial-name", t.name); add(c, "", "testimonial-role", t.role); add(c, "", "testimonial-org", t.org); add(c, "", "testimonial-context", t.context);
+    add(c, "", "testimonial-name", t.name); add(c, "", "testimonial-role", t.role); add(c, "", "testimonial-org", t.org); add(c, "", "testimonial-context", w.context);
     if (c.childNodes.length) f.appendChild(c);
     var link = reviewLink(t.review_url);
     if (link) f.appendChild(link);
@@ -49,7 +62,7 @@
       if (!Array.isArray(rows)) return;
       var norm = function (x) { return String(x || "").replace(/\s+/g, " ").trim(); }, have = {};
       Array.prototype.forEach.call(box.querySelectorAll(".testimonial-quote"), function (q) { var x = ""; Array.prototype.forEach.call(q.childNodes, function (n) { x += n.nodeName === "BR" ? " " : n.textContent; }); have[norm(x)] = 1; });   /* already baked into the page by scripts/sync_testimonials.py */
-      rows.slice(0, 12).forEach(function (t) { if (t && typeof t.text === "string" && t.text.length >= 20 && !have[norm(t.text)]) box.appendChild(card(t)); });
+      rows.slice(0, 12).forEach(function (t) { if (t && typeof t.text === "string" && t.text.length >= 20 && !have[norm(wording(t).text)]) box.appendChild(card(t)); });
       var shown = document.querySelector(CONFIG.reveal);
       if (shown && box.querySelector("[data-published]")) shown.style.display = "";   /* the section starts hidden so no empty heading shows */
       var nl = document.getElementById("nav-testimonials"); if (nl && shown && shown.style.display === "") nl.style.display = "";

@@ -388,6 +388,19 @@ def check_metadata_agrees(lang_js: str) -> list:
     return problems
 
 
+def swap_testimonials(doc: str) -> str:
+    """Use the French testimonial cards that scripts/sync_testimonials.py stored in a comment after the TESTIMONIALS:END marker."""
+    m = re.search(r"<!--TESTIMONIALS_FR:(.*?):TESTIMONIALS_FR-->", doc, re.S)
+    if not m:
+        return doc
+    fr_html = m.group(1).replace("-&#45;", "--")
+    doc = doc.replace(m.group(0), "", 1)
+    a, b = doc.find("<!-- TESTIMONIALS:START -->"), doc.find("<!-- TESTIMONIALS:END -->")
+    if a < 0 or b < a:
+        return doc
+    return doc[:a + len("<!-- TESTIMONIALS:START -->")] + fr_html + doc[b:]
+
+
 def main() -> int:
     doc = INDEX_HTML.read_text(encoding="utf-8")
     i18n_src = I18N_JS.read_text(encoding="utf-8")
@@ -401,6 +414,7 @@ def main() -> int:
             print("  - " + p)
         return 1
 
+    doc = swap_testimonials(doc)
     doc = build_fr_faq_schema(doc, fr)
     doc, missing = apply_translations(doc, fr)
     doc = rewrite_head(doc)
