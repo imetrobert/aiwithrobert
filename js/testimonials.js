@@ -42,10 +42,10 @@
   }
   function card(t) {
     var f = document.createElement("figure"); f.className = "testimonial-card"; f.setAttribute("data-published", "1");
-    var m = document.createElement("span"); m.className = "testimonial-quote-mark"; m.setAttribute("aria-hidden", "true"); m.textContent = "“"; f.appendChild(m);
     var w = wording(t);
+    if (w.orig) { var o = document.createElement("p"); o.className = "testimonial-original"; o.textContent = LABEL[PAGE].replace("%s", NAMES[PAGE][w.orig]); f.appendChild(o); }   /* note at the top of the card */
+    var m = document.createElement("span"); m.className = "testimonial-quote-mark"; m.setAttribute("aria-hidden", "true"); m.textContent = "“"; f.appendChild(m);
     var q = document.createElement("blockquote"); q.className = "testimonial-quote"; q.lang = w.lang; q.textContent = w.text; f.appendChild(q);
-    if (w.orig) { var o = document.createElement("p"); o.className = "testimonial-original"; o.textContent = LABEL[PAGE].replace("%s", NAMES[PAGE][w.orig]); f.appendChild(o); }
     var c = document.createElement("figcaption"); c.className = "testimonial-author";
     add(c, "", "testimonial-name", t.name); add(c, "", "testimonial-role", t.role); add(c, "", "testimonial-org", t.org); add(c, "", "testimonial-context", w.context);
     if (c.childNodes.length) f.appendChild(c);
