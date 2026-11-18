@@ -38,28 +38,35 @@ const reqFields = {
   'session-type': document.getElementById('session-type'),
 };
 
+// The "still needed" box stays hidden until the visitor taps Send Message with something missing (attempted = true);
+// after that it updates as they fix each field. The button is never disabled, so the tap always gives feedback.
+let attempted = false;
+const isFr = () => getCurrentLanguage() === 'fr';
+
 function checkFormValidity() {
   let ok = true;
   let missing = [];
+  const bad = [];
 
   for (let f in reqFields) {
     const el = reqFields[f];
     if (!el.value || !el.value.trim()) {
-      ok = false;
+      ok = false; bad.push(el);
       missing.push(el.previousElementSibling.textContent.replace(' *', '').trim());
     } else if (el.type === 'tel' && !PHONE_RE.test(el.value)) {
-      ok = false;
-      missing.push('Valid Phone Number');
+      ok = false; bad.push(el);
+      missing.push(isFr() ? 'Numéro de téléphone valide' : 'Valid Phone Number');
     } else if (el.type === 'email' && !el.validity.valid) {
-      ok = false;
-      missing.push('Valid Email');
+      ok = false; bad.push(el);
+      missing.push(isFr() ? 'Courriel valide' : 'Valid Email');
     }
   }
 
-  submitBtn.disabled = !ok;
-  formHint.style.display = ok ? 'none' : 'block';
+  formHint.style.display = (ok || !attempted) ? 'none' : 'block';
+  if (attempted) for (let f in reqFields) reqFields[f].classList.toggle('error', bad.indexOf(reqFields[f]) >= 0);
+  checkFormValidity.firstBad = bad[0] || null;
 
-  if (!ok) {
+  if (!ok && attempted) {
     const lang = getCurrentLanguage();
     const prefix   = lang === 'fr' ? 'Champs manquants : ' : 'Still needed: ';
     const fallback = lang === 'fr'
@@ -120,6 +127,21 @@ window.checkFormSuccess  = checkFormSuccess;
   if (next && /^\/fr(\/|$)/i.test(window.location.pathname)) {
     next.value = window.location.origin + '/fr/?submitted=true#contact';
   }
+})();
+
+// Tapping Send Message with something missing: show what is missing (in the page language) and do not send.
+(function () {
+  const form = document.querySelector('.contact-form form');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    attempted = true;
+    if (!checkFormValidity()) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      try { formHint.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (x) {}
+      if (checkFormValidity.firstBad && checkFormValidity.firstBad.focus) { try { checkFormValidity.firstBad.focus({ preventScroll: true }); } catch (x) {} }
+    }
+  });
 })();
 
 // Tag each submission with brand + language so the email subject and body show where it came from
