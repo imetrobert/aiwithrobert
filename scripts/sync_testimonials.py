@@ -90,8 +90,8 @@ def card(t, page="en"):
     if t["review_url"]:
         link = ('<a class="testimonial-gbp-link" href="%s" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">%s</svg>'
                 '<span data-i18n="testimonial-gbp-link">See this review on Google</span></a>') % (esc(t["review_url"]), "".join('<path fill="%s" d="%s"/>' % p for p in G_PATHS))
-    return ('<figure class="testimonial-card" data-published="1"><span class="testimonial-quote-mark" aria-hidden="true">&#8220;</span>'
-            '<blockquote class="testimonial-quote" lang="%s">%s</blockquote>%s%s%s</figure>') % (tlang, body, label, '<figcaption class="testimonial-author">%s</figcaption>' % cap if cap else "", link)
+    return ('<figure class="testimonial-card" data-published="1">%s<span class="testimonial-quote-mark" aria-hidden="true">&#8220;</span>'
+            '<blockquote class="testimonial-quote" lang="%s">%s</blockquote>%s%s</figure>') % (label, tlang, body, '<figcaption class="testimonial-author">%s</figcaption>' % cap if cap else "", link)
 
 
 def update_index(rows):
