@@ -24,11 +24,11 @@ UI = {
  "en": dict(lang="en", home="/", tag="for Seniors", guides="Guides", back="← Back to the main page",
             related="Related guides", call="Call", write="Write", switch="Français", sitename="AI with Robert for Seniors",
             indep="AI with Robert for Seniors is an independent practice of Robert Simon. It is not affiliated with, sponsored by or endorsed by any employer, including Bell Canada.",
-            byline="By Robert Simon · Côte Saint-Luc, Montréal", updated="Updated", home_label="AI with Robert for Seniors — home", bc_home="Home"),
+            byline="By Robert Simon · Montréal", updated="Updated", home_label="AI with Robert for Seniors — home", bc_home="Home"),
  "fr": dict(lang="fr", home="/fr/", tag="pour aînés", guides="Guides", back="← Retour à la page principale",
             related="Guides connexes", call="Appeler", write="Écrire", switch="English", sitename="AI with Robert pour aînés",
             indep="AI with Robert pour aînés est une pratique indépendante de Robert Simon. Elle n’est affiliée à aucun employeur, ni commanditée ou approuvée par aucun d’eux, y compris Bell Canada.",
-            byline="Par Robert Simon · Côte Saint-Luc, Montréal", updated="Mis à jour le", home_label="AI with Robert pour aînés — accueil", bc_home="Accueil"),
+            byline="Par Robert Simon · Montréal", updated="Mis à jour le", home_label="AI with Robert pour aînés — accueil", bc_home="Accueil"),
 }
 CSS = """*{box-sizing:border-box}body{margin:0;font:18px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#11304c;background:#fff}
 a{color:#1f77ae}header{background:#eaf5fc;border-bottom:1px solid #cfe8f7}.bar{max-width:46rem;margin:0 auto;padding:.7rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
