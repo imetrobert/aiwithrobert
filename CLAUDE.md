@@ -20,6 +20,8 @@ burns a large amount of context for zero benefit:**
 To refresh them after an edit: `python3 scripts/build_fr_page.py`
 (the GitHub workflow also does this automatically on push to `main`).
 
+If something breaks (red check, wrong result, no access): `docs/if-something-breaks.md` (open it first).
+
 ## After any edit (automatic)
 
 Run `python3 scripts/check_site.py` and `python3 scripts/check_content_sync.py` (each prints OK or the exact problem). Push to `main`
