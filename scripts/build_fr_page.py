@@ -56,18 +56,18 @@ ENTRY_RE = re.compile(
 # lived only in js/language.js, where no crawler ever saw them because /fr/ was
 # a redirect stub. Making /fr/ a real page exposed them. check_metadata_agrees()
 # keeps these byte-identical to the copies in js/language.js.
-FR_TITLE = "AI with Robert pour aînés — Tutoriel IA, Côte Saint-Luc"
-FR_DESC = ("Tutoriel IA pour aînés à Côte Saint-Luc et Montréal. Apprenez ChatGPT "
+FR_TITLE = "AI with Robert pour aînés — Tutoriel IA, Montréal"
+FR_DESC = ("Tutoriel IA pour aînés partout à Montréal. Apprenez ChatGPT "
            "et la sécurité en ligne, à votre rythme. Appel découverte gratuit. "
            "514-250-8491.")
-FR_KEYWORDS = ("tutoriel IA Côte Saint-Luc, formation IA Côte Saint-Luc, ateliers IA "
-               "Côte Saint-Luc, aide technologique aînés Côte Saint-Luc, cours ChatGPT "
-               "aînés, tuteur IA Montréal, soutien technique aînés CSL, cours IA aînés "
-               "Montréal, sécurité en ligne aînés, formation sécurité courriel, "
+FR_KEYWORDS = ("tutoriel IA Montréal, formation IA Montréal, ateliers IA "
+               "Montréal, aide technologique aînés Montréal, cours ChatGPT "
+               "aînés, tuteur IA Montréal, soutien technique aînés Montréal, cours IA aînés "
+               "Montréal, tutoriel IA Côte Saint-Luc, sécurité en ligne aînés, formation sécurité courriel, "
                "instructeur technologie aînés Québec")
 FR_OG_TITLE = ("AI with Robert pour aînés — Tutoriel IA et Formation "
-               "Technologique à Côte Saint-Luc")
-FR_OG_DESC = ("Tutoriel IA patient et personnalisé pour aînés à Côte Saint-Luc. Robert "
+               "Technologique à Montréal")
+FR_OG_DESC = ("Tutoriel IA patient et personnalisé pour aînés à Montréal. Robert "
               "Simon enseigne ChatGPT, la sécurité en ligne et les compétences "
               "numériques. Appel découverte gratuit. 514-250-8491.")
 
