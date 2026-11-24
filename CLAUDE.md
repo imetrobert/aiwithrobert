@@ -22,6 +22,8 @@ To refresh them after an edit: `python3 scripts/build_fr_page.py`
 
 If something breaks (red check, wrong result, no access): `docs/if-something-breaks.md` (open it first).
 
+**Freshness dates are automatic:** `scripts/stamp_dates.py` (run by CI) sets the home-page `lastmod` in `sitemap.xml` and the guide/service pages' `lastmod` and `dateModified` from the date of the last real edit (git history, ignoring the bot's `chore:` commits). `PUBLISHED` in the page builder is the fixed first-publication date. Never edit these dates by hand.
+
 ## After any edit (automatic)
 
 Run `python3 scripts/check_site.py` and `python3 scripts/check_content_sync.py` (each prints OK or the exact problem). Push to `main`
