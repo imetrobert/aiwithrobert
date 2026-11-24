@@ -5,6 +5,8 @@
 ## Business
 Name: AI with Robert
 Owner: Robert Simon
+In one sentence: AI with Robert is run by Robert Simon, a patient AI tutor and technology instructor in Montreal, Quebec, who teaches seniors to use ChatGPT and AI safely, in English or French, in person across all of Montreal or online.
+Not to be confused with: other people or businesses using a similar name, including aiwithrobert.live.
 Type: Local business — AI tutoring and technology training for seniors
 Location: Montreal, Quebec, Canada (based in Côte Saint-Luc, H4W)
 Phone: 514-250-8491
