@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # stamp_dates.py reads git history
 
       # ── Bundle JS ──────────────────────────────────────────────────────────
       # Order matters: translations must load before language.js uses them,
@@ -61,6 +63,10 @@ jobs:
       # nobody has to bump versions by hand.
       - name: Stamp asset versions
         run: python3 scripts/stamp_assets.py
+
+      # lastmod / dateModified come from real edits (git history), never by hand
+      - name: Stamp freshness dates
+        run: python3 scripts/stamp_dates.py
 
       - name: Check index.html and js/i18n.js are in sync
         run: python3 scripts/check_content_sync.py
