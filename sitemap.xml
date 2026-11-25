@@ -9,6 +9,7 @@
 <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
@@ -21,6 +22,14 @@
     <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/508rtYini-w/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>AI Help for Seniors in Montréal | AI with Robert</video:title>
+      <video:description>AI with Robert offers friendly, patient one-on-one AI tutoring for seniors, based in Côte Saint-Luc and serving Montréal, in English and French.</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/508rtYini-w</video:player_loc>
+      <video:duration>47</video:duration>
+      <video:publication_date>2026-11-24</video:publication_date>
+    </video:video>
   </url>
 
   <url>
