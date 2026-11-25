@@ -113,6 +113,9 @@ const translations = {
     'exp-ai':       'AI Specialist',
 
     /* ── Testimonials section ── */
+    'video-title': 'Meet AI with Robert',
+    'video-subtitle': 'A short introduction to friendly, patient AI tutoring for seniors in Montréal.',
+    'video-channel': 'Watch on our YouTube channel',
     'testimonials-title':    'What People Are Saying',
     'testimonials-subtitle': 'Real feedback from workshops and one-on-one sessions with seniors in Montreal.',
     'testimonial-gbp-link': 'See this review on Google',
@@ -310,6 +313,9 @@ const translations = {
     'exp-ai':       'Spécialiste en IA',
 
     /* ── Testimonials section ── */
+    'video-title': 'Faites connaissance avec AI with Robert',
+    'video-subtitle': 'Une courte présentation du tutorat en IA, amical et patient, pour les aînés à Montréal (en anglais).',
+    'video-channel': 'Regarder sur notre chaîne YouTube',
     'testimonials-title':    'Ce Que Disent Les Participants',
     'testimonials-subtitle': "Des témoignages réels d'ateliers et de séances individuelles avec des aînés de Montréal.",
     'testimonial-gbp-link': 'Voir cet avis sur Google',

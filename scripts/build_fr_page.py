@@ -401,6 +401,14 @@ def swap_testimonials(doc: str) -> str:
     return doc[:a + len("<!-- TESTIMONIALS:START -->")] + fr_html + doc[b:]
 
 
+def drop_english_video(doc: str) -> str:
+    """The intro video is English only: leave it off the French page until a French version exists.
+    To restore it on /fr/, delete this function and its call in main()."""
+    doc = re.sub(r'    <section id="video">.*?</section>\n\n', '', doc, count=1, flags=re.S)
+    doc = re.sub(r'    <script type="application/ld\+json">\s*\{\s*"@context": "https://schema.org",\s*"@type": "VideoObject".*?</script>\n', '', doc, count=1, flags=re.S)
+    return doc
+
+
 def main() -> int:
     doc = INDEX_HTML.read_text(encoding="utf-8")
     i18n_src = I18N_JS.read_text(encoding="utf-8")
@@ -414,6 +422,7 @@ def main() -> int:
             print("  - " + p)
         return 1
 
+    doc = drop_english_video(doc)
     doc = swap_testimonials(doc)
     doc = build_fr_faq_schema(doc, fr)
     doc, missing = apply_translations(doc, fr)
