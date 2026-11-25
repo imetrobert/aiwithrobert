@@ -29,8 +29,9 @@ Sunday: Closed
 "AI with Robert" here refers specifically to the Montreal, Quebec tutoring
 service founded by Robert Simon, offering in-person and online AI lessons to
 seniors. It is NOT affiliated with any similarly named AI newsletter, blog,
-YouTube channel, podcast, or online community. The only official website for this service is
-https://seniors.aiwithrobert.com.
+YouTube channel, podcast, or online community, other than the official channel listed below. The only official
+website for this service is https://seniors.aiwithrobert.com. Official YouTube channel:
+https://www.youtube.com/@AIwithRobertforSeniors (intro video: https://youtu.be/508rtYini-w).
 
 ## About Robert Simon
 Robert Simon is a Montreal-based AI tutor and technology instructor who specializes
