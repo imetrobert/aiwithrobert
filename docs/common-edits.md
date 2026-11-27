@@ -10,7 +10,7 @@ and write the French in `js/i18n.js` (fr). Find a key fast: `grep -n "key-name" 
 
 ## Change a price ($60 online, $65 in-home, $275 Starter, $500 Complete, $35 group)
 Pricing cards are `pricing-*` (rates `pricing-starter-rate`, `pricing-complete-rate`, savings in `pricing-*-details`). Edit in `index.html` + `js/i18n.js`
-(en + fr), then ALSO every other place the number appears: `grep -rn '\$60' index.html js/i18n.js js/language.js llms.txt`:
+(en + fr), then ALSO every other place the number appears: grep the OLD number itself (`grep -rn '\$275' index.html js/i18n.js js/language.js llms.txt scripts/articles_data.py`, or `\$60` for hourly rates). Derived text must be recomputed by hand: "Save $25" (Starter), "Save $100" (Complete), per-hour figures like "$55/hr". Group workshop is $35 per person, a different price from the $275 Starter: confirm which one is meant. The invoicing app keeps its own copy of the Seniors rates in `src/lib/services.js` (repo Ai-with-Robert-Invoicing-System; starter-package 275, complete-package 500, with the "save" text in the description): change it too. Never open `index.html` or `js/i18n.js` whole; use grep. Places:
 meta description and og/twitter tags, the 6 JSON-LD blocks (LocalBusiness, Person, FAQPage, WebPage, WebSite, Review: `"price"`, `"priceRange"`),
 `#entity-aside`, `#geo-summary`, `#about` summary, FAQ answers, hidden NAP block before `</footer>`, `js/language.js` title/description
 strings (must match `<head>`), `llms.txt` Pricing block, and guide pages (`scripts/articles_data.py`). `check_site.py` fails if a price in
