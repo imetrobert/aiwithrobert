@@ -66,6 +66,7 @@ exists in both `en` and `fr`, `en`/`fr` have the same key set, and flags
 any key whose `index.html` text no longer matches the `en` value.
 
 ## Gotchas that break things (detail in the longer notes)
+- Prices: $60 online session, $65 in-home session, $275 Starter package, $500 Complete package, $35 per person group workshop. Recipe: `docs/common-edits.md` "Change a price".
 - Phone, email, prices and hours repeat in many places (meta, 6 JSON-LD blocks, `index.html`, `js/i18n.js` en+fr, `js/language.js`, `llms.txt`). Change them everywhere: `grep -rn "514-250-8491" index.html js/i18n.js js/language.js llms.txt`.
 - `js/bundle.js`, `css/styles.css`, `fr/index.html` and guide pages are generated: edit the sources and `scripts/articles_data.py`, never the output.
 - New inbound button or phone number: add a `data-cap` attribute (at-capacity mode).
