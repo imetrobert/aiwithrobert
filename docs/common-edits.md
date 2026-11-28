@@ -26,6 +26,9 @@ Keys `testimonial1-*` (`-quote`, `-name`, `-role`, `-org`, `-context`, `-gbp-lin
 badge is part of the card. Only add `aggregateRating` to the JSON-LD after at least three real Google reviews. Use a generic word like "bookings",
 not "students".
 
+## Swap a photo (profile.jpg, users.jpg)
+Two photos sit in the repo root: `profile.jpg` (your portrait, About section, 892x910) and `users.jpg` (hero picture of seniors learning, 1024x1024). Each has a `.webp` twin that browsers show first. On GitHub: open the file, Upload files, upload the new photo with the SAME name (`profile.jpg` or `users.jpg`), keep the same width and height (or edit `width`/`height` on the `<img>` in `index.html`), aim for under 300 KB. The "Make WebP copies" workflow then rebuilds the `.webp` by itself in about a minute; do not upload the .webp by hand. Alt text is hardcoded English in `index.html` (`grep -n 'profile.jpg\|users.jpg' index.html`), not in `js/i18n.js`; the French page is generated and reuses the same files. `users.jpg` is also the share image named near line 100 of `index.html` (JSON-LD), so changing it changes the social preview. Logo files come from `logo.PNG`, not these.
+
 ## Add an FAQ
 Add `faq-q-<name>` and `faq-a-<name>` in `index.html` (FAQ section), `js/i18n.js` (en + fr) and the FAQPage JSON-LD in `index.html`
 (the French JSON-LD is rebuilt from i18n). Answers that print the phone number need `data-cap="hide"` (capacity mode).

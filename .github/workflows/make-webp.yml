@@ -1,0 +1,49 @@
+name: Make WebP copies of the photos
+
+# The page shows profile.webp / users.webp first and the .jpg only as a fallback.
+# Upload a new profile.jpg or users.jpg (same file name) and this job rebuilds the
+# matching .webp, so the old photo can never keep showing. Leave it enabled.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'profile.jpg'
+      - 'users.jpg'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  webp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Rebuild the WebP copies
+        run: |
+          pip install --quiet pillow
+          python3 - <<'PY'
+          from PIL import Image
+          for name in ("profile", "users"):
+              im = Image.open(f"{name}.jpg").convert("RGB")
+              im.save(f"{name}.webp", "WEBP", quality=82, method=6)
+              print(name, im.size)
+          PY
+      - name: Commit and push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Photo Bot"
+          git add profile.webp users.webp
+          if git diff --staged --quiet; then
+            echo "WebP copies already match."
+            exit 0
+          fi
+          git commit -m "chore: rebuild WebP copies of the photos"
+          for i in 1 2 3; do
+            if git pull --rebase -q -X theirs && git push -q; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          echo "Push failed after 3 tries"
+          exit 1
