@@ -29,6 +29,7 @@ not "students".
 ## Add an FAQ
 Add `faq-q-<name>` and `faq-a-<name>` in `index.html` (FAQ section), `js/i18n.js` (en + fr) and the FAQPage JSON-LD in `index.html`
 (the French JSON-LD is rebuilt from i18n). Answers that print the phone number need `data-cap="hide"` (capacity mode).
+Keys are short words, not numbers (existing: `who`, `chatgpt`, `areas`, `cost`, `experience`, `safe`, `home`, `group`, `what`, `free`): pick a new word such as `faq-q-privacy`. Copy the last `<div class="faq-qa" ...>` block in `index.html` (`grep -n 'faq-qa' index.html`), keep its microdata attributes, and add one `Question` entry at the end of the FAQPage JSON-LD in `<head>` with the same English text. Do not edit `sitemap.xml` dates (stamp_dates.py sets them). Then run both checks.
 
 ## Reword the hero, a title or a button
 `grep -n 'data-i18n="hero-' index.html` (prefixes: `nav-`, `hero-`/`stat-`, `entity-aside`/`geo-summary`, `service1-3-`, `pricing-`/`badge-`, `about-`/`exp-`,
