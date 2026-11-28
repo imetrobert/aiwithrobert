@@ -92,3 +92,100 @@ emitting bad icons.
 - `llms.txt` — freestanding plain-text business summary for AI search
   engines; not templated from anything, update by hand when facts change.
 
+## (from CLAUDE.md) Facts repeated for SEO (NAP consistency) — update ALL locations
+
+Phone (`514-250-8491`), email (`seniors@aiwithrobert.com`), prices ($60/$65/
+$275/$500/$35), and hours are intentionally repeated across many places for
+local-SEO/schema.org reasons (Google rewards consistent Name-Address-Phone
+data). Changing any of these means touching **every** location below, not
+just the visible ones:
+
+- `index.html` `<meta name="description">` and `og:`/`twitter:` meta tags
+- `index.html` **6 separate JSON-LD `<script type="application/ld+json">`
+  blocks** in `<head>` (LocalBusiness, Person, FAQPage, WebPage, WebSite,
+  Review) — pretty-printed one field per line, so you can copy/paste just
+  the field you need (e.g. `"telephone"`, `"priceRange"`, `"price"`) instead
+  of the whole block
+- `index.html` nav phone link, `#entity-aside`, `#geo-summary`, pricing
+  cards, `#about` summary, contact section, FAQ answers, footer, and the
+  hidden NAP `<div itemtype=".../LocalBusiness">` just before `</footer>`
+  (marked "DO NOT REMOVE" — it's for crawlers, keep it but do update it)
+- `js/i18n.js` — same facts appear inside `en` **and** `fr` string values
+- `js/language.js` — has its own hardcoded `<title>`/meta-description
+  strings for `fr` and `en` that it swaps in on language switch (separate
+  from the ones in `index.html`'s `<head>`, which only apply pre-JS)
+- `llms.txt` — plain-text business summary for AI answer engines
+- `fr/index.html` — **generated**, so don't edit it directly; it picks the
+  facts up automatically from `index.html` + `js/i18n.js` when you re-run
+  `python3 scripts/build_fr_page.py`
+
+Fastest way to find every occurrence of a fact: `grep -rn "514-250-8491"
+index.html js/i18n.js js/language.js llms.txt`.
+
+## (from CLAUDE.md) Build pipeline — never hand-edit generated files
+
+`css/styles.css` and `js/bundle.js` are **generated**, not source. Edit the
+real source files instead:
+
+- CSS sources: `css/base.css`, `css/nav.css`, `css/hero.css`,
+  `css/sections.css`, `css/footer.css`, `css/responsive.css`
+- JS sources: `js/i18n.js`, `js/language.js`, `js/form.js`, `js/ui.js`,
+  `js/main.js`
+
+`.github/workflows/build-assets.yml` concatenates them into `css/styles.css`
+and `js/bundle.js` automatically on every push to `main` that touches
+`js/**`, `css/**`, or `index.html`. `index.html` only loads the bundled
+files, never the individual sources — so a source-only push looks like a
+no-op until it reaches `main` and the workflow runs.
+
+The same workflow also runs `scripts/check_content_sync.py` (fails the
+build on EN/FR drift) and regenerates `fr/index.html`.
+
+## (from CLAUDE.md) Guides (articles) — generated, edit the data file
+
+The guide pages live at `articles/<slug>/` (EN) and `fr/articles/<slug>/` (FR) and are **generated** by
+`python3 scripts/build_articles.py` from `scripts/articles_data.py`. Edit wording in the data file, never the
+generated HTML. The script also refreshes the guide block in `sitemap.xml` (between `GUIDES:START/END`) and the
+`## Guides` section of `llms.txt`. The IndexNow workflow submits every URL in `sitemap.xml`. Independence wording
+(Bell Canada) and the Person id (`https://www.imetrobert.com/#robert-simon`) are set in `build_articles.py`.
+
+## (from CLAUDE.md) At-capacity mode (waitlist instead of inbound requests)
+
+`js/capacity.js` is a standalone script (NOT in `js/bundle.js`) loaded on every page, including generated guide pages
+(`scripts/build_articles.py`). It calls the public Supabase RPC `site_capacity('seniors')`; the owner switches the mode on/off
+and schedules it in the toolkit ("Site availability"). When on: `data-cap="hide"` elements are hidden (nav phone, large phone
+box, contact form, discovery box, footer contact line, summary asides and FAQ items that print the phone number),
+`data-cap="wait"` buttons become "Join the waitlist", `data-cap="swap"` call-to-action boxes become a short notice, and the
+contact section shows the notice + waitlist form (RPC `join_waitlist`; rows are read in the toolkit's Waitlist screen). Notice
+wording EN/FR is inside `capacity.js` (CONFIG/COMMON). Adding an inbound CTA or a phone number to the page? Give it a
+`data-cap` attribute. The phone stays in JSON-LD on purpose. Tables/functions: `migration/site_capacity.sql` in the toolkit repo.
+
+## (from CLAUDE.md) Contact form: saved copy (Inquiries)
+
+`saveInquiryCopy()` in `js/form.js` sends every contact-form submission to the Supabase RPC `submit_inquiry` as a
+fire-and-forget copy (formsubmit.co still emails it and stays the primary path; a Supabase failure never affects the form).
+Core fields (name, email, phone, company, message) become columns; every other named form field lands in `extra`.
+Renaming or adding form fields? Names flow through automatically, but the toolkit's Inquiries screen reads `interest`,
+`session-type`, `referral`, `team_size`, `tool_*`, `need_*`, `personal_info` by name. Table/function: `migration/site_inquiries.sql`
+in the toolkit repo.
+
+## (from CLAUDE.md) Finding the right key fast
+
+`data-i18n` keys are namespaced by section — grep the prefix instead of
+reading the whole file:
+
+| Prefix              | Section                          |
+|----------------------|-----------------------------------|
+| `nav-`               | Top navigation                    |
+| `hero-`, `stat-`      | Hero banner + stats row           |
+| `entity-aside`, `geo-summary` | The two SEO/GEO summary blurbs below the hero |
+| `service1-`..`service3-` | Services section (3 cards)    |
+| `pricing-`, `badge-` | Pricing cards                     |
+| `about-`, `exp-`     | About Robert section               |
+| (none)               | Testimonials are no longer in the page: published from the toolkit (js/testimonials.js) |
+| `contact-`, `form-`, `free-call-`, `success-` | Contact section + form |
+| `faq-q-`, `faq-a-`   | FAQ questions/answers              |
+| `footer-`            | Footer                            |
+
+Example: to change a price, `grep -n "pricing-starter" index.html
+js/i18n.js` and edit both occurrences.
